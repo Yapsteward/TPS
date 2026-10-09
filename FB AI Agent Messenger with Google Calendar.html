@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facebook Messenger AI Agent with Google Calendar — Staycation Automation Case Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-dark: #ffffff; /* Re-mapped to white */
+    --bg-card: #f8fafc;
+    --bg-card-hover: #f1f5f9;
+    --bg-canvas: #f8fafc;
+    --accent-teal: #00c2cb;
+    --accent-gold: #009ba2;
+    --accent-purple: #00e5f0;
+    --text-main: #152b3f; /* Deep navy text */
+    --text-muted: #475569;
+    --text-subtle: #64748b;
+    --border-light: #e2e8f0;
+    --border-accent: rgba(0, 194, 203, 0.3);
+    --border-gold: rgba(0, 155, 162, 0.35);
+    --glow-teal: rgba(0, 194, 203, 0.15);
+    --glow-gold: rgba(0, 155, 162, 0.15);
+    
+    /* Specific to Messenger */
+    --fb-gradient: linear-gradient(135deg, #00c2cb 0%, #009ba2 100%);
+    --fb-blue: #00c2cb;
+
+    --sans: 'Space Grotesk', system-ui, sans-serif;
+    --heading: 'Outfit', sans-serif;
+    --mono: 'Fira Code', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ── BACKGROUND GRID EFFECT (Lightened) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background-image: 
+      radial-gradient(circle at 15% 15%, rgba(0, 194, 203, 0.05) 0%, transparent 40%),
+      radial-gradient(circle at 85% 85%, rgba(0, 194, 203, 0.05) 0%, transparent 45%),
+      linear-gradient(to right, rgba(21, 43, 63, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(21, 43, 63, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: relative;
+    z-index: 2;
+    padding: 64px 24px 28px;
+    text-align: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-teal);
+    background: rgba(0, 194, 203, 0.08);
+    border: 1px solid var(--border-accent);
+    padding: 6px 16px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px var(--glow-teal);
+  }
+  .eyebrow .pulse-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent-teal);
+    box-shadow: 0 0 10px var(--accent-teal);
+    animation: livePulse 2s infinite;
+  }
+  @keyframes livePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.75); }
+  }
+
+  h1 {
+    font-family: var(--heading);
+    font-size: clamp(2.1rem, 4.2vw, 3.4rem);
+    font-weight: 800;
+    line-height: 1.18;
+    margin-bottom: 18px;
+    background: linear-gradient(135deg, #152b3f 20%, #009ba2 50%, #00c2cb 85%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  header p.hero-desc {
+    color: var(--text-muted);
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    max-width: 780px;
+    margin: 0 auto 24px;
+    line-height: 1.7;
+  }
+
+  .hero-meta-strip {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 10px;
+  }
+  .meta-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 8px;
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    color: var(--text-muted);
+  }
+  .meta-tag.highlight {
+    background: rgba(0, 194, 203, 0.08);
+    border-color: var(--border-accent);
+    color: var(--accent-teal);
+  }
+
+  /* ── NAVIGATION TABS ── */
+  .cs-nav-container {
+    position: sticky;
+    top: 16px;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    padding: 0 16px;
+    margin: 20px auto 44px;
+  }
+  .cs-nav-bar {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-light);
+    padding: 6px;
+    border-radius: 999px;
+    box-shadow: 0 10px 30px rgba(21, 43, 63, 0.1);
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  .cs-nav-btn {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: none;
+    color: var(--text-muted);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+  }
+  .cs-nav-btn:hover {
+    color: var(--text-main);
+    background: var(--bg-card-hover);
+  }
+  .cs-nav-btn.active {
+    color: #ffffff;
+    background: linear-gradient(135deg, #00c2cb 0%, #009ba2 100%);
+    box-shadow: 0 4px 16px rgba(0, 194, 203, 0.4);
+  }
+
+  /* ── MAIN WRAPPER ── */
+  .cs-body {
+    position: relative;
+    z-index: 2;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+  .cs-section {
+    display: none;
+    animation: fadeIn 0.4s ease-out;
+  }
+  .cs-section.cs-section-active {
+    display: block;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SECTION HEADINGS ── */
+  .section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-teal);
+    margin-bottom: 12px;
+  }
+  .section-badge::before {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background: var(--accent-teal);
+  }
+  .cs-section h2 {
+    font-family: var(--heading);
+    font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.22;
+    margin-bottom: 12px;
+    color: var(--text-main);
+  }
+  .cs-section h2 em {
+    font-style: normal;
+    background: linear-gradient(135deg, #00c2cb 0%, #009ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .section-lead {
+    font-size: 1.08rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    max-width: 860px;
+    margin-bottom: 36px;
+  }
+  .teal-rule {
+    width: 48px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-teal), transparent);
+    border-radius: 2px;
+    margin-bottom: 28px;
+  }
+
+  /* ── EXECUTIVE SUMMARY GRID ── */
+  .exec-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 36px;
+    align-items: start;
+    margin-bottom: 48px;
+  }
+  .exec-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+    padding: 36px 32px;
+    box-shadow: 0 10px 30px rgba(21, 43, 63, 0.05);
+  }
+  .exec-card h3 {
+    font-family: var(--heading);
+    font-size: 1.45rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-main);
+  }
+  .exec-card p {
+    font-size: 0.98rem;
+    color: var(--text-muted);
+    line-height: 1.85;
+    margin-bottom: 18px;
+  }
+  .exec-card p:last-child { margin-bottom: 0; }
+  .exec-card .highlight-text {
+    color: var(--text-main);
+    font-weight: 600;
+  }
+
+  /* ── LIVE MESSENGER CHAT WIDGET (Re-styled Slack widget logic for light theme) ── */
+  .slack-chat-widget {
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(21, 43, 63, 0.08);
+  }
+  .slack-header {
+    background: var(--text-main); /* Navy */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .slack-header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+  .slack-channel-hash {
+    color: var(--accent-teal);
+    font-weight: 800;
+  }
+  .slack-status-pill {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: rgba(0, 194, 203, 0.18);
+    color: #00e5f0;
+    border: 1px solid rgba(0, 194, 203, 0.35);
+    padding: 3px 10px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .slack-status-pill::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #00e5f0;
+  }
+  .slack-body {
+    padding: 20px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 0.88rem;
+    background: var(--bg-card);
+  }
+  .msg-row {
+    display: flex;
+    flex-direction: column;
+    max-width: 85%;
+  }
+  .msg-row.user {
+    align-self: flex-end;
+    align-items: flex-end;
+  }
+  .msg-row.bot {
+    align-self: flex-start;
+    align-items: flex-start;
+  }
+  .msg-bubble {
+    padding: 12px 16px;
+    border-radius: 18px;
+    line-height: 1.55;
+    position: relative;
+    font-family: var(--sans);
+  }
+  .msg-bubble p { margin-bottom: 8px; }
+  .msg-bubble p:last-child { margin-bottom: 0; }
+  
+  .msg-bubble.user {
+    background: var(--fb-gradient);
+    color: #FFFFFF;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 194, 203, 0.2);
+  }
+  .msg-bubble.bot {
+    background: #FFFFFF;
+    color: var(--text-main);
+    border-bottom-left-radius: 4px;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 4px 12px rgba(21, 43, 63, 0.04);
+  }
+  .tool-tag {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    background: rgba(0, 194, 203, 0.1);
+    border: 1px solid rgba(0, 194, 203, 0.25);
+    padding: 3px 8px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 6px;
+  }
+  .msg-time {
+    font-size: 0.68rem;
+    color: var(--text-subtle);
+    margin-top: 4px;
+  }
+
+  /* ── CHALLENGES GRID ── */
+  .challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    margin-bottom: 40px;
+  }
+  .challenge-item {
+    display: flex;
+    gap: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    padding: 26px 24px;
+    transition: all 0.3s ease;
+  }
+  .challenge-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-teal);
+    box-shadow: 0 12px 30px rgba(0, 194, 203, 0.12);
+  }
+  .ch-icon-wrap {
+    width: 46px; height: 46px;
+    border-radius: 12px;
+    background: rgba(0, 194, 203, 0.1);
+    border: 1px solid rgba(0, 194, 203, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-teal);
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+  .ch-body h4 {
+    font-family: var(--heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 8px;
+  }
+  .ch-body p {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ── MARQUEE TECH BANNER ── */
+  .tech-marquee {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+    background: var(--text-main);
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+    padding: 16px 0;
+    margin: 50px 0;
+  }
+  .marquee-track {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    width: max-content;
+    animation: marqueeScroll 25s linear infinite;
+  }
+  .marquee-track:hover { animation-play-state: paused; }
+  @keyframes marqueeScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .marquee-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    white-space: nowrap;
+  }
+  .marquee-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent-teal);
+  }
+
+  /* ── SYSTEM ARCHITECTURE SHOWCASE ── */
+  .architecture-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 50px;
+  }
+  .arch-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 10px 30px rgba(21, 43, 63, 0.05);
+    transition: border-color 0.3s ease;
+  }
+  .arch-card:hover {
+    border-color: var(--border-accent);
+  }
+  .arch-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 18px;
+  }
+  .arch-card-title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .arch-phase-tag {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-teal);
+  }
+  .arch-card-header h3 {
+    font-family: var(--heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-main);
+  }
+  .arch-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: rgba(0, 194, 203, 0.08);
+    border: 1px solid var(--border-accent);
+    color: var(--accent-teal);
+    padding: 5px 12px;
+    border-radius: 8px;
+  }
+
+  .arch-media-wrap {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+    background: #080D1A;
+    margin-bottom: 24px;
+    cursor: zoom-in;
+  }
+  .arch-media-wrap img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 480px;
+    object-fit: contain;
+    background: #050B14;
+    transition: transform 0.4s ease;
+  }
+  .arch-media-wrap:hover img {
+    transform: scale(1.015);
+  }
+  .zoom-overlay-hint {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    background: rgba(11, 17, 32, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border-light);
+    color: #FFFFFF;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    pointer-events: none;
+  }
+
+  .arch-breakdown-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .arch-step-box {
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 18px 16px;
+    box-shadow: 0 4px 12px rgba(21, 43, 63, 0.02);
+  }
+  .arch-step-box .step-num {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--accent-teal);
+    margin-bottom: 6px;
+  }
+  .arch-step-box h5 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 6px;
+  }
+  .arch-step-box p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ── 6 RESULTS HIGHLIGHT CARDS ── */
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  .result-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 18px;
+    padding: 28px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .result-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-teal);
+    box-shadow: 0 16px 36px var(--glow-teal);
+  }
+  .result-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--accent-teal), var(--accent-purple));
+  }
+  .result-num {
+    font-family: var(--heading);
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #00c2cb, #009ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .result-label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 6px;
+  }
+  .result-sub {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ── BEFORE VS AFTER COMPARISON TABLE ── */
+  .comparison-table-wrap {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(21, 43, 63, 0.05);
+  }
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.92rem;
+  }
+  .comp-table th {
+    background: var(--text-main);
+    color: #FFFFFF;
+    font-family: var(--heading);
+    font-weight: 700;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .comp-table td {
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-muted);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .comp-table tr:last-child td { border-bottom: none; }
+  .comp-table td.feature {
+    font-weight: 700;
+    color: var(--text-main);
+    width: 22%;
+  }
+  .comp-table td.before {
+    color: #dc2626;
+    background: rgba(220, 38, 38, 0.03);
+    width: 39%;
+  }
+  .comp-table td.after {
+    color: #059669;
+    background: rgba(5, 150, 105, 0.04);
+    width: 39%;
+  }
+
+  /* ── MODAL LIGHTBOX FOR HIGH RES IMAGES ── */
+  .lightbox-modal {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(21, 43, 63, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .lightbox-modal.active { display: flex; }
+  .lightbox-content {
+    position: relative;
+    max-width: 96vw;
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .lightbox-img {
+    max-width: 100%;
+    max-height: 84vh;
+    object-fit: contain;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+  }
+  .lightbox-caption {
+    margin-top: 14px;
+    color: #FFFFFF;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    background: var(--text-main);
+    padding: 8px 20px;
+    border-radius: 999px;
+    border: 1px solid var(--border-light);
+  }
+  .lightbox-close {
+    position: absolute;
+    top: -46px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #FFFFFF;
+    font-size: 1.4rem;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  .lightbox-close:hover { background: rgba(255, 255, 255, 0.3); }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 48px 24px 72px;
+    border-top: 1px solid var(--border-light);
+    color: var(--text-subtle);
+    font-size: 0.85rem;
+  }
+  footer strong { color: var(--text-main); }
+  footer a { color: var(--accent-teal); text-decoration: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    .exec-grid { grid-template-columns: 1fr; }
+    .challenges-grid { grid-template-columns: 1fr; }
+    .arch-breakdown-grid { grid-template-columns: 1fr; }
+    .results-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .results-grid { grid-template-columns: 1fr; }
+    .cs-nav-bar { width: 100%; border-radius: 12px; }
+    .comp-table td.feature { width: 100%; display: block; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="eyebrow"><span class="pulse-dot"></span> Case Study — System Blueprint</div>
+  <h1>Facebook Messenger AI Agent with Google Calendar Integration</h1>
+  <p class="hero-desc">How We Built a Tool-Augmented AI Booking Assistant on Meta Messenger with Real-Time Google Calendar Availability &amp; Knowledge Base Intelligence.</p>
+  
+  <div class="hero-meta-strip">
+    <span class="meta-tag">💬 Facebook Graph API</span>
+    <span class="meta-tag">📅 Google Calendar Integration</span>
+    <span class="meta-tag">🧠 Google Gemini 1.5</span>
+    <span class="meta-tag highlight">⚡ Zero-Touch Conversions</span>
+  </div>
+</header>
+
+<!-- ── STICKY TAB NAVIGATION ── -->
+<div class="cs-nav-container">
+  <nav class="cs-nav-bar" aria-label="Case Study Navigation">
+    <button class="cs-nav-btn active" onclick="csShow('executive-summary', this)">I. Summary &amp; Intro</button>
+    <button class="cs-nav-btn" onclick="csShow('core-challenges', this)">II. The Challenges</button>
+    <button class="cs-nav-btn" onclick="csShow('solution-architecture', this)">III. Solution Architecture</button>
+    <button class="cs-nav-btn" onclick="csShow('business-impact', this)">IV. Business Impact</button>
+  </nav>
+</div>
+
+<!-- ── MAIN CASE STUDY CONTENT ── -->
+<main class="cs-body" id="csBody">
+
+  <!-- ==========================================
+       TAB 1: EXECUTIVE SUMMARY & INTRODUCTION
+       ========================================== -->
+  <section class="cs-section cs-section-active" id="executive-summary">
+    <div class="section-badge">Section 01 // Overview</div>
+    <h2>Executive <em>Summary</em></h2>
+    <div class="teal-rule"></div>
+    
+    <div class="exec-grid">
+      <div class="exec-card">
+        <h3>💡 Automating Staycation Bookings</h3>
+        <p><span class="highlight-text">Staycation properties</span>, such as typical vacation rental units, generate substantial customer interest through Facebook Business Pages. Prospective guests continuously message late into the evening asking about unit capacity, wave pool access rules, specific date availability, and immediate reservations.</p>
+        <p>Prior to this system, property managers were burdened with around-the-clock manual monitoring. When guests reached out after hours (such as 10:00 PM to 2:00 AM), delays in answering availability questions frequently led to <span class="highlight-text">abandoned bookings and lost direct revenue</span>. Traditional rigid chatbots failed because they could not check live calendar availability or book real slots dynamically.</p>
+        <p>This project demonstrates an <span class="highlight-text">autonomous, tool-enabled AI Customer Service &amp; Booking Agent</span> inside n8n (built as a proven mock testing sample). By equipping the Google Gemini Chat Model with a Knowledge Base retrieval tool and Google Calendar read/write tools, the bot independently answers amenities questions, verifies live room availability, and seals confirmed reservation dates directly on Google Calendar in seconds.</p>
+      </div>
+
+      <!-- Live Messenger Interaction Simulation (Using Slack-style wrapper) -->
+      <div class="slack-chat-widget">
+        <div class="slack-header">
+          <div class="slack-header-title">
+            <span class="slack-channel-hash">💬</span> Sample Staycation — Virtual Concierge
+          </div>
+          <div class="slack-status-pill">Active Bot</div>
+        </div>
+        <div class="slack-body">
+          
+          <!-- User Query at 10:00 PM -->
+          <div class="msg-row user">
+            <div class="msg-bubble user">
+              <p>Hi! Do you have any units available this weekend? Does our stay include wave pool access?</p>
+            </div>
+            <div class="msg-time">Guest • 10:00 PM</div>
+          </div>
+
+          <!-- Bot Response executing tools -->
+          <div class="msg-row bot">
+            <div class="tool-tag">📖 Tool: Access Knowledge Base ➔ 📅 Tool: Check Available Slots</div>
+            <div class="msg-bubble bot">
+              <p>Hello! Yes, we have a premium 1-Bedroom unit available this upcoming weekend (Saturday to Sunday)! ✨</p>
+              <p>And yes! Your booking includes complimentary access to the property's wave pool amenities for all registered guests. Would you like me to block these dates and reserve the unit for you?</p>
+            </div>
+            <div class="msg-time">AI Agent • 10:00 PM (1.4s turnaround)</div>
+          </div>
+
+          <!-- User Confirmation -->
+          <div class="msg-row user">
+            <div class="msg-bubble user">
+              <p>Yes please! Book it under Jane Doe for 2 guests.</p>
+            </div>
+            <div class="msg-time">10:01 PM</div>
+          </div>
+
+          <!-- Bot executes calendar booking -->
+          <div class="msg-row bot">
+            <div class="tool-tag">📅 Tool: Create Booking Schedule in Google Calendar</div>
+            <div class="msg-bubble bot">
+              <p>🎉 <strong>Reservation Confirmed!</strong> I have successfully scheduled your staycation on our master Google Calendar:</p>
+              <p>
+                • <strong>Guest:</strong> Jane Doe (2 Guests)<br>
+                • <strong>Dates:</strong> This Weekend (Check-in 2:00 PM / Check-out 12:00 PM)<br>
+                • <strong>Status:</strong> Reserved &amp; Calendar Blocked
+              </p>
+              <p>We have sent the check-in guide and payment details to complete your verification. See you soon! 🏖️</p>
+            </div>
+            <div class="msg-time">AI Agent • 10:01 PM • Live Calendar Event Created</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       TAB 2: CORE CHALLENGES
+       ========================================== -->
+  <section class="cs-section" id="core-challenges">
+    <div class="section-badge">Section 02 // Problem Statement</div>
+    <h2>The Core Challenge: <em>Friction & Lost Revenue</em></h2>
+    <div class="teal-rule"></div>
+    <p class="section-lead">Before the deployment of this autonomous tool-enabled workflow, property operations suffered from critical friction points that cost revenue daily.</p>
+
+    <div class="challenges-grid">
+      <div class="challenge-item">
+        <div class="ch-icon-wrap">🌙</div>
+        <div class="ch-body">
+          <h4>01. Late-Night Lead Abandonment (10 PM – 2 AM)</h4>
+          <p>Over 40% of staycation booking inquiries occur late at night when property managers are asleep. Unanswered Messenger inquiries resulted in travelers immediately booking competing units.</p>
+        </div>
+      </div>
+
+      <div class="challenge-item">
+        <div class="ch-icon-wrap">😩</div>
+        <div class="ch-body">
+          <h4>02. Repetitive FAQ Answering Fatigue</h4>
+          <p>Staff spent hours every week repeatedly typing out the same policies regarding wave pool operating schedules, security deposits, pet policies, and parking rates.</p>
+        </div>
+      </div>
+
+      <div class="challenge-item">
+        <div class="ch-icon-wrap">🤖</div>
+        <div class="ch-body">
+          <h4>03. Inability of Traditional Chatbots</h4>
+          <p>Standard keyword-based bots could only output rigid text trees. They lacked the intelligence to check live calendar availability or understand multi-variable queries.</p>
+        </div>
+      </div>
+
+      <div class="challenge-item">
+        <div class="ch-icon-wrap">⚠️</div>
+        <div class="ch-body">
+          <h4>04. Double-Booking &amp; Scheduling Risk</h4>
+          <p>Manually transferring guest details between Messenger chats and Google Calendar created human errors, accidental date collisions, and missed reservation logging.</p>
+        </div>
+      </div>
+
+      <div class="challenge-item">
+        <div class="ch-icon-wrap">⏳</div>
+        <div class="ch-body">
+          <h4>05. Meta Webhook Verification Collisions</h4>
+          <p>Facebook's Messenger API requires strict GET challenge verification and instant HTTP 200 responses to prevent duplicate deliveries. Simple scripts frequently dropped webhooks.</p>
+        </div>
+      </div>
+
+      <div class="challenge-item">
+        <div class="ch-icon-wrap">📉</div>
+        <div class="ch-body">
+          <h4>06. High Human Overhead</h4>
+          <p>Property hosts spent excessive manual hours qualifying casual inquiries, leaving minimal focus for high-value operations, on-site guest hospitality, and facility upgrades.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       TAB 3: SOLUTION ARCHITECTURE
+       ========================================== -->
+  <section class="cs-section" id="solution-architecture">
+    <div class="section-badge">Section 03 // System Engineering</div>
+    <h2>The Solution: <em>Tool-Enabled Operations</em></h2>
+    <div class="teal-rule"></div>
+    <p class="section-lead">We built a resilient, tool-augmented AI workflow in n8n that decouples Meta webhook handshakes from live customer inquiries while granting Google Gemini direct access to Google Calendar APIs and a structured knowledge base.</p>
+
+    <!-- MARQUEE TECH BANNER -->
+    <div class="tech-marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-badge"><div class="marquee-dot"></div> Facebook Messenger Graph API</span>
+        <span class="marquee-badge"><div class="marquee-dot"></div> Google Calendar Event Creation</span>
+        <span class="marquee-badge"><div class="marquee-dot"></div> n8n Workflow Automation</span>
+        <span class="marquee-badge"><div class="marquee-dot"></div> Google Gemini 1.5 Chat Model</span>
+        <span class="marquee-badge"><div class="marquee-dot"></div> Knowledge Base Document Retrieval</span>
+        <span class="marquee-badge"><div class="marquee-dot"></div> Simple Memory Buffer</span>
+        <!-- duplicate loop -->
+        <span class="marquee-badge"><div class="marquee-dot"></div> Facebook Messenger Graph API</span>
+        <span class="marquee-badge"><div class="marquee-dot"></div> Google Calendar Event Creation</span>
+        <span class="marquee-badge"><div class="marquee-dot"></div> n8n Workflow Automation</span>
+        <span class="marquee-badge"><div class="marquee-dot"></div> Google Gemini 1.5 Chat Model</span>
+        <span class="marquee-badge"><div class="marquee-dot"></div> Knowledge Base Document Retrieval</span>
+        <span class="marquee-badge"><div class="marquee-dot"></div> Simple Memory Buffer</span>
+      </div>
+    </div>
+
+    <!-- ARCHITECTURE ARTIFACT -->
+    <div class="architecture-showcase">
+      <article class="arch-card">
+        <div class="arch-card-header">
+          <div class="arch-card-title-group">
+            <span class="arch-phase-tag">Primary Architecture Blueprint</span>
+            <h3>1. Complete n8n Visual Workflow Blueprint</h3>
+          </div>
+          <span class="arch-badge">Production Active</span>
+        </div>
+
+        <div class="arch-media-wrap" onclick="openLightbox('Brian Ai Telegram Personal Assistant/Facebook AI Messenger.PNG', 'Facebook Page AI Agent v2: Full Workflow Blueprint with Google Calendar Tools & Gemini')">
+          <img src="Brian Ai Telegram Personal Assistant/Facebook AI Messenger.PNG" alt="Facebook Messenger AI Agent Blueprint" loading="lazy">
+          <div class="zoom-overlay-hint">🔍 Click to Zoom Canvas</div>
+        </div>
+
+        <div class="arch-breakdown-grid">
+          <div class="arch-step-box">
+            <div class="step-num">STAGE 01</div>
+            <h5>Dual-Path Webhook Architecture</h5>
+            <p>The entry Webhook listens for both GET and POST requests. When Facebook pings the endpoint to verify authentication, the upper If branch intercepts the challenge and immediately returns the required verification token.</p>
+          </div>
+          <div class="arch-step-box">
+            <div class="step-num">STAGE 02</div>
+            <h5>Knowledge &amp; Live Calendar Tools</h5>
+            <p>The Access Knowledge Base tool equips Gemini with up-to-date property rules. The Check Slots tool executes live queries against the Google Calendar API, verifying date availability in real time.</p>
+          </div>
+          <div class="arch-step-box">
+            <div class="step-num">STAGE 03</div>
+            <h5>Automated Event Creation</h5>
+            <p>Once the guest confirms, the Create Booking Schedule tool creates the event directly on the host's calendar, blocking dates and attaching guest details autonomously before replying via Meta Graph API.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       TAB 4: BUSINESS IMPACT & ROI
+       ========================================== -->
+  <section class="cs-section" id="business-impact">
+    <div class="section-badge">Section 04 // Measurable ROI</div>
+    <h2>The Business Impact: <em>Concrete Conversions</em></h2>
+    <div class="teal-rule"></div>
+    <p class="section-lead">Moving from manual Messenger triage to this intelligent automation architecture drastically improved our core operational metrics and established a new benchmark for business communication efficiency.</p>
+
+    <!-- 6 RESULTS CARDS -->
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-num">&lt; 15s</div>
+        <div class="result-label">Response Speed</div>
+        <div class="result-sub">Instant answers to pricing, amenities, and slot queries.</div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-num">100%</div>
+        <div class="result-label">After-Hours Capture</div>
+        <div class="result-sub">Zero missed inquiries between 10 PM and 2 AM.</div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-num">0</div>
+        <div class="result-label">Double Bookings</div>
+        <div class="result-sub">Live Google Calendar API checks prevent date collisions.</div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-num">24/7</div>
+        <div class="result-label">Autonomous Operation</div>
+        <div class="result-sub">Self-service booking &amp; FAQ resolution around the clock.</div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-num">3</div>
+        <div class="result-label">Autonomous Tools</div>
+        <div class="result-sub">Knowledge Base, Calendar Availability, &amp; Event Creation.</div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-num">₱0</div>
+        <div class="result-label">Monthly SaaS Cost</div>
+        <div class="result-sub">Built entirely with self-hosted n8n &amp; standard cloud APIs.</div>
+      </div>
+    </div>
+
+    <!-- BEFORE VS AFTER TABLE -->
+    <div class="comparison-table-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Workflow Dimension</th>
+            <th>Manual / Traditional Operations</th>
+            <th>Facebook AI Agent with G-Calendar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="feature">After-Hours Inquiries</td>
+            <td class="before">Unanswered for 6–10 hours; high customer drop-off.</td>
+            <td class="after">Immediate conversational replies and bookings within 15 seconds.</td>
+          </tr>
+          <tr>
+            <td class="feature">Availability Checking</td>
+            <td class="before">Host manually opens calendar app, checks dates, and types reply.</td>
+            <td class="after">AI automatically scans Google Calendar API and proposes open slots.</td>
+          </tr>
+          <tr>
+            <td class="feature">Reservation Logging</td>
+            <td class="before">Manual copy-pasting of guest names and dates; prone to mistakes.</td>
+            <td class="after">AI triggers event creation tool to block slots automatically.</td>
+          </tr>
+          <tr>
+            <td class="feature">FAQ Answering</td>
+            <td class="before">Repetitive manual copy-pasting of wave pool &amp; parking rules.</td>
+            <td class="after">Autonomous retrieval from Knowledge Base document store.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── LIGHTBOX MODAL ── -->
+<div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox(event)">
+  <div class="lightbox-content" onclick="event.stopPropagation()">
+    <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close Preview">&times;</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="Workflow Architecture Preview">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>Facebook Messenger AI Agent with Google Calendar • Designed &amp; Automated by <strong>Errol John Peusca</strong></p>
+  <p style="margin-top:8px; font-size:0.75rem;">Built with n8n Automation Engine, Google Gemini 1.5, Meta Graph API, and Google Calendar API</p>
+</footer>
+
+<!-- ── INTERACTIVE TAB & LIGHTBOX LOGIC ── -->
+<script>
+  function csShow(sectionId, btnElement) {
+    document.querySelectorAll('.cs-nav-btn').forEach(btn => btn.classList.remove('active'));
+    if (btnElement) btnElement.classList.add('active');
+
+    document.querySelectorAll('.cs-section').forEach(section => {
+      section.classList.toggle('cs-section-active', section.id === sectionId);
+    });
+
+    const bodyElement = document.getElementById('csBody');
+    if (bodyElement) {
+      bodyElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  function openLightbox(imageSrc, captionText) {
+    const modal = document.getElementById('lightboxModal');
+    const img = document.getElementById('lightboxImg');
+    const caption = document.getElementById('lightboxCaption');
+    
+    img.src = imageSrc;
+    caption.textContent = captionText || 'Workflow Architecture View';
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(event) {
+    const modal = document.getElementById('lightboxModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeLightbox();
+    }
+  });
+</script>
+
+</body>
+</html>

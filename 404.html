@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Node Not Found | Tech Partners System</title>
+
+    <!-- Web Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="LOGO%20TEAM%20COLLAB/TEAM%20Collab%20TechPartners.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="LOGO%20TEAM%20COLLAB/TEAM%20Collab%20TechPartners.png">
+    <link rel="shortcut icon" href="LOGO%20TEAM%20COLLAB/TEAM%20Collab%20TechPartners.png" type="image/x-icon">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@700;800;900&family=Space+Grotesk:wght@600;700;800&family=IBM+Plex+Mono:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --signal: #00C2CB;
+            --signal-glow: rgba(0, 194, 203, 0.35);
+            --current: #D08655;
+            --navy-deep: #071322;
+            --navy-card: #0D1B3E;
+            --text-main: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.75);
+            --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+            --font-heading: 'Space Grotesk', system-ui, sans-serif;
+            --font-display: 'Outfit', sans-serif;
+            --font-mono: 'IBM Plex Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--navy-deep);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            position: relative;
+            overflow-x: hidden;
+            background-image:
+                linear-gradient(rgba(0, 194, 203, .04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 194, 203, .04) 1px, transparent 1px),
+                linear-gradient(135deg, rgba(0, 194, 203, .08) 0%, transparent 50%),
+                linear-gradient(315deg, rgba(208, 134, 85, .08) 0%, transparent 50%);
+            background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%;
+        }
+
+        .ambient-glow {
+            position: absolute;
+            width: 480px;
+            height: 480px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 194, 203, 0.14) 0%, transparent 70%);
+            pointer-events: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        .error-card {
+            position: relative;
+            z-index: 1;
+            max-width: 620px;
+            width: 100%;
+            background: rgba(13, 27, 62, 0.85);
+            border: 1.5px solid rgba(0, 194, 203, 0.35);
+            border-radius: 24px;
+            padding: 48px 36px;
+            text-align: center;
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6), 0 0 32px rgba(0, 194, 203, 0.15);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            animation: fadeInCard 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeInCard {
+            from {
+                opacity: 0;
+                transform: translateY(24px) scale(0.97);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .brand-logo {
+            width: 90px;
+            height: auto;
+            margin-bottom: 22px;
+            filter: drop-shadow(0 6px 18px var(--signal-glow));
+            transition: transform 0.3s ease;
+        }
+
+        .brand-logo:hover {
+            transform: scale(1.06);
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--current);
+            background: rgba(208, 134, 85, 0.12);
+            border: 1px solid rgba(208, 134, 85, 0.4);
+            padding: 5px 14px;
+            border-radius: 999px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .status-pulse {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--current);
+            box-shadow: 0 0 10px var(--current);
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .error-code {
+            font-family: var(--font-display);
+            font-size: clamp(4rem, 12vw, 6.5rem);
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #00C2CB 0%, #ffffff 50%, #D08655 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+        }
+
+        .error-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.4rem, 3.2vw, 1.85rem);
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 14px;
+            letter-spacing: -0.01em;
+        }
+
+        .error-desc {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+            margin-bottom: 32px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .actions-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-heading);
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #071322;
+            background: #00C2CB;
+            padding: 12px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            box-shadow: 0 4px 18px rgba(0, 194, 203, 0.4);
+            transition: all 0.25s ease;
+        }
+
+        .btn-primary:hover {
+            background: #38d1e8;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 194, 203, 0.6);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-heading);
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 22px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .footer-note {
+            margin-top: 28px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ambient-glow"></div>
+
+    <main class="error-card">
+        <a href="index.html" title="Tech Partners System Home">
+            <img class="brand-logo" src="LOGO%20TEAM%20COLLAB/TEAM%20Collab%20TechPartners.png" alt="Tech Partners System Logo">
+        </a>
+
+        <div class="status-pill">
+            <span class="status-pulse"></span>
+            Error // Node_Not_Found
+        </div>
+
+        <h1 class="error-code">404</h1>
+        <h2 class="error-title">Requested System Route Offline</h2>
+
+        <p class="error-desc">
+            The page or asset you are trying to reach does not exist, has been rerouted, or is undergoing architectural deployment.
+        </p>
+
+        <div class="actions-wrap">
+            <a href="index.html" class="btn-primary">
+                Return to Systems Hub <span>→</span>
+            </a>
+            <a href="mailto:tpsystems2026@gmail.com" class="btn-secondary">
+                Report Issue via Email
+            </a>
+        </div>
+
+        <div class="footer-note">
+            &copy; 2026 Tech Partners System • System Infrastructure Live
+        </div>
+    </main>
+</body>
+
+</html>

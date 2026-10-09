@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slack AI Assistant — Multi-Modal Business Communication Engine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-white: #ffffff;
+            --bg-canvas: #f8fafc;
+            --bg-green-soft: #f0fdf4;
+            --bg-dark-soft: #f4f5f7;
+
+            --color-dark: #20232c;
+            --color-dark-deep: #16181f;
+            --color-dark-card: #282c37;
+            --color-text-main: #20232c;
+            --color-text-muted: #3a3f4d;
+            --color-text-subtle: #5f6677;
+
+            --color-brand-green: #4ce76a;
+            --color-green-light: #6df287;
+            --color-green-dark: #2bc44a;
+
+            --border-green: #4ce76a;
+            --border-green-dark: #2bc44a;
+            --border-green-subtle: rgba(76, 231, 106, 0.35);
+            --border-dark: #20232c;
+            --border-light: #e2e8f0;
+
+            --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            --font-heading: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+            --font-display: 'Outfit', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-white);
+            color: var(--color-text-main);
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* ── CONTAINER ── */
+        .container {
+            width: 96%;
+            max-width: 1560px;
+            margin: 0 auto;
+            padding: 24px 8px 60px;
+        }
+
+        /* ── TOP ACCENT BAR ── */
+        .accent-top-bar {
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #20232c 0%, #4ce76a 50%, #20232c 100%);
+            border-radius: 999px;
+            margin-bottom: 24px;
+        }
+
+        /* ── FLOWING GRADIENT ANIMATION (#20232c & #4ce76a) ── */
+        @keyframes flowingErrolGreen {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* ── TOP HEADLINE TITLE & SUB-HEAD ── */
+        .top-headline-header {
+            background-color: var(--bg-white);
+            border: 2px solid var(--border-green);
+            border-left: 8px solid var(--border-dark);
+            border-radius: 14px;
+            padding: 36px 40px;
+            margin-bottom: 36px;
+            box-shadow: 0 4px 20px rgba(76, 231, 106, 0.1);
+        }
+
+        .top-headline-tagline {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--color-green-dark);
+            margin-bottom: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .top-headline-tagline::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--color-brand-green);
+            box-shadow: 0 0 8px rgba(76, 231, 106, 0.6);
+            display: inline-block;
+        }
+
+        .top-headline-title {
+            font-family: var(--font-display);
+            background: linear-gradient(110deg, #20232c 0%, #2bc44a 40%, #4ce76a 70%, #20232c 100%);
+            background-size: 260% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowingErrolGreen 6s ease-in-out infinite;
+            font-size: clamp(2rem, 3.6vw, 3rem);
+            font-weight: 800;
+            line-height: 1.22;
+            letter-spacing: -0.025em;
+            margin-bottom: 14px;
+        }
+
+        .top-headline-subhead {
+            font-family: var(--font-body);
+            color: var(--color-text-main);
+            opacity: 0.88;
+            font-size: clamp(1.02rem, 1.6vw, 1.18rem);
+            font-weight: 500;
+            line-height: 1.7;
+            max-width: 1250px;
+        }
+
+        /* ── SECTION BLOCKS ── */
+        .section-block {
+            margin-bottom: 48px;
+        }
+
+        .section-divider-line {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--border-green);
+        }
+
+        .section-divider-line h2 {
+            font-family: var(--font-heading);
+            background: linear-gradient(110deg, #20232c 0%, #2bc44a 40%, #4ce76a 70%, #20232c 100%);
+            background-size: 260% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowingErrolGreen 6s ease-in-out infinite;
+            font-size: clamp(1.4rem, 2.4vw, 1.95rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* ── 1ST SECTION: 3 ROWS OF IMAGES ── */
+        .image-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .image-row {
+            background-color: var(--bg-white);
+            border: 2px solid var(--border-green);
+            border-top: 6px solid var(--border-dark);
+            border-radius: 12px;
+            box-shadow: 0 4px 18px rgba(76, 231, 106, 0.08);
+            overflow: hidden;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .image-row:hover {
+            border-color: var(--color-brand-green);
+            box-shadow: 0 8px 28px rgba(76, 231, 106, 0.18);
+        }
+
+        .image-title-bar {
+            padding: 16px 24px;
+            background: var(--bg-green-soft);
+            border-bottom: 2px solid var(--border-green-subtle);
+        }
+
+        .image-title-bar h3 {
+            font-family: var(--font-heading);
+            background: linear-gradient(110deg, #20232c 0%, #2bc44a 45%, #20232c 100%);
+            background-size: 260% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowingErrolGreen 6s ease-in-out infinite;
+            font-size: clamp(1.15rem, 2vw, 1.45rem);
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .image-title-bar h3::before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: var(--color-brand-green);
+            border-radius: 3px;
+            box-shadow: 0 0 6px rgba(76, 231, 106, 0.6);
+        }
+
+        .image-container {
+            padding: 20px;
+            background-color: var(--bg-white);
+            text-align: center;
+        }
+
+        .image-frame {
+            display: inline-block;
+            width: 100%;
+            border: 1.5px solid var(--border-green-subtle);
+            border-radius: 8px;
+            overflow: hidden;
+            background: #ffffff;
+            cursor: zoom-in;
+            position: relative;
+        }
+
+        .image-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 850px;
+            object-fit: contain;
+            margin: 0 auto;
+            transition: transform 0.25s ease;
+        }
+
+        .image-frame:hover img {
+            transform: scale(1.012);
+        }
+
+        .zoom-badge {
+            position: absolute;
+            bottom: 12px;
+            right: 14px;
+            background: var(--color-dark);
+            color: #ffffff;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border-green);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .image-brief-info {
+            padding: 14px 24px 18px;
+            font-size: 0.96rem;
+            color: var(--color-text-main);
+            opacity: 0.88;
+            line-height: 1.7;
+            background: #ffffff;
+            border-top: 1px solid var(--border-light);
+        }
+
+        /* ── 2ND SECTION: EXACT DETAILS ROWS (1ST TO 4TH ROW VERBATIM) ── */
+        .details-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .details-row {
+            background-color: var(--bg-white);
+            border: 2px solid var(--border-dark);
+            border-left: 8px solid var(--border-green);
+            border-radius: 12px;
+            padding: 32px 36px;
+            box-shadow: 0 4px 18px rgba(32, 35, 44, 0.05);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .details-row:nth-child(even) {
+            border-color: var(--border-green);
+            border-left: 8px solid var(--border-dark);
+        }
+
+        .details-row:hover {
+            box-shadow: 0 8px 24px rgba(76, 231, 106, 0.14);
+        }
+
+        .details-heading {
+            font-family: var(--font-heading);
+            background: linear-gradient(110deg, #20232c 0%, #2bc44a 40%, #4ce76a 70%, #20232c 100%);
+            background-size: 260% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowingErrolGreen 6s ease-in-out infinite;
+            font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .details-subheading {
+            font-family: var(--font-heading);
+            background: linear-gradient(110deg, #20232c 0%, #2bc44a 50%, #4ce76a 100%);
+            background-size: 260% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowingErrolGreen 6s ease-in-out infinite;
+            font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+            font-weight: 700;
+            margin-bottom: 14px;
+            letter-spacing: -0.01em;
+        }
+
+        .details-text {
+            color: var(--color-text-main);
+            font-size: clamp(1rem, 1.5vw, 1.12rem);
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .details-text:last-child {
+            margin-bottom: 0;
+        }
+
+        .details-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .details-list li {
+            position: relative;
+            padding-left: 28px;
+            color: var(--color-text-main);
+            font-size: clamp(0.98rem, 1.5vw, 1.1rem);
+            line-height: 1.8;
+        }
+
+        .details-list li::before {
+            content: '■';
+            position: absolute;
+            left: 6px;
+            top: 0px;
+            color: var(--color-brand-green);
+            font-size: 0.85rem;
+        }
+
+        .details-list li strong {
+            color: var(--color-dark);
+            font-weight: 700;
+        }
+
+        /* ── SECTION 3: PROJECT INFORMATION (DARK NEON GLOW PORTRAIT CARD) ── */
+        .project-info-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 24px 0 32px;
+        }
+
+        .project-info-card-portrait {
+            width: 100%;
+            max-width: 440px;
+            background: radial-gradient(circle at 50% 10%, #2a2f3a 0%, #20232c 100%);
+            border: 1px solid rgba(76, 231, 106, 0.45);
+            border-radius: 28px;
+            padding: 24px 20px 28px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 35px rgba(76, 231, 106, 0.22);
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .pinfo-header {
+            width: 100%;
+            margin-bottom: 2px;
+        }
+
+        .pinfo-neon-pill {
+            display: block;
+            width: 100%;
+            background: var(--color-brand-green);
+            color: var(--color-dark);
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: 999px;
+            box-shadow: 0 0 22px rgba(76, 231, 106, 0.5);
+            border: none;
+            user-select: none;
+        }
+
+        .pinfo-item-box {
+            background: #16181f;
+            border: 1px solid rgba(76, 231, 106, 0.3);
+            border-radius: 16px;
+            padding: 14px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            transition: border-color 0.2s ease, transform 0.15s ease;
+        }
+
+        .pinfo-item-box:hover {
+            border-color: rgba(76, 231, 106, 0.65);
+        }
+
+        .pinfo-box-label {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+
+        .pinfo-box-val {
+            font-family: 'JetBrains Mono', var(--font-mono), monospace;
+            font-size: 0.94rem;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: 0.01em;
+            line-height: 1.45;
+        }
+
+        .pinfo-impact-box {
+            background: #16181f;
+            border: 1px solid rgba(76, 231, 106, 0.3);
+            border-radius: 16px;
+            padding: 16px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: border-color 0.2s ease;
+        }
+
+        .pinfo-impact-box:hover {
+            border-color: rgba(76, 231, 106, 0.6);
+        }
+
+        .pinfo-impact-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-brand-green);
+            font-family: 'JetBrains Mono', var(--font-mono), monospace;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .pinfo-impact-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-brand-green);
+        }
+
+        .pinfo-impact-text {
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            line-height: 1.55;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .pinfo-impact-highlight {
+            color: var(--color-brand-green);
+            font-weight: 800;
+        }
+
+        /* ── FOOTER ── */
+        footer.page-footer {
+            margin-top: 64px;
+            padding: 24px 16px 44px;
+            border: none;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 24px;
+            border-top: none;
+        }
+
+        .footer-logos {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .footer-avatar {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 3px solid var(--border-green);
+            box-shadow: 0 4px 16px rgba(76, 231, 106, 0.25);
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .footer-avatar:hover {
+            transform: scale(1.08);
+            border-color: var(--color-dark);
+            box-shadow: 0 6px 20px rgba(32, 35, 44, 0.3);
+        }
+
+        .footer-text-group {
+            width: 100%;
+            max-width: 960px;
+            padding-top: 4px;
+        }
+
+        .footer-heading {
+            font-family: var(--font-heading);
+            background: linear-gradient(110deg, #20232c 0%, #2bc44a 45%, #4ce76a 75%, #20232c 100%);
+            background-size: 260% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowingErrolGreen 6s ease-in-out infinite;
+            font-size: clamp(1.15rem, 2vw, 1.45rem);
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            margin-bottom: 8px;
+        }
+
+        .footer-subheading {
+            font-family: var(--font-body);
+            color: var(--color-green-dark);
+            font-size: clamp(0.96rem, 1.5vw, 1.1rem);
+            font-weight: 700;
+        }
+
+        .footer-collab {
+            font-family: var(--font-body);
+            color: var(--color-text-main);
+            opacity: 0.9;
+            font-size: clamp(0.9rem, 1.4vw, 1.02rem);
+            font-weight: 600;
+            margin-top: 6px;
+        }
+
+        .footer-collab .collab-name {
+            color: var(--color-green-dark);
+            font-weight: 700;
+        }
+
+        /* ── LIGHTBOX MODAL ── */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(32, 35, 44, 0.94);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+            backdrop-filter: blur(8px);
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-box {
+            position: relative;
+            max-width: 95vw;
+            max-height: 92vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #ffffff;
+            padding: 12px;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--border-green);
+        }
+
+        .lightbox-box img {
+            max-width: 90vw;
+            max-height: 82vh;
+            object-fit: contain;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .lightbox-caption {
+            margin-top: 12px;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-dark);
+            text-align: center;
+        }
+
+        .lightbox-close-btn {
+            position: absolute;
+            top: -16px;
+            right: -16px;
+            width: 36px;
+            height: 36px;
+            background: var(--color-dark);
+            color: #ffffff;
+            border: 2px solid var(--border-green);
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .lightbox-close-btn:hover {
+            transform: scale(1.1);
+            background: var(--color-brand-green);
+            color: var(--color-dark);
+        }
+
+        /* ── RESPONSIVE MEDIA QUERIES ── */
+        @media (max-width: 960px) {
+            .top-headline-header {
+                padding: 26px 24px;
+            }
+
+            .details-row {
+                padding: 24px 22px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 98%;
+                padding: 16px 6px 44px;
+            }
+
+            .top-headline-header {
+                padding: 20px 16px;
+                margin-bottom: 24px;
+                border-left-width: 6px;
+            }
+
+            .top-headline-tagline {
+                font-size: 0.72rem;
+                letter-spacing: 0.14em;
+                margin-bottom: 8px;
+            }
+
+            .top-headline-title {
+                font-size: clamp(1.48rem, 6.2vw, 1.95rem);
+                margin-bottom: 10px;
+            }
+
+            .top-headline-subhead {
+                font-size: 0.92rem;
+                line-height: 1.65;
+            }
+
+            .image-title-bar {
+                padding: 12px 16px;
+            }
+
+            .image-title-bar h3 {
+                font-size: 0.95rem;
+            }
+
+            .image-container {
+                padding: 12px;
+            }
+
+            .image-brief-info {
+                padding: 12px 16px 14px;
+                font-size: 0.88rem;
+                line-height: 1.6;
+            }
+
+            .details-row {
+                padding: 20px 16px;
+            }
+
+            .details-heading {
+                font-size: 1.18rem;
+            }
+
+            .details-subheading {
+                font-size: 0.96rem;
+            }
+
+            .details-text,
+            .details-list li {
+                font-size: 0.9rem;
+                line-height: 1.7;
+            }
+
+            .project-info-card-portrait {
+                max-width: 100%;
+                padding: 18px 14px 22px;
+                border-radius: 20px;
+            }
+
+            .pinfo-neon-pill {
+                font-size: 0.78rem;
+                padding: 7px 18px;
+            }
+
+            .pinfo-box-label {
+                font-size: 0.72rem;
+            }
+
+            .pinfo-box-val {
+                font-size: 0.88rem;
+            }
+
+            .pinfo-impact-header {
+                font-size: 0.74rem;
+            }
+
+            .pinfo-impact-text {
+                font-size: 0.84rem;
+                line-height: 1.5;
+            }
+
+            /* ── DECREASED FOOTER FONT SIZE ON MOBILE ── */
+            footer.page-footer {
+                gap: 14px;
+                margin-top: 28px;
+                padding: 20px 8px 36px;
+            }
+
+            .footer-logos {
+                gap: 14px;
+            }
+
+            .footer-avatar {
+                width: 64px;
+                height: 64px;
+            }
+
+            .footer-heading {
+                font-size: 0.92rem;
+                line-height: 1.45;
+            }
+
+            .footer-subheading {
+                font-size: 0.8rem;
+                line-height: 1.5;
+            }
+
+            .footer-collab {
+                font-size: 0.76rem;
+                line-height: 1.5;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .top-headline-title {
+                font-size: 1.35rem;
+            }
+
+            .footer-heading {
+                font-size: 0.84rem;
+            }
+
+            .footer-subheading {
+                font-size: 0.74rem;
+            }
+
+            .footer-collab {
+                font-size: 0.7rem;
+            }
+
+            .footer-avatar {
+                width: 52px;
+                height: 52px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ── TOP ACCENT LINE ── -->
+        <div class="accent-top-bar"></div>
+
+        <!-- ── TOP HEADLINE TITLE & SUB-HEAD ── -->
+        <header class="top-headline-header">
+            <div class="top-headline-tagline">AI Automation Workflow </div>
+            <h1 class="top-headline-title">Slack AI Assistant</h1>
+            <p class="top-headline-subhead">An enterprise-grade multimodal n8n automation engine integrating dual-model
+                intelligence, voice-to-text processing, and fail-safe error handling for real-time Slack operations.</p>
+        </header>
+
+        <!-- ── 1ST SECTION: IMAGES (ROWS 1 TO 3) ── -->
+        <section class="section-block">
+            <div class="section-divider-line">
+                <h2>Automation System &amp; Workflows</h2>
+            </div>
+
+            <div class="image-flow">
+
+                <!-- Row 1 -->
+                <div class="image-row">
+                    <div class="image-title-bar">
+                        <h3>AI Slacks Assistant1</h3>
+                    </div>
+                    <div class="image-container">
+                        <div class="image-frame"
+                            onclick="viewImage('04. Images - Slack AI Assistant/AI Slacks Assistant1.PNG', 'AI Slacks Assistant1 — Main Production Canvas')">
+                            <img src="04. Images - Slack AI Assistant/AI Slacks Assistant1.PNG"
+                                alt="AI Slacks Assistant1" loading="lazy">
+                            <div class="zoom-badge">🔍 Zoom View</div>
+                        </div>
+                    </div>
+                    <p class="image-brief-info">End-to-end multimodal production canvas routing Slack events through
+                        audio normalization, speech-to-text transcription, and dual-model AI agent nodes.</p>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="image-row">
+                    <div class="image-title-bar">
+                        <h3>AI Slack Global Error</h3>
+                    </div>
+                    <div class="image-container">
+                        <div class="image-frame"
+                            onclick="viewImage('04. Images - Slack AI Assistant/AI Slack Global Error.PNG', 'AI Slack Global Error — Decoupled Fail-Safe System')">
+                            <img src="04. Images - Slack AI Assistant/AI Slack Global Error.PNG"
+                                alt="AI Slack Global Error" loading="lazy">
+                            <div class="zoom-badge">🔍 Zoom View</div>
+                        </div>
+                    </div>
+                    <p class="image-brief-info">Decoupled fail-safe error monitoring pipeline that intercepts runtime
+                        exceptions and dispatches actionable incident cards to fallback channels.</p>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="image-row">
+                    <div class="image-title-bar">
+                        <h3>AI Slack Professor</h3>
+                    </div>
+                    <div class="image-container">
+                        <div class="image-frame"
+                            onclick="viewImage('04. Images - Slack AI Assistant/AI Slack Professor.PNG', 'AI Slack Professor — Subworkflow Intelligence Engine')">
+                            <img src="04. Images - Slack AI Assistant/AI Slack Professor.PNG" alt="AI Slack Professor"
+                                loading="lazy">
+                            <div class="zoom-badge">🔍 Zoom View</div>
+                        </div>
+                    </div>
+                    <p class="image-brief-info">Modular conversational subworkflow orchestrating DeepSeek reasoning with
+                        Google Gemini fallback and conversation window buffer memory.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ── 2ND SECTION: EXACT DETAILS (ROWS 1 TO 4 VERBATIM) ── -->
+        <section class="section-block">
+            <div class="section-divider-line">
+                <h2>Case Study Breakdown</h2>
+            </div>
+
+            <div class="details-flow">
+
+                <!-- 1st row -->
+                <div class="details-row">
+                    <h3 class="details-heading">Introduction</h3>
+                    <h4 class="details-subheading">Slack AI Personal Assistant — Multi-Modal Business Communication
+                        Engine</h4>
+                    <p class="details-text">Operations and support teams lose critical hours manually triaging high
+                        volumes of Slack messages, inquiries, and audio memos, causing response delays, inconsistent
+                        communication, and team burnout.</p>
+                </div>
+
+                <!-- 2nd row -->
+                <div class="details-row">
+                    <h3 class="details-heading">The Challenges</h3>
+                    <ul class="details-list">
+                        <li><strong>Voice Note &amp; Triage Bottleneck:</strong> Incoming audio memos forced staff to
+                            pause work, listen in real time, and manually transcribe action items, leading to response
+                            delays of 15 to 45 minutes.</li>
+                        <li><strong>Loss of Context &amp; Inconsistent Quality:</strong> Manual replies depended
+                            entirely on individual staff memory and shift handoffs, causing lost conversation history
+                            and conflicting answers.</li>
+                        <li><strong>Single-API Vulnerability &amp; Silent Outages:</strong> Relying on a single AI model
+                            left workflows exposed to third-party rate limits and outages, where broken automations
+                            failed quietly without alerting the team.</li>
+                    </ul>
+                </div>
+
+                <!-- 3rd row -->
+                <div class="details-row">
+                    <h3 class="details-heading">The Solution</h3>
+                    <p class="details-text">Engineered an enterprise-grade, multimodal AI automation ecosystem inside
+                        n8n with dual-model redundancy, speech-to-text processing, and decoupled fail-safe monitoring:
+                    </p>
+                    <ul class="details-list">
+                        <li><strong>Multimodal Ingestion &amp; Audio Normalization:</strong> Routes incoming text,
+                            mentions, and audio files automatically, utilizing a custom JavaScript container fix to
+                            prepare voice memos for instant transcription via Google Gemini STT.</li>
+                        <li><strong>Dual-Model AI Engine &amp; Context Memory:</strong> Orchestrates DeepSeek V3/R1 as
+                            the primary reasoning engine with automatic, sub-second failover to Google Gemini 1.5,
+                            backed by window buffer memory for continuous multi-turn conversations.</li>
+                        <li><strong>Decoupled Global Error Handler:</strong> Catches unexpected runtime failures across
+                            all nodes, translating raw error logs into clear, actionable incident cards sent to backup
+                            channels like Email or Discord.</li>
+                    </ul>
+                </div>
+
+                <!-- 4th row -->
+                <div class="details-row">
+                    <h3 class="details-heading">The Results</h3>
+                    <ul class="details-list">
+                        <li><strong>98% Faster Response Times:</strong> Reduced average response latency from 15–45
+                            minutes down to under 45 seconds, delivering reliable 24/7 assistance across time zones.
+                        </li>
+                        <li><strong>100% Labor Reclaimed:</strong> Fully automated voice note transcription and routine
+                            inquiries, freeing team members to focus on strategic operations and client management.</li>
+                        <li><strong>Zero-Downtime Reliability:</strong> Eliminated communication blind spots with
+                            dual-model redundancy and automated out-of-band incident alerts, preventing silent system
+                            failures.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ── 3RD SECTION: PROJECT INFORMATION (DARK NEON GLOW PORTRAIT CARD) ── -->
+        <section class="section-block project-info-section">
+            <div class="project-info-card-portrait">
+                <div class="pinfo-header">
+                    <div class="pinfo-neon-pill">Project Information</div>
+                </div>
+
+                <!-- Title workflow -->
+                <div class="pinfo-item-box">
+                    <span class="pinfo-box-label">Title Workflow:</span>
+                    <span class="pinfo-box-val">Internal Slack AI Assistants</span>
+                </div>
+
+                <!-- Started -->
+                <div class="pinfo-item-box">
+                    <span class="pinfo-box-label">Executed:</span>
+                    <span class="pinfo-box-val">April 2026</span>
+                </div>
+
+                <!-- IMPACT -->
+                <div class="pinfo-impact-box">
+                    <div class="pinfo-impact-header">
+                        <span class="pinfo-impact-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                <polyline points="17 6 23 6 23 12"></polyline>
+                            </svg>
+                        </span>
+                        IMPACT
+                    </div>
+                    <p class="pinfo-impact-text">Replaced manual triage with an enterprise-grade multimodal AI engine,
+                        slashing response latency by <span class="pinfo-impact-highlight">98%</span> down to sub-45s
+                        with zero-downtime dual-model reliability.</p>
+                </div>
+
+                <!-- Automation Specialist -->
+                <div class="pinfo-item-box">
+                    <span class="pinfo-box-label">Automation Specialist:</span>
+                    <span class="pinfo-box-val"> Errol John Peusca </span>
+                </div>
+
+                <!-- In Collaboration -->
+                <div class="pinfo-item-box">
+                    <span class="pinfo-box-label">In Collaboration:</span>
+                    <span class="pinfo-box-val"> Kent Brian Jintapa, Mark Dalumpines, and Joyce Ann Yap</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── FOOTER ── -->
+        <footer class="page-footer">
+            <div class="footer-logos">
+                <img class="footer-avatar" src="LOGO TEAM COLLAB/04. Errol John Peusca.png" alt="Kent Brian Jintapa">
+            </div>
+
+            <div class="footer-text-group">
+                <div class="footer-heading">Slack AI Assistant — Multi-Modal Business Communication Engine Case Study
+                </div>
+                <div class="footer-subheading">Automate and built by Errol John Peusca. </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- ── LIGHTBOX MODAL ── -->
+    <div class="lightbox" id="lightbox" onclick="closeImage(event)">
+        <div class="lightbox-box" onclick="event.stopPropagation()">
+            <button class="lightbox-close-btn" onclick="closeImage(event)" aria-label="Close Preview">&times;</button>
+            <img id="lightboxImg" src="" alt="Enlarged Preview">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <script>
+        function viewImage(src, caption) {
+            const modal = document.getElementById('lightbox');
+            const img = document.getElementById('lightboxImg');
+            const cap = document.getElementById('lightboxCaption');
+            img.src = src;
+            cap.textContent = caption;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImage(e) {
+            const modal = document.getElementById('lightbox');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeImage();
+            }
+        });
+    </script>
+
+</body>
+
+</html>

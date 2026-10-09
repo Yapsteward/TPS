@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toppers Tutorial Center — High-Converting Enrollment Funnel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-white: #ffffff;
+            --color-green-dark: #14532d;
+            --color-green-mid: #166534;
+            --color-green-light: #22c55e;
+            --color-green-subtle: #f0fdf4;
+            --color-gold: #C9A027;
+            --color-gold-light: #e8c85a;
+            --color-gold-subtle: #fefce8;
+            --color-text-main: #1f2937;
+            --color-text-muted: #4b5563;
+            --border-light: #e5e7eb;
+            --border-green: #14532d;
+            --border-gold: #C9A027;
+
+            --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            --font-heading: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-white);
+            color: var(--color-text-main);
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* ── CONTAINER ── */
+        .container {
+            width: 96%;
+            max-width: 1560px;
+            margin: 0 auto;
+            padding: 32px 12px 70px;
+        }
+
+        /* ── FLOWING GRADIENT ANIMATIONS ── */
+        @keyframes flowingHeading {
+            0% {
+                background-position: 0% center;
+            }
+
+            50% {
+                background-position: 100% center;
+            }
+
+            100% {
+                background-position: 0% center;
+            }
+        }
+
+        /* ── MAIN HEADER ── */
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 10px 16px;
+        }
+
+        .page-tagline {
+            font-family: var(--font-heading);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--color-gold);
+            margin-bottom: 12px;
+        }
+
+        .page-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4.2vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 14px;
+            background: linear-gradient(90deg, #14532d 0%, #C9A027 30%, #166534 55%, #C9A027 78%, #14532d 100%);
+            background-size: 280% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: flowingHeading 6s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        .page-subhead {
+            font-size: clamp(1rem, 1.8vw, 1.18rem);
+            color: var(--color-text-muted);
+            max-width: 860px;
+            margin: 0 auto;
+            line-height: 1.7;
+            font-weight: 500;
+        }
+
+        /* ── SECTION FLOWING HEADINGS ── */
+        .flow-heading {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            background: linear-gradient(90deg, #14532d 0%, #C9A027 35%, #166534 55%, #C9A027 75%, #14532d 100%);
+            background-size: 280% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: flowingHeading 6s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        .section-block {
+            margin-bottom: 56px;
+        }
+
+        /* ── 1ST SECTION: 1 ROW WITH 4 COLUMNS (UNBOXED, MAXIMIZED SPACING) ── */
+        .section-headline-bar {
+            margin-bottom: 22px;
+            text-align: center;
+        }
+
+        .section-headline-bar h2 {
+            font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+        }
+
+        .quad-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            width: 100%;
+        }
+
+        .quad-col {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: transparent;
+        }
+
+        .quad-title-bar {
+            padding: 4px 6px;
+            border-bottom: 2px solid var(--color-gold);
+        }
+
+        .quad-title-bar h3 {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 700;
+            line-height: 1.4;
+            background: linear-gradient(90deg, #14532d 0%, #C9A027 45%, #166534 100%);
+            background-size: 240% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: flowingHeading 7s ease-in-out infinite;
+            display: block;
+        }
+
+        .quad-frame {
+            position: relative;
+            cursor: zoom-in;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(20, 83, 45, 0.2);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+            background: #ffffff;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .quad-frame:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 26px rgba(20, 83, 45, 0.16);
+            border-color: var(--color-gold);
+        }
+
+        .quad-frame img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+            image-rendering: auto;
+            transition: transform 0.35s ease;
+        }
+
+        .quad-frame:hover img {
+            transform: scale(1.02);
+        }
+
+        .zoom-badge {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(20, 83, 45, 0.9);
+            color: #ffffff;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            backdrop-filter: blur(4px);
+            pointer-events: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(201, 160, 39, 0.4);
+        }
+
+        /* ── 2ND SECTION: DETAILS FLOW ── */
+        .details-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            max-width: 1360px;
+            margin: 0 auto;
+        }
+
+        .details-row {
+            background: #ffffff;
+            border: 1px solid rgba(20, 83, 45, 0.18);
+            border-left: 6px solid var(--color-green-dark);
+            border-radius: 12px;
+            padding: 24px 28px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            transition: border-left-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .details-row:hover {
+            border-left-color: var(--color-gold);
+            box-shadow: 0 8px 24px rgba(20, 83, 45, 0.08);
+        }
+
+        .details-heading {
+            font-size: clamp(1.2rem, 2vw, 1.55rem);
+            margin-bottom: 6px;
+        }
+
+        .details-subheading {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--color-green-dark);
+            margin-bottom: 12px;
+        }
+
+        .details-text {
+            color: var(--color-text-main);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 14px;
+        }
+
+        .details-text:last-child {
+            margin-bottom: 0;
+        }
+
+        .details-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .details-list li {
+            position: relative;
+            padding-left: 26px;
+            color: var(--color-text-main);
+            line-height: 1.75;
+        }
+
+        .details-list li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--color-gold);
+            font-size: 0.95rem;
+        }
+
+        .details-list li strong {
+            color: var(--color-green-dark);
+            font-weight: 700;
+        }
+
+        /* ── 3RD SECTION: BUILT BEHIND THE SCENES (FROM TUTORIALCENTERCASSTUDIES) ── */
+        .ghl-marquee {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            overflow: hidden;
+            background: #14532d;
+            padding: 14px 0;
+            margin: 40px 0 28px;
+        }
+
+        .ghl-marquee-track {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            width: max-content;
+            animation: ghlMarqueeScroll 20s linear infinite;
+        }
+
+        .ghl-marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes ghlMarqueeScroll {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        .ghl-marquee-item {
+            height: 34px;
+            width: auto;
+            flex-shrink: 0;
+            margin: 0 28px;
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 6px 14px;
+            object-fit: contain;
+        }
+
+        .ghl-marquee-sep {
+            color: #f2c94c;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .ghl-section {
+            padding: 10px 0 36px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .ghl-section-inner {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 8px;
+        }
+
+        .section-badge-wrap {
+            display: block;
+            margin-bottom: 18px;
+            clear: both;
+        }
+
+        .section-num {
+            display: inline-block;
+            font-family: var(--font-body);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--color-gold);
+            background: rgba(201, 160, 39, 0.08);
+            border: 1px solid rgba(201, 160, 39, 0.45);
+            border-radius: 999px;
+            padding: 6px 18px;
+            line-height: 1.4;
+        }
+
+        .ghl-section-inner h2 {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            font-size: clamp(2.1rem, 3.8vw, 3rem);
+            line-height: 1.25;
+            margin-bottom: 14px;
+            color: var(--color-gold);
+            letter-spacing: -0.01em;
+            display: block;
+            width: fit-content;
+            clear: both;
+        }
+
+        .ghl-section-inner h2.flow-heading {
+            background: linear-gradient(90deg, #C9A027 0%, #e0b435 30%, #166534 50%, #C9A027 70%, #a6821a 100%);
+            background-size: 260% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: flowingHeading 6s ease-in-out infinite;
+        }
+
+        .gold-rule {
+            width: 72px;
+            height: 3.5px;
+            background: var(--color-gold);
+            margin: 8px 0 32px 0;
+            border-radius: 2px;
+        }
+
+        .ghl-sub-label {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--color-green-dark);
+            margin: 68px 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ghl-sub-label::before {
+            content: '';
+            width: 8px;
+            height: 20px;
+            background: var(--color-gold);
+            border-radius: 2px;
+            display: inline-block;
+        }
+
+        .ghl-sub-label:first-of-type {
+            margin-top: 10px;
+        }
+
+        .cs-p {
+            font-size: 15.5px;
+            color: var(--color-text-main);
+            line-height: 1.85;
+            margin-bottom: 14px;
+        }
+
+        .hl {
+            color: var(--color-green-dark);
+            font-weight: 700;
+        }
+
+        /* Side-by-side intro grids */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 36px;
+            align-items: center;
+            box-sizing: border-box;
+            margin-bottom: 36px;
+        }
+
+        .intro-media {
+            position: relative;
+            cursor: zoom-in;
+        }
+
+        .intro-media img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            border-radius: 12px;
+            border: 1px solid rgba(20, 83, 45, 0.2);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+            background: #ffffff;
+            image-rendering: auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .intro-media:hover img {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 32px rgba(20, 83, 45, 0.15);
+        }
+
+        .intro-text .cs-p {
+            text-align: left;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .intro-text .cs-p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Workflow 3-column grids */
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            box-sizing: border-box;
+            margin: 36px 0 54px;
+        }
+
+        .workflow-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            text-align: center;
+            cursor: zoom-in;
+        }
+
+        .workflow-col img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            object-position: top center;
+            border-radius: 12px;
+            border: 1px solid rgba(20, 83, 45, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+            background: #ffffff;
+            image-rendering: auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .workflow-col:hover img {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 28px rgba(20, 83, 45, 0.16);
+            border-color: var(--color-gold);
+        }
+
+        .workflow-caption {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--color-green-dark);
+            font-size: 0.88rem;
+            background: rgba(20, 83, 45, 0.07);
+            border: 1px solid rgba(20, 83, 45, 0.25);
+            padding: 6px 14px;
+            border-radius: 20px;
+            display: inline-block;
+            max-width: 100%;
+            word-break: break-word;
+            line-height: 1.4;
+        }
+
+        /* ── 4TH SECTION: PROJECT INFORMATION (DARK NEON GLOW PORTRAIT CARD) ── */
+        .project-info-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0 40px;
+        }
+
+        .project-info-card-portrait {
+            width: 100%;
+            max-width: 440px;
+            background: linear-gradient(180deg, #152f3c 0%, #0d212c 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 24px 20px 28px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+
+        .pinfo-header {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 4px;
+        }
+
+        .pinfo-neon-pill {
+            background: #c6ff00;
+            color: #0b1a20;
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            padding: 8px 22px;
+            border-radius: 30px;
+            text-transform: uppercase;
+            box-shadow: 0 0 16px rgba(198, 255, 0, 0.5);
+        }
+
+        .pinfo-item-box {
+            background: #172632;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 12px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .pinfo-box-label {
+            color: #8da4b4;
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .pinfo-box-val {
+            color: #ffffff;
+            font-size: 0.94rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .pinfo-impact-box {
+            background: #172632;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 14px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .pinfo-impact-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #8da4b4;
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .pinfo-impact-icon {
+            color: #c6ff00;
+            display: flex;
+            align-items: center;
+        }
+
+        .pinfo-impact-text {
+            color: #ffffff;
+            font-size: 0.9rem;
+            line-height: 1.55;
+        }
+
+        .pinfo-impact-highlight {
+            color: #c6ff00;
+            font-weight: 800;
+        }
+
+        /* ── FOOTER ── */
+        .page-footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 30px;
+            padding-top: 36px;
+            border-top: none;
+            text-align: center;
+        }
+
+        .footer-logos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .footer-avatar {
+            width: 74px;
+            height: 74px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: transparent;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .footer-avatar:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 20px rgba(20, 83, 45, 0.25);
+        }
+
+        .footer-text-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .footer-heading {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--color-green-dark);
+        }
+
+        .footer-subheading {
+            color: var(--color-text-muted);
+            font-size: 0.94rem;
+        }
+
+        .footer-collab {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        .collab-name {
+            color: var(--color-gold);
+            font-weight: 700;
+        }
+
+        /* ── LIGHTBOX MODAL ── */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.88);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+            backdrop-filter: blur(8px);
+            box-sizing: border-box;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-box {
+            position: relative;
+            max-width: 92vw;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #ffffff;
+            padding: 12px;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-box img {
+            max-width: 88vw;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 8px;
+            display: block;
+            image-rendering: auto;
+        }
+
+        .lightbox-caption {
+            margin-top: 10px;
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--color-green-dark);
+            text-align: center;
+        }
+
+        .lightbox-close-btn {
+            position: absolute;
+            top: -16px;
+            right: -16px;
+            width: 36px;
+            height: 36px;
+            background: #14532d;
+            color: #ffffff;
+            border: 2px solid var(--color-gold);
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .lightbox-close-btn:hover {
+            transform: scale(1.1);
+            background: #C9A027;
+            color: #14532d;
+        }
+
+        /* ── RESPONSIVE MEDIA QUERIES & OPTIMIZED TYPOGRAPHY ── */
+        @media (max-width: 1100px) {
+            .quad-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .workflow-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 850px) {
+            .intro-grid {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+
+            .workflow-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 98%;
+                padding: 20px 8px 48px;
+            }
+
+            .page-header {
+                margin-bottom: 24px;
+                padding: 4px 2px;
+            }
+
+            .page-tagline {
+                font-size: 0.74rem;
+                letter-spacing: 0.16em;
+                margin-bottom: 8px;
+            }
+
+            .page-title {
+                font-size: clamp(1.48rem, 6.2vw, 1.95rem);
+                line-height: 1.25;
+                margin-bottom: 10px;
+            }
+
+            .page-subhead {
+                font-size: 0.92rem;
+                line-height: 1.65;
+            }
+
+            .quad-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .quad-title-bar h3 {
+                font-size: 0.9rem;
+            }
+
+            .quad-frame img {
+                height: 200px;
+            }
+
+            .details-row {
+                padding: 18px 14px;
+            }
+
+            .details-heading {
+                font-size: 1.18rem;
+            }
+
+            .details-subheading {
+                font-size: 0.96rem;
+            }
+
+            .details-text,
+            .details-list li {
+                font-size: 0.9rem;
+                line-height: 1.7;
+            }
+
+            .section-num {
+                font-size: 0.72rem;
+                padding: 5px 14px;
+                letter-spacing: 0.14em;
+            }
+
+            .ghl-section-inner h2 {
+                font-size: clamp(1.45rem, 5.8vw, 1.85rem);
+            }
+
+            .ghl-sub-label {
+                font-size: 1.15rem;
+                margin: 32px 0 12px;
+            }
+
+            .cs-p {
+                font-size: 0.9rem;
+                line-height: 1.7;
+            }
+
+            .workflow-caption {
+                font-size: 0.78rem;
+                padding: 5px 10px;
+            }
+
+            .project-info-card-portrait {
+                max-width: 100%;
+                padding: 18px 14px 22px;
+                border-radius: 20px;
+            }
+
+            .pinfo-neon-pill {
+                font-size: 0.78rem;
+                padding: 7px 18px;
+            }
+
+            .pinfo-box-label {
+                font-size: 0.72rem;
+            }
+
+            .pinfo-box-val {
+                font-size: 0.88rem;
+            }
+
+            .pinfo-impact-header {
+                font-size: 0.74rem;
+            }
+
+            .pinfo-impact-text {
+                font-size: 0.84rem;
+                line-height: 1.5;
+            }
+
+            /* ── DECREASED FOOTER FONT SIZE ON MOBILE ── */
+            .page-footer {
+                gap: 14px;
+                margin-top: 24px;
+                padding-top: 24px;
+            }
+
+            .footer-logos {
+                gap: 16px;
+            }
+
+            .footer-avatar {
+                width: 58px;
+                height: 58px;
+            }
+
+            .footer-heading {
+                font-size: 0.92rem;
+                line-height: 1.45;
+            }
+
+            .footer-subheading {
+                font-size: 0.8rem;
+                line-height: 1.5;
+            }
+
+            .footer-collab {
+                font-size: 0.76rem;
+                line-height: 1.5;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .page-title {
+                font-size: 1.35rem;
+            }
+
+            .footer-heading {
+                font-size: 0.84rem;
+            }
+
+            .footer-subheading {
+                font-size: 0.74rem;
+            }
+
+            .footer-collab {
+                font-size: 0.7rem;
+            }
+
+            .footer-avatar {
+                width: 48px;
+                height: 48px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ── HEADER ── -->
+        <header class="page-header">
+            <div class="page-tagline">GoHighLevel Funnel</div>
+            <h1 class="page-title">Toppers Tutorial Center — Enrollment Funnel</h1>
+            <p class="page-subhead">A Parent-Guided Child Learning Enrollment Funnel designed around one core conversion
+                strategy: helping parents understand their child’s learning needs through a free assessment, providing
+                personalized insights, and convert qualified leads into enrollment opportunities.</p>
+        </header>
+
+        <!-- ── 1ST SECTION: 1 ROW WITH 4 COLUMNS ── -->
+        <section class="section-block">
+            <div class="quad-grid">
+
+                <!-- Column 1 -->
+                <div class="quad-col">
+                    <div class="quad-title-bar">
+                        <h3>GHL Sites Funnel 4 Pages</h3>
+                    </div>
+                    <div class="quad-frame"
+                        onclick="viewImage('03. Images - Toppers Tutorial Center/GHL Sites Funnel 4 Pages.png', 'GHL Sites Funnel 4 Pages')">
+                        <img src="03. Images - Toppers Tutorial Center/GHL Sites Funnel 4 Pages.png"
+                            alt="GHL Sites Funnel 4 Pages" loading="lazy">
+                        <div class="zoom-badge">🔍 Zoom View</div>
+                    </div>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="quad-col">
+                    <div class="quad-title-bar">
+                        <h3>GHL Automation - Lead &amp; Booked Capture</h3>
+                    </div>
+                    <div class="quad-frame"
+                        onclick="viewImage('03. Images - Toppers Tutorial Center/GHL Automation - Lead &amp; Booked Capture.png', 'GHL Automation - Lead & Booked Capture')">
+                        <img src="03. Images - Toppers Tutorial Center/GHL Automation - Lead &amp; Booked Capture.png"
+                            alt="GHL Automation - Lead &amp; Booked Capture" loading="lazy">
+                        <div class="zoom-badge">🔍 Zoom View</div>
+                    </div>
+                </div>
+
+                <!-- Column 3 -->
+                <div class="quad-col">
+                    <div class="quad-title-bar">
+                        <h3>GHL Opportunities Pipeline</h3>
+                    </div>
+                    <div class="quad-frame"
+                        onclick="viewImage('03. Images - Toppers Tutorial Center/GHL Opportunities Pipeline.png', 'GHL Opportunities Pipeline')">
+                        <img src="03. Images - Toppers Tutorial Center/GHL Opportunities Pipeline.png"
+                            alt="GHL Opportunities Pipeline" loading="lazy">
+                        <div class="zoom-badge">🔍 Zoom View</div>
+                    </div>
+                </div>
+
+                <!-- Column 4 -->
+                <div class="quad-col">
+                    <div class="quad-title-bar">
+                        <h3>GHL Automation - Email Auto Follow-up and Nurturing</h3>
+                    </div>
+                    <div class="quad-frame"
+                        onclick="viewImage('03. Images - Toppers Tutorial Center/GHL Automation - Email Auto Follow-up and Nurturing.png', 'GHL Automation - Email Auto Follow-up and Nurturing')">
+                        <img src="03. Images - Toppers Tutorial Center/GHL Automation - Email Auto Follow-up and Nurturing.png"
+                            alt="GHL Automation - Email Auto Follow-up and Nurturing" loading="lazy">
+                        <div class="zoom-badge">🔍 Zoom View</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ── 2ND SECTION: EXACT DETAILS (ROWS 1 TO 4 VERBATIM) ── -->
+        <section class="section-block">
+            <div class="details-flow">
+
+                <!-- 1st row -->
+                <div class="details-row">
+                    <h3 class="details-heading flow-heading">Introduction</h3>
+                    <h4 class="details-subheading">Toppers Tutorial Center — High-Converting Enrollment Funnel</h4>
+                    <p class="details-text">Toppers Tutorial Center (established in 2018) needed a predictable,
+                        automated client acquisition system to turn online visitors into booked assessment consultations
+                        and enrolled students.</p>
+                </div>
+
+                <!-- 2nd row -->
+                <div class="details-row">
+                    <h3 class="details-heading flow-heading">The Challenges</h3>
+                    <ul class="details-list">
+                        <li><strong>High Sales Friction:</strong> Pitching immediate course enrollments to cold traffic
+                            resulted in low conversion rates, as parents were hesitant to commit without understanding
+                            their child's specific needs first.</li>
+                        <li><strong>Passive Lead Drop-off:</strong> Interested parents visiting the site often left
+                            without taking action due to a lack of an engaging, step-by-step guidance process.</li>
+                        <li><strong>Fragmented Tools &amp; Costs:</strong> The client needed an all-in-one pipeline that
+                            avoided the need for complex multi-app integrations or mounting software overhead.</li>
+                    </ul>
+                </div>
+
+                <!-- 3rd row -->
+                <div class="details-row">
+                    <h3 class="details-heading flow-heading">The Solution</h3>
+                    <p class="details-text">Designed and built a low-pressure, parent-focused 4-page conversion funnel
+                        entirely within GoHighLevel, centered around a "Free Assessment Test &amp; Summer Class" offer:
+                    </p>
+                    <ul class="details-list">
+                        <li><strong>Landing Page:</strong> Introduces the free assessment, highlights student benefits,
+                            showcases social proof, and addresses common parent FAQs.</li>
+                        <li><strong>Assessment Survey:</strong> An interactive questionnaire that gathers key details on
+                            the child's learning habits, academic strengths, and growth areas.</li>
+                        <li><strong>Thank-You Page:</strong> Confirms submission, builds immediate trust, and outlines
+                            clear next steps for the evaluation process.</li>
+                        <li><strong>Calendar Booking Page:</strong> Allows parents to seamlessly schedule their
+                            consultation slot directly with the center's staff.</li>
+                    </ul>
+                </div>
+
+                <!-- 4th row -->
+                <div class="details-row">
+                    <h3 class="details-heading flow-heading">The Results</h3>
+                    <ul class="details-list">
+                        <li><strong>Automated Lead Generation:</strong> Converted passive website traffic into a steady,
+                            reliable stream of pre-qualified consultation bookings.</li>
+                        <li><strong>Higher Conversion Rates:</strong> Established strong trust upfront by diagnosing
+                            student needs first rather than pushing an immediate hard sale.</li>
+                        <li><strong>Cost-Efficient Delivery:</strong> Deployed a complete, end-to-end booking ecosystem
+                            entirely within a single platform with zero extra software overhead.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ── 3RD SECTION: BUILT BEHIND THE SCENES (FROM TUTORIALCENTERCASSTUDIES) ── -->
+        <div class="ghl-marquee" aria-hidden="true">
+            <div class="ghl-marquee-track">
+                <img class="ghl-marquee-item" src="03. Images - Toppers Tutorial Center/GHL.png" alt="GoHighLevel">
+                <span class="ghl-marquee-sep">✦</span>
+                <img class="ghl-marquee-item" src="03. Images - Toppers Tutorial Center/GHL.png" alt="GoHighLevel">
+                <span class="ghl-marquee-sep">✦</span>
+                <img class="ghl-marquee-item" src="03. Images - Toppers Tutorial Center/GHL.png" alt="GoHighLevel">
+                <span class="ghl-marquee-sep">✦</span>
+                <img class="ghl-marquee-item" src="03. Images - Toppers Tutorial Center/GHL.png" alt="GoHighLevel">
+                <span class="ghl-marquee-sep">✦</span>
+                <!-- duplicate for seamless loop -->
+                <img class="ghl-marquee-item" src="03. Images - Toppers Tutorial Center/GHL.png" alt="GoHighLevel">
+                <span class="ghl-marquee-sep">✦</span>
+                <img class="ghl-marquee-item" src="03. Images - Toppers Tutorial Center/GHL.png" alt="GoHighLevel">
+                <span class="ghl-marquee-sep">✦</span>
+                <img class="ghl-marquee-item" src="03. Images - Toppers Tutorial Center/GHL.png" alt="GoHighLevel">
+                <span class="ghl-marquee-sep">✦</span>
+                <img class="ghl-marquee-item" src="03. Images - Toppers Tutorial Center/GHL.png" alt="GoHighLevel">
+                <span class="ghl-marquee-sep">✦</span>
+            </div>
+        </div>
+
+        <section class="ghl-section">
+            <div class="ghl-section-inner">
+                <div class="section-badge-wrap">
+                    <div class="section-num">Built Behind the System</div>
+                </div>
+                <h2 class="flow-heading">Inside the GoHighLevel System</h2>
+                <div class="gold-rule"></div>
+
+                <!-- The Funnel Site -->
+                <div class="ghl-sub-label">The Funnel Site</div>
+                <div class="intro-grid">
+                    <div class="intro-media"
+                        onclick="viewImage('03. Images - Toppers Tutorial Center/GHL Sites Funnel 4 Pages.png', 'Toppers Tutorial Center 4-Page Funnel Site in GoHighLevel')">
+                        <img class="imagestyle1" src="03. Images - Toppers Tutorial Center/GHL Sites Funnel 4 Pages.png"
+                            alt="Toppers Tutorial Center funnel site in GoHighLevel">
+                        <div class="zoom-badge">🔍 Zoom View</div>
+                    </div>
+                    <div class="intro-text">
+                        <p class="cs-p">The entire funnel was <span class="hl">built and hosted inside
+                                GoHighLevel</span> — no separate funnel builder or hosting service needed. Using GHL's
+                            native funnel builder, I designed a <span class="hl">4-page funnel</span>: a landing page
+                            introducing the free assessment offer, the assessment survey itself, a thank-you
+                            confirmation page, and a booking page where parents lock in their consultation slot.</p>
+                        <p class="cs-p">Every page was built to move the parent one step closer to enrollment — from
+                            first impression to booked assessment — without ever leaving the platform.</p>
+                    </div>
+                </div>
+
+                <!-- The Workflow Automation -->
+                <div class="ghl-sub-label">The Workflow Automation</div>
+                <p class="cs-p">Behind every page is a GoHighLevel workflow listening for a trigger. The moment a parent
+                    takes action, an automation fires — tagging the contact, moving them through the pipeline, and
+                    notifying the team, with zero manual follow-up required.</p>
+
+                <div class="intro-grid" style="margin: 22px auto 44px;">
+                    <div class="intro-media"
+                        onclick="viewImage('03. Images - Toppers Tutorial Center/GHL Automation - Lead &amp; Booked Capture.png', 'GoHighLevel Published Automation Workflows Overview')">
+                        <img class="imagestyle1"
+                            src="03. Images - Toppers Tutorial Center/GHL Automation - Lead &amp; Booked Capture.png"
+                            alt="GoHighLevel Published Automation Workflows Overview">
+                        <div class="zoom-badge">🔍 Zoom View</div>
+                    </div>
+                    <div class="intro-text">
+                        <p class="cs-p">The automation framework consists of <span class="hl">three published production
+                                workflows</span> in GoHighLevel: <span class="hl">001. New Lead Capture</span>, <span
+                                class="hl">002. Survey Completed</span>, and <span class="hl">003. Appointment
+                                Booked</span>.</p>
+                        <p class="cs-p">Each sequence coordinates form triggers, opportunity updates, internal
+                            notifications, client emails, and enrollment pipeline transitions.</p>
+                    </div>
+                </div>
+
+                <div class="workflow-grid">
+                    <div class="workflow-col"
+                        onclick="viewImage('03. Images - Toppers Tutorial Center/Toppers (2).png', 'New Lead Workflow')">
+                        <img class="imagestyle1" src="03. Images - Toppers Tutorial Center/Toppers (2).png"
+                            alt="New Lead workflow">
+                        <span class="workflow-caption">New Lead</span>
+                    </div>
+                    <div class="workflow-col"
+                        onclick="viewImage('03. Images - Toppers Tutorial Center/Toppers (3).png', 'Survey Completed Workflow')">
+                        <img class="imagestyle1" src="03. Images - Toppers Tutorial Center/Toppers (3).png"
+                            alt="Survey Completed workflow">
+                        <span class="workflow-caption">Survey Completed</span>
+                    </div>
+                    <div class="workflow-col"
+                        onclick="viewImage('03. Images - Toppers Tutorial Center/Toppers (4).png', 'Appointment Booked Workflow')">
+                        <img class="imagestyle1" src="03. Images - Toppers Tutorial Center/Toppers (4).png"
+                            alt="Appointment Booked workflow">
+                        <span class="workflow-caption">Appointment Booked</span>
+                    </div>
+                </div>
+
+                <!-- Email Auto Follow-up and Nurturing -->
+                <div class="ghl-sub-label">Email Auto Follow-up and Nurturing</div>
+                <p class="cs-p">Once a contact enters the pipeline, GoHighLevel keeps nurturing them automatically by
+                    email — no manual follow-up needed. Each sequence is tied to where the parent actually is in the
+                    funnel, and stops the moment they respond.</p>
+
+                <div class="intro-grid" style="margin: 22px auto 44px;">
+                    <div class="intro-media"
+                        onclick="viewImage('03. Images - Toppers Tutorial Center/GHL Automation - Email Auto Follow-up and Nurturing.png', 'GoHighLevel Published Email Campaigns Overview')">
+                        <img class="imagestyle1"
+                            src="03. Images - Toppers Tutorial Center/GHL Automation - Email Auto Follow-up and Nurturing.png"
+                            alt="GoHighLevel Published Email Campaigns Overview">
+                        <div class="zoom-badge">🔍 Zoom View</div>
+                    </div>
+                    <div class="intro-text">
+                        <p class="cs-p">The system operates <span class="hl">three active email campaign
+                                sequences</span>: <span class="hl">Follow Up New Lead</span> (re-engages parents
+                            who signed up without assessment), <span class="hl">Follow Up Survey Completed</span>
+                            (nurtures assessed leads toward locking in an enrollment slot), and <span class="hl">
+                                Responded &gt;&gt; Stop Follow up</span>.</p>
+                        <p class="cs-p">Timed delivery cadences (Day 1, Day 3, Day 7, Day 14) maintain consistent
+                            touchpoints while intelligent trigger rules remove parents immediately when they reply.</p>
+                    </div>
+                </div>
+
+                <div class="workflow-grid">
+                    <div class="workflow-col"
+                        onclick="viewImage('03. Images - Toppers Tutorial Center/Toppers (7).png', 'Follow Up New Lead (Sign Up, No Assessment) — Published')">
+                        <img class="imagestyle1" src="03. Images - Toppers Tutorial Center/Toppers (7).png"
+                            alt="Follow up email sequence for new leads">
+                        <span class="workflow-caption">Follow Up New Lead (Sign Up, No Assessment) — Published</span>
+                    </div>
+                    <div class="workflow-col"
+                        onclick="viewImage('03. Images - Toppers Tutorial Center/Toppers (8).png', 'Follow Up Survey Completed & Nurturing for Enrollment Slot')">
+                        <img class="imagestyle1" src="03. Images - Toppers Tutorial Center/Toppers (8).png"
+                            alt="Follow up and nurturing email sequence for survey completed">
+                        <span class="workflow-caption">Follow Up Survey Completed &amp; Nurturing for Enrollment
+                            Slot</span>
+                    </div>
+                    <div class="workflow-col"
+                        onclick="viewImage('03. Images - Toppers Tutorial Center/Toppers (9).png', 'Responded ➔ Stop Follow-Up')">
+                        <img class="imagestyle1" src="03. Images - Toppers Tutorial Center/Toppers (9).png"
+                            alt="Stop follow up once parent responds">
+                        <span class="workflow-caption">Responded ➔ Stop Follow-Up</span>
+                    </div>
+                </div>
+
+                <!-- The Pipeline Stage -->
+                <div class="ghl-sub-label">The Pipeline Stage</div>
+                <div class="intro-grid">
+                    <div class="intro-text">
+                        <p class="cs-p">Every parent who enters the funnel lands in a <span class="hl">GoHighLevel
+                                pipeline</span> that mirrors their real journey — from first contact to enrolled
+                            student. As each workflow fires, the contact card moves automatically into its next stage:
+                            <span class="hl">New Lead → Survey Completed → Appointment Booked → Enrolled</span>.
+                        </p>
+                        <p class="cs-p">This gives the Toppers team a single, real-time view of every parent's progress
+                            — no spreadsheets, no guesswork, just a live pipeline showing exactly who needs a follow-up
+                            next.</p>
+                    </div>
+                    <div class="intro-media"
+                        onclick="viewImage('03. Images - Toppers Tutorial Center/GHL Opportunities Pipeline.png', 'GoHighLevel Pipeline Stages for Toppers Tutorial Center')">
+                        <img class="imagestyle1"
+                            src="03. Images - Toppers Tutorial Center/GHL Opportunities Pipeline.png"
+                            alt="Pipeline stages for Toppers Tutorial Center">
+                        <div class="zoom-badge">🔍 Zoom View</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ── 4TH SECTION: PROJECT INFORMATION (DARK NEON GLOW PORTRAIT CARD) ── -->
+        <section class="section-block project-info-section">
+            <div class="project-info-card-portrait">
+                <div class="pinfo-header">
+                    <div class="pinfo-neon-pill">Project Information</div>
+                </div>
+
+                <!-- Client Name -->
+                <div class="pinfo-item-box">
+                    <span class="pinfo-box-label">Client Name:</span>
+                    <span class="pinfo-box-val">Rizaline Tribunal</span>
+                </div>
+
+                <!-- Business Name -->
+                <div class="pinfo-item-box">
+                    <span class="pinfo-box-label">Business Name:</span>
+                    <span class="pinfo-box-val">Toppers Tutorial Center</span>
+                </div>
+
+                <!-- Date Started -->
+                <div class="pinfo-item-box">
+                    <span class="pinfo-box-label">Date Started:</span>
+                    <span class="pinfo-box-val">February 2026: Page Setup &amp; Booking Integration</span>
+                </div>
+
+                <!-- Date Launch -->
+                <div class="pinfo-item-box">
+                    <span class="pinfo-box-label">Date Launch:</span>
+                    <span class="pinfo-box-val">March 2026: Official Campaign Launch</span>
+                </div>
+
+                <!-- IMPACT -->
+                <div class="pinfo-impact-box">
+                    <div class="pinfo-impact-header">
+                        <span class="pinfo-impact-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                <polyline points="17 6 23 6 23 12"></polyline>
+                            </svg>
+                        </span>
+                        IMPACT
+                    </div>
+                    <p class="pinfo-impact-text">Modernized student intake into an automated, zero-overhead 4-page
+                        conversion ecosystem, boosting pre-qualified consultation bookings by <span
+                            class="pinfo-impact-highlight">100%</span> and eliminating sales friction.</p>
+                </div>
+
+                <!-- GHL Specialist -->
+                <div class="pinfo-item-box">
+                    <span class="pinfo-box-label">GHL Specialist:</span>
+                    <span class="pinfo-box-val">Joyce Ann Yap &amp; Mark Dalumpines</span>
+                </div>
+
+                <!-- Collaboration -->
+                <div class="pinfo-item-box">
+                    <span class="pinfo-box-label">Collaboration:</span>
+                    <span class="pinfo-box-val">Kent Brian Jintapa &amp; Errol John Peusca</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── FOOTER ── -->
+        <footer class="page-footer">
+            <div class="footer-logos">
+                <img class="footer-avatar" src="LOGO TEAM COLLAB/02. Joyce Yap.png" alt="Joyce Ann Yap">
+                <img class="footer-avatar" src="LOGO TEAM COLLAB/01. Mark Dalumpines.png" alt="Mark Dalumpines">
+            </div>
+
+            <div class="footer-text-group">
+                <div class="footer-heading">Toppers Tutorial Center — High-Converting Enrollment Funnel Case Study</div>
+                <div class="footer-subheading">Automate and built by <strong> Joyce Ann Yap </strong> and <strong>Mark
+                        Dalumpines.</strong></div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- ── LIGHTBOX MODAL ── -->
+    <div class="lightbox" id="lightbox" onclick="closeImage(event)">
+        <div class="lightbox-box" onclick="event.stopPropagation()">
+            <button class="lightbox-close-btn" onclick="closeImage(event)" aria-label="Close Preview">&times;</button>
+            <img id="lightboxImg" src="" alt="Enlarged Preview">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <script>
+        function viewImage(src, caption) {
+            const modal = document.getElementById('lightbox');
+            const img = document.getElementById('lightboxImg');
+            const cap = document.getElementById('lightboxCaption');
+            img.src = src;
+            cap.textContent = caption;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImage(e) {
+            const modal = document.getElementById('lightbox');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeImage();
+            }
+        });
+    </script>
+
+</body>
+
+</html>

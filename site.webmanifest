@@ -1,0 +1,21 @@
+{
+  "name": "Tech Partners System",
+  "short_name": "TPS",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0D1B3E",
+  "theme_color": "#0D1B3E",
+  "description": "Unified AI & Automation Collective — We build the digital smart systems that scale revenue.",
+  "icons": [
+    {
+      "src": "LOGO%20TEAM%20COLLAB/TEAM%20Collab%20TechPartners.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "LOGO%20TEAM%20COLLAB/TEAM%20Collab%20TechPartners.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

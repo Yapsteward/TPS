@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Techsavvy Satellite — Cross-Platform RevOps Automation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg-white: #FFFFFF;
+      --bg-green-soft: #F0FDF4;
+      --bg-navy-soft: #F8FAFC;
+
+      --color-navy: #0A192F;
+      --color-navy-dark: #071324;
+      --color-navy-blue: #1E3A8A;
+      --color-navy-text: #1E293B;
+
+      --color-green: #059669;
+      --color-green-light: #10B981;
+      --color-green-dark: #047857;
+
+      --border-green: #10B981;
+      --border-green-dark: #059669;
+      --border-navy: #1E3A8A;
+      --border-navy-light: #3B82F6;
+      --border-card: #059669;
+
+      --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-heading: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-white);
+      color: var(--color-navy-text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* ── MAXIMIZED HORIZONTAL WIDTH (WIDE MARGINS UTILIZATION) ── */
+    .container {
+      width: 96%;
+      max-width: 1560px;
+      margin: 0 auto;
+      padding: 24px 8px 60px;
+    }
+
+    /* ── TOP MULTI-TONE ACCENT BORDER LINE ── */
+    .accent-top-bar {
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, var(--border-navy) 0%, var(--border-green) 50%, var(--border-navy) 100%);
+      border-radius: 999px;
+      margin-bottom: 24px;
+    }
+
+    /* ── FLOWING GRADIENT ANIMATION FOR HEADINGS (NAVY, EMERALD & ELECTRIC BLUE) ── */
+    @keyframes flowingTechNavyGreen {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* ── TOP HEADLINE TITLE & SUB-HEAD ── */
+    .top-headline-header {
+      background-color: var(--bg-white);
+      border: 2px solid var(--border-green);
+      border-left: 8px solid var(--color-navy-blue);
+      border-radius: 14px;
+      padding: 36px 40px;
+      margin-bottom: 36px;
+      box-shadow: 0 4px 20px rgba(5, 150, 105, 0.08);
+    }
+
+    .top-headline-title {
+      font-family: var(--font-heading);
+      background: linear-gradient(110deg, var(--color-navy) 0%, var(--color-navy-blue) 22%, var(--color-green) 48%, var(--color-green-light) 65%, #3B82F6 82%, var(--color-navy) 100%);
+      background-size: 260% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: flowingTechNavyGreen 6s ease-in-out infinite;
+      font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+      margin-bottom: 14px;
+    }
+
+    .top-headline-subhead {
+      font-family: var(--font-body);
+      color: var(--color-navy-blue);
+      font-size: clamp(1.05rem, 1.6vw, 1.22rem);
+      font-weight: 500;
+      line-height: 1.7;
+      max-width: 1250px;
+    }
+
+    /* ── SECTION STYLING WITH COLORED BORDER LINES ── */
+    .section-block {
+      margin-bottom: 48px;
+    }
+
+    .section-divider-line {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+      padding-bottom: 12px;
+      border-bottom: 3px solid var(--border-green);
+    }
+
+    .section-divider-line h2 {
+      font-family: var(--font-heading);
+      background: linear-gradient(110deg, var(--color-navy) 0%, var(--color-navy-blue) 25%, var(--color-green) 55%, var(--color-green-light) 75%, var(--color-navy) 100%);
+      background-size: 260% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: flowingTechNavyGreen 6s ease-in-out infinite;
+      font-size: clamp(1.4rem, 2.4vw, 1.95rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── 1ST SECTION: 4 ROWS OF IMAGES (TITLES ONLY BASED ON IMAGE NAME) ── */
+    .image-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .image-row {
+      background-color: var(--bg-white);
+      border: 2px solid var(--border-green);
+      border-top: 6px solid var(--border-green-dark);
+      border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(5, 150, 105, 0.08);
+      overflow: hidden;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .image-row:hover {
+      border-color: var(--color-green);
+      box-shadow: 0 8px 28px rgba(5, 150, 105, 0.16);
+    }
+
+    .image-title-bar {
+      padding: 16px 24px;
+      background: var(--bg-green-soft);
+      border-bottom: 2px solid var(--border-green);
+    }
+
+    .image-title-bar h3 {
+      font-family: var(--font-heading);
+      background: linear-gradient(110deg, var(--color-navy) 0%, var(--color-navy-blue) 28%, var(--color-green-dark) 58%, var(--color-green-light) 78%, var(--color-navy) 100%);
+      background-size: 260% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: flowingTechNavyGreen 6s ease-in-out infinite;
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .image-title-bar h3::before {
+      content: '';
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background: var(--color-green);
+      border-radius: 3px;
+      box-shadow: 0 0 6px var(--border-green);
+    }
+
+    .image-container {
+      padding: 20px;
+      background-color: var(--bg-white);
+      text-align: center;
+    }
+
+    .image-frame {
+      display: inline-block;
+      width: 100%;
+      border: 1.5px solid var(--border-green);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #FFFFFF;
+      cursor: zoom-in;
+      position: relative;
+    }
+
+    .image-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 850px;
+      object-fit: contain;
+      margin: 0 auto;
+      transition: transform 0.25s ease;
+    }
+
+    .image-frame:hover img {
+      transform: scale(1.012);
+    }
+
+    .zoom-badge {
+      position: absolute;
+      bottom: 12px;
+      right: 14px;
+      background: var(--color-navy);
+      color: #FFFFFF;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--border-green);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ── 2ND SECTION: EXACT DETAILS ROWS (1ST TO 4TH ROW VERBATIM) ── */
+    .details-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .details-row {
+      background-color: var(--bg-white);
+      border: 2px solid var(--border-navy);
+      border-left: 8px solid var(--color-navy-blue);
+      border-radius: 12px;
+      padding: 32px 36px;
+      box-shadow: 0 4px 18px rgba(10, 25, 47, 0.05);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .details-row:nth-child(even) {
+      border-color: var(--border-green);
+      border-left: 8px solid var(--border-green-dark);
+    }
+
+    .details-row:hover {
+      box-shadow: 0 8px 24px rgba(10, 25, 47, 0.1);
+    }
+
+    .details-heading {
+      font-family: var(--font-heading);
+      background: linear-gradient(110deg, var(--color-navy) 0%, var(--color-navy-blue) 25%, var(--color-green) 52%, var(--color-green-light) 72%, var(--color-navy) 100%);
+      background-size: 260% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: flowingTechNavyGreen 6s ease-in-out infinite;
+      font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .details-subheading {
+      font-family: var(--font-heading);
+      background: linear-gradient(110deg, var(--color-navy-blue) 0%, #3B82F6 30%, var(--color-green) 65%, var(--color-green-light) 85%, var(--color-navy-blue) 100%);
+      background-size: 260% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: flowingTechNavyGreen 6s ease-in-out infinite;
+      font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+      font-weight: 700;
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+    }
+
+    .details-text {
+      color: var(--color-navy-text);
+      font-size: clamp(1rem, 1.5vw, 1.12rem);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .details-text:last-child {
+      margin-bottom: 0;
+    }
+
+    .details-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .details-list li {
+      position: relative;
+      padding-left: 28px;
+      color: var(--color-navy-text);
+      font-size: clamp(0.98rem, 1.5vw, 1.1rem);
+      line-height: 1.8;
+    }
+
+    .details-list li::before {
+      content: '■';
+      position: absolute;
+      left: 6px;
+      top: 0px;
+      color: var(--color-green);
+      font-size: 0.85rem;
+    }
+
+    .details-list li strong {
+      color: var(--color-navy);
+      font-weight: 700;
+    }
+
+    /* ── SECTION: PROJECT INFORMATION (DARK NEON GLOW PORTRAIT CARD) ── */
+    .project-info-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 24px 0 32px;
+    }
+
+    .project-info-card-portrait {
+      width: 100%;
+      max-width: 440px;
+      background: radial-gradient(circle at 50% 10%, #152f3c 0%, #0a1822 100%);
+      border: 1px solid rgba(48, 86, 104, 0.55);
+      border-radius: 28px;
+      padding: 24px 20px 28px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(22, 58, 68, 0.35);
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .pinfo-header {
+      width: 100%;
+      margin-bottom: 2px;
+    }
+
+    .pinfo-neon-pill {
+      display: block;
+      width: 100%;
+      background: #c6ff00;
+      color: #0c1a24;
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      text-align: center;
+      padding: 12px 20px;
+      border-radius: 999px;
+      box-shadow: 0 0 22px rgba(198, 255, 0, 0.45);
+      border: none;
+      user-select: none;
+    }
+
+    .pinfo-item-box {
+      background: #172632;
+      border: 1px solid rgba(52, 82, 100, 0.65);
+      border-radius: 16px;
+      padding: 14px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      transition: border-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .pinfo-item-box:hover {
+      border-color: rgba(198, 255, 0, 0.4);
+    }
+
+    .pinfo-box-label {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+
+    .pinfo-box-val {
+      font-family: 'JetBrains Mono', 'Fira Code', var(--font-mono), monospace;
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      letter-spacing: 0.01em;
+      line-height: 1.45;
+    }
+
+    .pinfo-sub-desc {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: #8fa0af;
+      margin-top: 4px;
+      padding-left: 8px;
+      border-left: 2px solid rgba(198, 255, 0, 0.35);
+    }
+
+    .pinfo-impact-box {
+      background: #172632;
+      border: 1px solid rgba(52, 82, 100, 0.65);
+      border-radius: 16px;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: border-color 0.2s ease;
+    }
+
+    .pinfo-impact-box:hover {
+      border-color: rgba(250, 204, 21, 0.45);
+    }
+
+    .pinfo-impact-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #facc15;
+      font-family: 'JetBrains Mono', var(--font-mono), monospace;
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .pinfo-impact-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #facc15;
+    }
+
+    .pinfo-impact-text {
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: #cbd5e1;
+      margin: 0;
+    }
+
+    .pinfo-impact-highlight {
+      color: #facc15;
+      font-weight: 800;
+    }
+
+    /* ── FOOTER ── */
+    footer.page-footer {
+      margin-top: 64px;
+      padding: 24px 16px 44px;
+      border: none;
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 28px;
+    }
+
+    .footer-logos {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: nowrap;
+    }
+
+    /* Circular avatar images without box container */
+    .footer-avatar {
+      width: 2in;
+      height: 2in;
+      min-width: 2in;
+      min-height: 2in;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 3px solid var(--border-green);
+      box-shadow: 0 4px 16px rgba(5, 150, 105, 0.18);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .footer-avatar:hover {
+      transform: scale(1.05);
+      border-color: var(--border-navy);
+      box-shadow: 0 6px 20px rgba(10, 25, 47, 0.22);
+    }
+
+    .footer-text-group {
+      width: 100%;
+      max-width: 960px;
+      border: none;
+      padding-top: 8px;
+    }
+
+    .footer-heading {
+      font-family: var(--font-heading);
+      background: linear-gradient(110deg, var(--color-navy) 0%, var(--color-navy-blue) 28%, var(--color-green) 58%, var(--color-green-light) 78%, var(--color-navy) 100%);
+      background-size: 260% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: flowingTechNavyGreen 6s ease-in-out infinite;
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 10px;
+    }
+
+    .footer-subheading {
+      font-family: var(--font-body);
+      color: var(--color-green-dark);
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      font-weight: 600;
+    }
+
+    .footer-collab {
+      font-family: var(--font-body);
+      color: #1E3A8A;
+      font-size: clamp(0.92rem, 1.4vw, 1.05rem);
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+    .footer-collab .collab-name {
+      color: #0284C7;
+      font-weight: 700;
+    }
+
+    /* ── LIGHTBOX MODAL ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background-color: rgba(10, 25, 47, 0.94);
+      backdrop-filter: blur(5px);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-box {
+      position: relative;
+      max-width: 95vw;
+      max-height: 95vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .lightbox-box img {
+      max-width: 92vw;
+      max-height: 84vh;
+      border: 2px solid var(--border-green);
+      border-radius: 8px;
+      background-color: #FFFFFF;
+      object-fit: contain;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .lightbox-caption {
+      margin-top: 14px;
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      background: rgba(16, 185, 129, 0.2);
+      border: 1.5px solid var(--border-green);
+      padding: 6px 20px;
+      border-radius: 999px;
+    }
+
+    .lightbox-close-btn {
+      position: absolute;
+      top: -44px;
+      right: 0;
+      background: var(--color-green);
+      color: #FFFFFF;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      transition: background 0.2s ease;
+    }
+
+    .lightbox-close-btn:hover {
+      background: var(--color-green-light);
+    }
+
+    /* ── RESPONSIVE RULES ── */
+    @media (max-width: 768px) {
+      .container {
+        width: 100%;
+        padding: 16px 10px 40px;
+      }
+
+      .details-row {
+        padding: 22px 18px;
+      }
+
+      .image-title-bar {
+        padding: 14px 18px;
+      }
+
+      .image-container {
+        padding: 14px;
+      }
+
+      footer.page-footer {
+        padding: 24px 12px 18px;
+        gap: 16px;
+      }
+
+      .footer-logos {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .footer-avatar {
+        width: clamp(68px, 20vw, 88px);
+        height: clamp(68px, 20vw, 88px);
+        min-width: unset;
+        min-height: unset;
+        border-width: 2.5px;
+      }
+
+      .footer-text-group {
+        padding-top: 14px;
+        max-width: 100%;
+      }
+
+      .footer-heading {
+        font-size: clamp(0.82rem, 3.6vw, 0.98rem);
+        line-height: 1.35;
+        margin-bottom: 5px;
+      }
+
+      .footer-subheading {
+        font-size: clamp(0.72rem, 2.9vw, 0.84rem);
+        line-height: 1.45;
+      }
+
+      .footer-collab {
+        font-size: clamp(0.70rem, 2.7vw, 0.80rem);
+        margin-top: 5px;
+      }
+
+      .top-headline-header {
+        padding: 22px 18px;
+      }
+
+      .project-info-card-portrait {
+        padding: 22px 16px;
+        max-width: 390px;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="accent-top-bar"></div>
+
+    <!-- ── TOP HEADLINE TITLE & SUB-HEAD ── -->
+    <header class="top-headline-header">
+      <h1 class="top-headline-title">Techsavvy Satellite — Cross-Platform RevOps Automation</h1>
+      <p class="top-headline-subhead">Streamlining Field Service Operations, Eliminating Dispatch Overhead, and Bridging
+        Real-Time Communication Between Technicians, Office Teams, and Clients. </p>
+    </header>
+
+    <!-- ── 1ST SECTION: IMAGES (ROWS 1 TO 4, TITLE ONLY BASED ON IMAGE NAME) ── -->
+    <section class="section-block">
+      <div class="image-flow">
+
+        <!-- 1st row -->
+        <div class="image-row">
+          <div class="image-title-bar">
+            <h3>01. Booking to Dispatch</h3>
+          </div>
+          <div class="image-container">
+            <div class="image-frame"
+              onclick="viewImage('01. Images - Techsavvy Satellite/01. Booking to Dispatch.webp', '01. Booking to Dispatch')">
+              <img src="01. Images - Techsavvy Satellite/01. Booking to Dispatch.webp" alt="01. Booking to Dispatch"
+                loading="lazy">
+              <div class="zoom-badge">🔍 Zoom View</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2nd row -->
+        <div class="image-row">
+          <div class="image-title-bar">
+            <h3>02. Slack Job Completion</h3>
+          </div>
+          <div class="image-container">
+            <div class="image-frame"
+              onclick="viewImage('01. Images - Techsavvy Satellite/02. Slack Job Completion.webp', '02. Slack Job Completion')">
+              <img src="01. Images - Techsavvy Satellite/02. Slack Job Completion.webp" alt="02. Slack Job Completion"
+                loading="lazy">
+              <div class="zoom-badge">🔍 Zoom View</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3rd Row -->
+        <div class="image-row">
+          <div class="image-title-bar">
+            <h3>03. Customer Confirmation Handler</h3>
+          </div>
+          <div class="image-container">
+            <div class="image-frame"
+              onclick="viewImage('01. Images - Techsavvy Satellite/03. Customer Confirmation Handler.webp', '03. Customer Confirmation Handler')">
+              <img src="01. Images - Techsavvy Satellite/03. Customer Confirmation Handler.webp"
+                alt="03. Customer Confirmation Handler" loading="lazy">
+              <div class="zoom-badge">🔍 Zoom View</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4th row -->
+        <div class="image-row">
+          <div class="image-title-bar">
+            <h3>Slacks Test Sample results</h3>
+          </div>
+          <div class="image-container">
+            <div class="image-frame"
+              onclick="viewImage('01. Images - Techsavvy Satellite/Slacks Test Sample results.webp', 'Slacks Test Sample results')">
+              <img src="01. Images - Techsavvy Satellite/Slacks Test Sample results.webp"
+                alt="Slacks Test Sample results" loading="lazy">
+              <div class="zoom-badge">🔍 Zoom View</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 2ND SECTION: EXACT DETAILS (ROWS 1 TO 4 VERBATIM) ── -->
+    <section class="section-block">
+      <div class="details-flow">
+
+        <!-- 1st row -->
+        <div class="details-row">
+          <h3 class="details-heading">Introduction</h3>
+          <h4 class="details-subheading">Techsavvy Satellite — Cross-Platform RevOps Automation</h4>
+          <p class="details-text">Techsavvy Satellite needed to streamline its field service operations and bridge
+            communication gaps between technicians, office staff, and customers during service dispatch calls.</p>
+        </div>
+
+        <!-- 2nd row -->
+        <div class="details-row">
+          <h3 class="details-heading">Challenges</h3>
+          <ul class="details-list">
+            <li><strong>Manual Dispatch Overhead:</strong> Office managers had to manually create tasks, assign
+              technicians, and update client records across multiple platforms.</li>
+            <li><strong>Communication Friction:</strong> Internal teams lacked real-time visibility into field
+              technician statuses, leading to delayed project tracking and miscommunication.</li>
+            <li><strong>Poor Customer Transparency:</strong> Clients had no real-time status updates on technician
+              arrival times, resulting in repetitive support inquiries and missed appointments.</li>
+          </ul>
+        </div>
+
+        <!-- 3rd row -->
+        <div class="details-row">
+          <h3 class="details-heading">The Solution</h3>
+          <p class="details-text">Engineered a custom, 24/7 digital intake platform paired with an automated pipeline
+            process to educate prospects and capture leads effortlessly:</p>
+          <ul class="details-list">
+            <li><strong>24/7 Intake Website:</strong> Built a professional, responsive site that captures client
+              inquiries around the clock and offers downloadable legal guides to educate visitors upfront.</li>
+            <li><strong>Automated Data Pipeline:</strong> Connected custom web forms directly to a real-time Google
+              Sheets database, logging incoming inquiries and client details instantly without manual data entry.</li>
+            <li><strong>Streamlined Workflow:</strong> Created an initial response system to acknowledge lead
+              submissions immediately and neatly organize incoming cases for the legal team.</li>
+          </ul>
+        </div>
+
+        <!-- 4th row -->
+        <div class="details-row">
+          <h3 class="details-heading">The Results</h3>
+          <ul class="details-list">
+            <li><strong>Continuous Client Acquisition:</strong> Transformed the firm from a physical-only practice into
+              an online engine capable of capturing leads 24 hours a day, 7 days a week.</li>
+            <li><strong>Full Pipeline Visibility:</strong> Provided the legal team with an organized, real-time
+              dashboard to track intake statuses, follow-ups, and prospective client details effortlessly.</li>
+            <li><strong>Cost-Efficient Delivery:</strong> Built the entire infrastructure using lightweight,
+              cost-effective tools that eliminated recurring software overhead for the firm.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── SECTION: PROJECT INFORMATION (DARK NEON GLOW PORTRAIT CARD) ── -->
+    <section class="section-block project-info-section">
+      <div class="project-info-card-portrait">
+        <div class="pinfo-header">
+          <div class="pinfo-neon-pill">Project Information</div>
+        </div>
+
+        <!-- Client Name -->
+        <div class="pinfo-item-box">
+          <span class="pinfo-box-label">Client Name:</span>
+          <span class="pinfo-box-val">Mr. Daniel Langford</span>
+        </div>
+
+        <!-- Business Name -->
+        <div class="pinfo-item-box">
+          <span class="pinfo-box-label">Business Name:</span>
+          <span class="pinfo-box-val">Techsavvy Satellite</span>
+        </div>
+
+        <!-- Date Started -->
+        <div class="pinfo-item-box">
+          <span class="pinfo-box-label">Date Started:</span>
+          <span class="pinfo-box-val">September 2025: Setup &amp; Building</span>
+        </div>
+
+        <!-- Date Launch -->
+        <div class="pinfo-item-box">
+          <span class="pinfo-box-label">Date Launch:</span>
+          <span class="pinfo-box-val">October – November 2025: Testing &amp; Support</span>
+        </div>
+
+        <!-- IMPACT -->
+        <div class="pinfo-impact-box">
+          <div class="pinfo-impact-header">
+            <span class="pinfo-impact-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                <polyline points="17 6 23 6 23 12"></polyline>
+              </svg>
+            </span>
+            IMPACT
+          </div>
+          <p class="pinfo-impact-text">Modernized field service operations into an automated cross-platform engine,
+            cutting manual dispatch overhead by <span class="pinfo-impact-highlight">100%</span> and bridging real-time
+            communication between technicians, office teams, and clients.</p>
+        </div>
+
+        <!-- Automation Specialist -->
+        <div class="pinfo-item-box">
+          <span class="pinfo-box-label">Automation Specialist:</span>
+          <span class="pinfo-box-val">Kent Brian Jintapa &amp; Mark Dalumpines</span>
+        </div>
+
+        <!-- Collaboration -->
+        <div class="pinfo-item-box">
+          <span class="pinfo-box-label">Collaboration:</span>
+          <span class="pinfo-box-val">Joyce Ann Yap &amp; Errol John Peusca</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer class="page-footer">
+      <div class="footer-logos">
+        <img class="footer-avatar" src="LOGO TEAM COLLAB/01. Mark Dalumpines.png" alt="Mark Dalumpines">
+        <img class="footer-avatar" src="LOGO TEAM COLLAB/03. Kent Brian Jintapa.png" alt="Kent Brian Jintapa">
+      </div>
+
+      <div class="footer-text-group">
+        <div class="footer-heading">Techsavvy Satellite — Cross-Platform RevOps Automation Case Study</div>
+        <div class="footer-subheading">Automate and built by Mark Dalumpines and Kent Jintapa .</div>
+    </footer>
+
+  </div>
+
+  <!-- ── LIGHTBOX MODAL ── -->
+  <div class="lightbox" id="lightbox" onclick="closeImage(event)">
+    <div class="lightbox-box" onclick="event.stopPropagation()">
+      <button class="lightbox-close-btn" onclick="closeImage(event)" aria-label="Close Preview">&times;</button>
+      <img id="lightboxImg" src="" alt="Enlarged Preview">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <script>
+    function viewImage(src, caption) {
+      const modal = document.getElementById('lightbox');
+      const img = document.getElementById('lightboxImg');
+      const cap = document.getElementById('lightboxCaption');
+      img.src = src;
+      cap.textContent = caption;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeImage(e) {
+      const modal = document.getElementById('lightbox');
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closeImage();
+      }
+    });
+  </script>
+
+</body>
+
+</html>

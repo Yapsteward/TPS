@@ -1,0 +1,2035 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquino & Co. Law Firm — 24/7 Digital Legal Intake Engine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0d1b3e;
+            --navy-dark: #08122a;
+            --navy-light: #182d61;
+            --navy-subtle: #f4f6fb;
+
+            --gold: #c9a027;
+            --gold-light: #e0b435;
+            --gold-dark: #a6821a;
+            --gold-subtle: rgba(201, 160, 39, 0.1);
+
+            --white: #ffffff;
+            --border-gray: #e2e8f0;
+            --border-gold: #c9a027;
+            --border-navy: #0d1b3e;
+            --text-muted: #475569;
+            --text-body: #1e293b;
+
+            --font-body: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+            --font-heading: 'Space Grotesk', system-ui, sans-serif;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-body);
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* ── MAXIMIZED HORIZONTAL WIDTH ── */
+        .container {
+            width: 98%;
+            max-width: 1680px;
+            margin: 0 auto;
+            padding: 16px 6px 48px;
+        }
+
+        /* ── TOP MULTI-TONE ACCENT BORDER LINE ── */
+        .accent-top-bar {
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--navy) 0%, var(--gold) 50%, var(--navy) 100%);
+            border-radius: 999px;
+            margin-bottom: 24px;
+        }
+
+        /* ── FLOWING GRADIENT ANIMATION FOR HEADINGS (NAVY & GOLD) ── */
+        @keyframes flowingGoldNavy {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* ── TOP HEADLINE TITLE & SUB-HEAD ── */
+        .top-headline-header {
+            background-color: var(--white);
+            border: 2px solid var(--gold);
+            border-left: 8px solid var(--navy);
+            border-radius: 14px;
+            padding: 36px 40px;
+            margin-bottom: 36px;
+            box-shadow: 0 4px 20px rgba(13, 27, 62, 0.07);
+        }
+
+        .top-headline-title {
+            font-family: var(--font-heading);
+            background: linear-gradient(110deg, var(--navy) 0%, #1e3a8a 25%, var(--gold) 50%, var(--gold-light) 68%, var(--navy) 100%);
+            background-size: 260% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowingGoldNavy 6s ease-in-out infinite;
+            font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+            font-weight: 800;
+            line-height: 1.25;
+            letter-spacing: -0.025em;
+            margin-bottom: 14px;
+        }
+
+        .top-headline-subhead {
+            font-family: var(--font-body);
+            color: var(--navy-light);
+            font-size: clamp(1.05rem, 1.6vw, 1.22rem);
+            font-weight: 500;
+            line-height: 1.7;
+            max-width: 1250px;
+        }
+
+        /* ── SECTION COMMON STYLING ── */
+        .section-block {
+            margin-bottom: 48px;
+        }
+
+        .section-divider-line {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .section-divider-line h2 {
+            font-family: var(--font-heading);
+            background: linear-gradient(110deg, var(--navy) 0%, #1e3a8a 28%, var(--gold) 58%, var(--gold-light) 75%, var(--navy) 100%);
+            background-size: 260% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowingGoldNavy 6s ease-in-out infinite;
+            font-size: clamp(1.4rem, 2.4vw, 1.95rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* ── SECTION 1: PICTURE ROWS (UNBOXED & MAXIMIZED) ── */
+        .picture-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .unboxed-image-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background: transparent;
+        }
+
+        .unboxed-image-title {
+            font-family: var(--font-heading);
+            background: linear-gradient(110deg, var(--navy) 0%, #1e3a8a 30%, var(--gold) 60%, var(--gold-dark) 85%, var(--navy) 100%);
+            background-size: 260% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowingGoldNavy 6s ease-in-out infinite;
+            font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 4px 0;
+        }
+
+        .unboxed-image-title::before {
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 2px;
+            box-shadow: 0 0 6px var(--gold);
+        }
+
+        .unboxed-frame {
+            position: relative;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #ffffff;
+            cursor: zoom-in;
+            border: 1.5px solid rgba(201, 160, 39, 0.45);
+            box-shadow: 0 4px 16px rgba(13, 27, 62, 0.08);
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .unboxed-frame:hover {
+            border-color: var(--navy);
+            box-shadow: 0 8px 24px rgba(13, 27, 62, 0.16);
+        }
+
+        .unboxed-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 900px;
+            object-fit: contain;
+            margin: 0 auto;
+            transition: transform 0.25s ease;
+        }
+
+        .unboxed-frame:hover img {
+            transform: scale(1.01);
+        }
+
+        .zoom-badge {
+            position: absolute;
+            bottom: 12px;
+            right: 14px;
+            background: var(--navy);
+            color: var(--white);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--gold);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+            z-index: 2;
+        }
+
+        /* 2nd row: 3 Columns Grid (Maximized Width & Reduced Spacing) */
+        .grid-3-col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            width: 100%;
+        }
+
+        .grid-3-col .unboxed-frame img {
+            max-height: 600px;
+        }
+
+        /* ── SECTION TAG IN SECTION DIVIDER ── */
+        .section-tag {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--gold);
+            border: 1.5px solid var(--gold);
+            padding: 3px 12px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            background: var(--gold-subtle);
+            margin-left: auto;
+        }
+
+        /* ── PROOF AUTO-SLIDER SECTION (UNBOXED & MAXIMIZED) ── */
+        .proof-slider-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            width: 100%;
+        }
+
+        .proof-unboxed-row {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: transparent;
+        }
+
+        .slider-viewport {
+            position: relative;
+            width: 100%;
+            height: 560px;
+            background: #ffffff;
+            border-radius: 10px;
+            border: 1.5px solid rgba(201, 160, 39, 0.45);
+            box-shadow: 0 4px 18px rgba(13, 27, 62, 0.08);
+            overflow: hidden;
+            user-select: none;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .slider-viewport:hover {
+            border-color: var(--navy);
+            box-shadow: 0 8px 26px rgba(13, 27, 62, 0.15);
+        }
+
+        .slider-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* CSS Auto Slide Animation for 2 slides (Row 1) */
+        .track-2.is-animating {
+            animation: autoSlide2 8s ease-in-out infinite;
+        }
+
+        @keyframes autoSlide2 {
+
+            0%,
+            44% {
+                transform: translateX(0%);
+            }
+
+            50%,
+            94% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(0%);
+            }
+        }
+
+        /* CSS Auto Slide Animation for 3 slides (Row 2) */
+        .track-3.is-animating {
+            animation: autoSlide3 12s ease-in-out infinite;
+        }
+
+        @keyframes autoSlide3 {
+
+            0%,
+            28% {
+                transform: translateX(0%);
+            }
+
+            33%,
+            61% {
+                transform: translateX(-100%);
+            }
+
+            66%,
+            94% {
+                transform: translateX(-200%);
+            }
+
+            100% {
+                transform: translateX(0%);
+            }
+        }
+
+        /* Pause auto-slide on hover */
+        .slider-viewport:hover .slider-track {
+            animation-play-state: paused;
+        }
+
+        .slider-slide {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: zoom-in;
+            padding: 16px;
+            background: #ffffff;
+        }
+
+        .slider-slide img {
+            max-width: 98%;
+            max-height: 94%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 6px;
+            box-shadow: 0 2px 12px rgba(13, 27, 62, 0.08);
+            border: 1px solid var(--border-gray);
+            transition: transform 0.25s ease;
+        }
+
+        .slider-slide:hover img {
+            transform: scale(1.015);
+        }
+
+        .slide-badge {
+            position: absolute;
+            top: 16px;
+            left: 20px;
+            background: var(--navy);
+            color: var(--gold-light);
+            border: 1px solid var(--gold);
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(13, 27, 62, 0.2);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .slide-zoom-pill {
+            position: absolute;
+            bottom: 16px;
+            right: 20px;
+            background: rgba(13, 27, 62, 0.88);
+            color: #ffffff;
+            border: 1px solid var(--gold);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 5px 14px;
+            border-radius: 6px;
+            pointer-events: none;
+            z-index: 2;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Slider Controls (Prev / Next & Dots) */
+        .slider-controls {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .slider-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(13, 27, 62, 0.85);
+            border: 1.5px solid var(--gold);
+            color: var(--gold);
+            font-size: 1.6rem;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            pointer-events: auto;
+            transition: background 0.2s ease, transform 0.15s ease, color 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .slider-btn:hover {
+            background: var(--gold);
+            color: var(--navy);
+            transform: scale(1.08);
+        }
+
+        .slider-indicators {
+            position: absolute;
+            bottom: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            pointer-events: auto;
+            z-index: 4;
+        }
+
+        .slider-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(13, 27, 62, 0.4);
+            border: 1.5px solid var(--gold);
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease, width 0.2s ease;
+        }
+
+        .slider-dot.active {
+            background: var(--gold);
+            width: 24px;
+            border-radius: 8px;
+        }
+
+        /* Brief info row below pictures */
+        .proof-info-banner {
+            background: linear-gradient(135deg, var(--navy-subtle) 0%, #ffffff 100%);
+            border: 1.5px solid rgba(201, 160, 39, 0.35);
+            border-left: 5px solid var(--gold);
+            border-radius: 8px;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 2px 10px rgba(13, 27, 62, 0.04);
+        }
+
+        .proof-info-banner .info-icon {
+            font-size: 1.35rem;
+            flex-shrink: 0;
+            color: var(--gold);
+        }
+
+        .proof-info-banner p {
+            font-family: var(--font-body);
+            color: var(--navy);
+            font-size: clamp(0.90rem, 1.3vw, 1.02rem);
+            font-weight: 600;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ── SECTION: PROJECT INFORMATION (DARK NEON GLOW PORTRAIT CARD) ── */
+        .project-info-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 24px 0 32px;
+        }
+
+        .project-info-card-portrait {
+            width: 100%;
+            max-width: 440px;
+            background: radial-gradient(circle at 50% 10%, #152f3c 0%, #0a1822 100%);
+            border: 1px solid rgba(48, 86, 104, 0.55);
+            border-radius: 28px;
+            padding: 24px 20px 28px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(22, 58, 68, 0.35);
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .pinfo-header {
+            width: 100%;
+            margin-bottom: 2px;
+        }
+
+        .pinfo-neon-pill {
+            display: block;
+            width: 100%;
+            background: #c6ff00;
+            color: #0c1a24;
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: 999px;
+            box-shadow: 0 0 22px rgba(198, 255, 0, 0.45);
+            border: none;
+            user-select: none;
+        }
+
+        .pinfo-item-box {
+            background: #172632;
+            border: 1px solid rgba(52, 82, 100, 0.65);
+            border-radius: 16px;
+            padding: 14px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            transition: border-color 0.2s ease, transform 0.15s ease;
+        }
+
+        .pinfo-item-box:hover {
+            border-color: rgba(198, 255, 0, 0.4);
+        }
+
+        .pinfo-box-label {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+
+        .pinfo-box-val {
+            font-family: 'JetBrains Mono', 'Fira Code', var(--font-mono), monospace;
+            font-size: 0.94rem;
+            font-weight: 600;
+            color: #cbd5e1;
+            letter-spacing: 0.01em;
+            line-height: 1.45;
+        }
+
+        .pinfo-sub-desc {
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            line-height: 1.45;
+            color: #8fa0af;
+            margin-top: 4px;
+            padding-left: 8px;
+            border-left: 2px solid rgba(198, 255, 0, 0.35);
+        }
+
+        .pinfo-impact-box {
+            background: #172632;
+            border: 1px solid rgba(52, 82, 100, 0.65);
+            border-radius: 16px;
+            padding: 16px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: border-color 0.2s ease;
+        }
+
+        .pinfo-impact-box:hover {
+            border-color: rgba(250, 204, 21, 0.45);
+        }
+
+        .pinfo-impact-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #facc15;
+            font-family: 'JetBrains Mono', var(--font-mono), monospace;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .pinfo-impact-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #facc15;
+        }
+
+        .pinfo-impact-text {
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            line-height: 1.55;
+            color: #cbd5e1;
+            margin: 0;
+        }
+
+        .pinfo-impact-highlight {
+            color: #facc15;
+            font-weight: 800;
+        }
+
+        /* ── SECTION 2: CASE STUDY DETAILS (EXACT COPY) ── */
+        .details-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .details-row {
+            background-color: var(--white);
+            border: 2px solid var(--navy);
+            border-left: 8px solid var(--navy);
+            border-radius: 12px;
+            padding: 32px 36px;
+            box-shadow: 0 4px 18px rgba(13, 27, 62, 0.05);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .details-row:nth-child(even) {
+            border-color: var(--gold);
+            border-left: 8px solid var(--gold);
+        }
+
+        .details-row:hover {
+            box-shadow: 0 8px 24px rgba(13, 27, 62, 0.1);
+        }
+
+        .details-heading {
+            font-family: var(--font-heading);
+            background: linear-gradient(110deg, var(--navy) 0%, #1e3a8a 25%, var(--gold) 55%, var(--gold-light) 75%, var(--navy) 100%);
+            background-size: 260% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowingGoldNavy 6s ease-in-out infinite;
+            font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .details-subheading {
+            font-family: var(--font-heading);
+            background: linear-gradient(110deg, var(--gold-dark) 0%, var(--gold) 35%, #1e3a8a 70%, var(--navy) 100%);
+            background-size: 260% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowingGoldNavy 6s ease-in-out infinite;
+            font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+            font-weight: 700;
+            margin-bottom: 14px;
+            letter-spacing: -0.01em;
+        }
+
+        .details-text {
+            color: var(--text-body);
+            font-size: clamp(1rem, 1.5vw, 1.12rem);
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .details-text:last-child {
+            margin-bottom: 0;
+        }
+
+        .details-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .details-list li {
+            position: relative;
+            padding-left: 28px;
+            color: var(--text-body);
+            font-size: clamp(0.98rem, 1.5vw, 1.1rem);
+            line-height: 1.8;
+        }
+
+        .details-list li::before {
+            content: '■';
+            position: absolute;
+            left: 6px;
+            top: 0px;
+            color: var(--gold);
+            font-size: 0.85rem;
+        }
+
+        .details-list li strong {
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        /* ── SECTION 3: BUILT BEHIND THE SCENES (FROM 01.LAWFIRMCASETUDIES.HTML) ── */
+        .vsc-section {
+            padding: 36px 0 8px;
+            background: var(--white);
+            border-radius: 14px;
+        }
+
+        .vsc-section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        .section-num {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: var(--gold-subtle);
+            border: 1px solid rgba(201, 160, 39, 0.35);
+            border-radius: 20px;
+            padding: 4px 14px;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .vsc-section-inner h2 {
+            font-family: var(--font-serif);
+            font-weight: 800;
+            background: linear-gradient(110deg, var(--navy) 0%, #1e3a8a 28%, var(--gold) 58%, var(--gold-light) 75%, var(--navy) 100%);
+            background-size: 260% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowingGoldNavy 6s ease-in-out infinite;
+            font-size: clamp(26px, 3.8vw, 42px);
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .gold-rule {
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+            margin-bottom: 36px;
+            border-radius: 2px;
+        }
+
+        .flow-section {
+            padding: 10px 0;
+        }
+
+        .flow-row {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            margin-bottom: 56px;
+        }
+
+        .flow-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .flow-card {
+            background: #ffffff;
+            border: 1.5px solid rgba(201, 160, 39, 0.4);
+            border-radius: 14px;
+            padding: 22px;
+            box-shadow: 0 8px 24px rgba(13, 27, 62, 0.08);
+            flex: 0 0 auto;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .flow-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 12px 32px rgba(201, 160, 39, 0.2);
+        }
+
+        .flow-group-num {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: rgba(201, 160, 39, 0.1);
+            border: 1px solid rgba(201, 160, 39, 0.3);
+            border-radius: 20px;
+            padding: 3px 11px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .flow-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--navy);
+        }
+
+        .flow-label::before {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .flow-scale {
+            overflow: hidden;
+            border-radius: 8px;
+            background: #fbfbfa;
+            border: 1px solid #f0ede6;
+        }
+
+        .flow-canvas {
+            position: relative;
+        }
+
+        .flow-canvas svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .flow-canvas .flow-path {
+            fill: none;
+            stroke: var(--gold);
+            stroke-width: 1.6;
+            stroke-dasharray: 5 6;
+            opacity: 0.65;
+        }
+
+        .flow-canvas .joint-dot {
+            fill: var(--gold);
+        }
+
+        .flow-canvas .travel-dot {
+            fill: var(--gold);
+            filter: drop-shadow(0 0 3px rgba(201, 160, 39, 0.8));
+        }
+
+        .flow-node {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 150px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .flow-node .icon-box {
+            position: relative;
+            width: 58px;
+            height: 58px;
+            border-radius: 16px;
+            background: #ffffff;
+            border: 1.5px solid var(--border-gray);
+            box-shadow: 0 6px 16px rgba(13, 27, 62, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+        }
+
+        .flow-node.key .icon-box {
+            border-color: var(--gold);
+            box-shadow: 0 6px 20px rgba(201, 160, 39, 0.28);
+        }
+
+        .flow-node .icon-box::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 2px solid var(--border-gray);
+            z-index: 2;
+        }
+
+        .flow-node.key .icon-box::before {
+            border-color: var(--gold);
+        }
+
+        .flow-node .icon-box svg {
+            position: relative;
+            z-index: 1;
+            width: 26px;
+            height: 26px;
+            stroke: currentColor;
+            stroke-width: 1.7;
+            fill: none;
+        }
+
+        .flow-node .n-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-top: 10px;
+            color: var(--navy);
+        }
+
+        .flow-node .n-sub {
+            font-size: 0.66rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+            line-height: 1.4;
+        }
+
+        /* horizontal connector with animated dot */
+        .h-connector {
+            position: absolute;
+            height: 2px;
+            background-image: linear-gradient(90deg, var(--gold) 0 6px, transparent 6px 13px);
+            background-size: 13px 2px;
+            z-index: 0;
+        }
+
+        .h-connector .h-dot {
+            position: absolute;
+            top: 50%;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--gold);
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 6px rgba(201, 160, 39, 0.7);
+            animation: hMove 2.6s linear infinite;
+        }
+
+        @keyframes hMove {
+            from {
+                left: 0%;
+            }
+
+            to {
+                left: 100%;
+            }
+        }
+
+        /* explanation text */
+        .flow-text {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            min-width: 0;
+            padding-top: 6px;
+            border-left: 3px solid var(--gold);
+            padding-left: 28px;
+        }
+
+        .flow-row.reverse .flow-text {
+            border-left: none;
+            border-right: 3px solid var(--gold);
+            padding-left: 0;
+            padding-right: 28px;
+        }
+
+        .flow-text h2 {
+            font-family: var(--font-serif);
+            font-size: 1.45rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            background: linear-gradient(110deg, var(--navy) 0%, #1e3a8a 30%, var(--gold) 60%, var(--gold-dark) 85%, var(--navy) 100%);
+            background-size: 260% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowingGoldNavy 6s ease-in-out infinite;
+        }
+
+        .flow-text p {
+            font-size: 0.94rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* ── FOOTER ── */
+        footer.page-footer {
+            margin-top: 64px;
+            padding: 24px 16px 44px;
+            border: none;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 28px;
+        }
+
+        .footer-logos {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: nowrap;
+        }
+
+        .footer-avatar {
+            width: 2in;
+            height: 2in;
+            min-width: 2in;
+            min-height: 2in;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 3px solid var(--gold);
+            box-shadow: 0 4px 16px rgba(201, 160, 39, 0.22);
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .footer-avatar:hover {
+            transform: scale(1.05);
+            border-color: var(--navy);
+            box-shadow: 0 6px 20px rgba(13, 27, 62, 0.25);
+        }
+
+        .footer-text-group {
+            width: 100%;
+            max-width: 960px;
+            border: none;
+            padding-top: 8px;
+        }
+
+        .footer-heading {
+            font-family: var(--font-heading);
+            background: linear-gradient(110deg, var(--navy) 0%, #1e3a8a 30%, var(--gold) 60%, var(--gold-light) 78%, var(--navy) 100%);
+            background-size: 260% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowingGoldNavy 6s ease-in-out infinite;
+            font-size: clamp(1.15rem, 2vw, 1.45rem);
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            margin-bottom: 10px;
+        }
+
+        .footer-subheading {
+            font-family: var(--font-body);
+            color: var(--gold-dark);
+            font-size: clamp(1rem, 1.6vw, 1.15rem);
+            font-weight: 600;
+        }
+
+        .footer-collab {
+            font-family: var(--font-body);
+            color: var(--navy);
+            font-size: clamp(0.92rem, 1.4vw, 1.05rem);
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        .footer-collab .collab-name {
+            color: var(--gold-dark);
+            font-weight: 700;
+        }
+
+        /* ── LIGHTBOX MODAL ── */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background-color: rgba(13, 27, 62, 0.94);
+            backdrop-filter: blur(5px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-box {
+            position: relative;
+            max-width: 95vw;
+            max-height: 95vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-box img {
+            max-width: 92vw;
+            max-height: 84vh;
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            background-color: var(--white);
+            object-fit: contain;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .lightbox-caption {
+            margin-top: 14px;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--white);
+            background: rgba(201, 160, 39, 0.25);
+            border: 1.5px solid var(--gold);
+            padding: 6px 20px;
+            border-radius: 999px;
+        }
+
+        .lightbox-close-btn {
+            position: absolute;
+            top: -44px;
+            right: 0;
+            background: var(--gold);
+            color: var(--navy);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: background 0.2s ease;
+        }
+
+        .lightbox-close-btn:hover {
+            background: var(--gold-light);
+        }
+
+        /* ── RESPONSIVE RULES ── */
+        @media (max-width: 992px) {
+            .grid-3-col {
+                grid-template-columns: 1fr;
+            }
+
+            .flow-row,
+            .flow-row.reverse {
+                flex-direction: column;
+                gap: 28px;
+                margin-bottom: 48px;
+                align-items: stretch;
+            }
+
+            .flow-card {
+                width: 100% !important;
+                max-width: 560px;
+                margin: 0 auto;
+            }
+
+            .flow-text {
+                border-left: 3px solid var(--gold) !important;
+                border-right: none !important;
+                padding-left: 20px !important;
+                padding-right: 0 !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+                padding: 12px 6px 36px;
+            }
+
+            .top-headline-header {
+                padding: 22px 18px;
+            }
+
+            .details-row {
+                padding: 22px 18px;
+            }
+
+            .unboxed-image-title {
+                font-size: 1.02rem;
+            }
+
+            .grid-3-col {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .slider-viewport {
+                height: clamp(260px, 58vw, 380px);
+            }
+
+            .slider-slide {
+                padding: 6px;
+            }
+
+            .slide-badge {
+                top: 10px;
+                left: 10px;
+                font-size: 0.65rem;
+                padding: 3px 8px;
+            }
+
+            .slide-zoom-pill {
+                bottom: 10px;
+                right: 10px;
+                font-size: 0.68rem;
+                padding: 4px 10px;
+            }
+
+            .slider-btn {
+                width: 34px;
+                height: 34px;
+                font-size: 1.3rem;
+            }
+
+            .slider-controls {
+                padding: 0 8px;
+            }
+
+            .proof-info-banner {
+                padding: 12px 14px;
+                gap: 10px;
+            }
+
+            .proof-info-banner p {
+                font-size: clamp(0.80rem, 3.3vw, 0.92rem);
+                line-height: 1.5;
+            }
+
+            .project-info-card-portrait {
+                padding: 22px 16px;
+                max-width: 390px;
+                margin: 0 auto;
+            }
+
+            footer.page-footer {
+                padding: 24px 12px 18px;
+                gap: 16px;
+            }
+
+            .footer-logos {
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                justify-content: center;
+                align-items: center;
+                gap: 16px;
+            }
+
+            .footer-avatar {
+                width: clamp(72px, 22vw, 92px);
+                height: clamp(72px, 22vw, 92px);
+                min-width: unset;
+                min-height: unset;
+                border-width: 2.5px;
+            }
+
+            .footer-text-group {
+                padding-top: 14px;
+                max-width: 100%;
+            }
+
+            .footer-heading {
+                font-size: clamp(0.82rem, 3.6vw, 0.98rem);
+                line-height: 1.35;
+                margin-bottom: 5px;
+            }
+
+            .footer-subheading {
+                font-size: clamp(0.72rem, 2.9vw, 0.84rem);
+                line-height: 1.45;
+            }
+
+            .footer-collab {
+                font-size: clamp(0.70rem, 2.7vw, 0.80rem);
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="accent-top-bar"></div>
+
+        <!-- ── TOP HEADLINE TITLE & SUB-HEAD ── -->
+        <header class="top-headline-header">
+            <h1 class="top-headline-title">24/7 Digital Legal Intake Engine</h1>
+            <p class="top-headline-subhead">A modern digital legal intake and client acquisition system designed to
+                establish a commanding online presence, streamline consultations, and capture qualified leads 24/7.</p>
+        </header>
+
+        <!-- ── 1ST SECTION: PICTURE ROWS (UNBOXED & MAXIMIZED) ── -->
+        <section class="section-block">
+            <div class="picture-flow">
+
+                <!-- 1st Row: Desktop View and Mobile View -->
+                <div class="unboxed-image-item">
+                    <div class="unboxed-image-title">Desktop View and Mobile View</div>
+                    <div class="unboxed-frame"
+                        onclick="viewImage('02. Images - Law firm/Desktop View and Mobile View.jpg', 'Desktop View and Mobile View')">
+                        <img src="02. Images - Law firm/Desktop View and Mobile View.jpg"
+                            alt="Desktop View and Mobile View" loading="lazy">
+                        <div class="zoom-badge">🔍 Zoom View</div>
+                    </div>
+                </div>
+
+                <!-- 2nd row with 3 columns -->
+                <div class="grid-3-col">
+
+                    <!-- 1st Column: Lead Magnet -->
+                    <div class="unboxed-image-item">
+                        <div class="unboxed-image-title">Lead Magnet</div>
+                        <div class="unboxed-frame"
+                            onclick="viewImage('02. Images - Law firm/Lead Magnet.png', 'Lead Magnet')">
+                            <img src="02. Images - Law firm/Lead Magnet.png" alt="Lead Magnet" loading="lazy">
+                            <div class="zoom-badge">🔍 Zoom View</div>
+                        </div>
+                    </div>
+
+                    <!-- 2nd Column: Booking Form -->
+                    <div class="unboxed-image-item">
+                        <div class="unboxed-image-title">Booking Form</div>
+                        <div class="unboxed-frame"
+                            onclick="viewImage('02. Images - Law firm/Booking Form.png', 'Booking Form')">
+                            <img src="02. Images - Law firm/Booking Form.png" alt="Booking Form" loading="lazy">
+                            <div class="zoom-badge">🔍 Zoom View</div>
+                        </div>
+                    </div>
+
+                    <!-- 3rd Column: Payment Tracker -->
+                    <div class="unboxed-image-item">
+                        <div class="unboxed-image-title">Payment Tracker</div>
+                        <div class="unboxed-frame"
+                            onclick="viewImage('02. Images - Law firm/Payment Tracker.png', 'Payment Tracker')">
+                            <img src="02. Images - Law firm/Payment Tracker.png" alt="Payment Tracker" loading="lazy">
+                            <div class="zoom-badge">🔍 Zoom View</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ── 2ND SECTION: CASE STUDY (EXACT DETAILS VERBATIM) ── -->
+        <section class="section-block">
+            <div class="details-flow">
+
+                <!-- 1st row -->
+                <div class="details-row">
+                    <h3 class="details-heading">Introduction</h3>
+                    <h4 class="details-subheading">Aquino &amp; Co. Law Firm — 24/7 Digital Legal Intake Engine</h4>
+                    <p class="details-text">Aquino &amp; Co. Law Firm, a general practice firm based in Santiago City,
+                        Isabela, Philippines, needed a modern digital acquisition system to establish an online presence
+                        and capture prospective client leads around the clock.</p>
+                </div>
+
+                <!-- 2nd row -->
+                <div class="details-row">
+                    <h3 class="details-heading">The Challenges</h3>
+                    <ul class="details-list">
+                        <li><strong>Dependence on Offline Channels:</strong> The firm relied entirely on physical
+                            walk-ins and word-of-mouth referrals, limiting growth strictly to traditional foot traffic.
+                        </li>
+                        <li><strong>Lost After-Hours Inquiries:</strong> Without an online platform, prospective clients
+                            seeking legal help outside of business hours had no way to reach out, verify firm
+                            credibility, or submit inquiries.</li>
+                        <li><strong>Lack of Lead Tracking:</strong> Inbound client leads were not systematically
+                            recorded or centralized, leading to potential follow-up delays and missed consultation
+                            opportunities.</li>
+                    </ul>
+                </div>
+
+                <!-- 3rd row -->
+                <div class="details-row">
+                    <h3 class="details-heading">The Solution</h3>
+                    <p class="details-text">Engineered a custom, 24/7 digital intake platform paired with an automated
+                        pipeline process to educate prospects and capture leads effortlessly:</p>
+                    <ul class="details-list">
+                        <li><strong>24/7 Intake Website:</strong> Built a professional, responsive site that captures
+                            client inquiries around the clock and offers downloadable legal guides to educate visitors
+                            upfront.</li>
+                        <li><strong>Automated Data Pipeline:</strong> Connected custom web forms directly to a real-time
+                            Google Sheets database, logging incoming inquiries and client details instantly without
+                            manual data entry.</li>
+                        <li><strong>Streamlined Workflow:</strong> Created an initial response system to acknowledge
+                            lead submissions immediately and neatly organize incoming cases for the legal team.</li>
+                    </ul>
+                </div>
+
+                <!-- 4th row -->
+                <div class="details-row">
+                    <h3 class="details-heading">The Results</h3>
+                    <ul class="details-list">
+                        <li><strong>Continuous Client Acquisition:</strong> Transformed the firm from a physical-only
+                            practice into an online engine capable of capturing leads 24 hours a day, 7 days a week.
+                        </li>
+                        <li><strong>Full Pipeline Visibility:</strong> Provided the legal team with an organized,
+                            real-time dashboard to track intake statuses, follow-ups, and prospective client details
+                            effortlessly.</li>
+                        <li><strong>Cost-Efficient Delivery:</strong> Built the entire infrastructure using lightweight,
+                            cost-effective tools that eliminated recurring software overhead for the firm.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ── SECTION: PROOF OF BACKEND & PRODUCTION AUTOMATION (UNBOXED) ── -->
+        <section class="section-block">
+            <div class="section-divider-line">
+                <h2>Backend Implementation &amp; Production Verification</h2>
+                <span class="section-tag">Proof </span>
+            </div>
+
+            <div class="proof-slider-flow">
+
+                <!-- 1st ROW: AUTOMATED GMAIL DISPATCH SLIDER -->
+                <div class="proof-unboxed-row">
+                    <div class="slider-viewport" id="sliderRow1">
+                        <div class="slider-track track-2 is-animating">
+                            <div class="slider-slide"
+                                onclick="viewImage('02. Images - Law firm/Automated Gmail for Client.png', 'Automated Gmail for Client')">
+                                <div class="slide-badge">Slide 1 / 2 • Client Alert</div>
+                                <img src="02. Images - Law firm/Automated Gmail for Client.png"
+                                    alt="Automated Gmail for Client" loading="lazy">
+                                <div class="slide-zoom-pill">🔍 Click to Zoom View</div>
+                            </div>
+                            <div class="slider-slide"
+                                onclick="viewImage('02. Images - Law firm/Automated Gmail for Lawfirm.png', 'Automated Gmail for Lawfirm')">
+                                <div class="slide-badge">Slide 2 / 2 • Law Firm Alert</div>
+                                <img src="02. Images - Law firm/Automated Gmail for Lawfirm.png"
+                                    alt="Automated Gmail for Lawfirm" loading="lazy">
+                                <div class="slide-zoom-pill">🔍 Click to Zoom View</div>
+                            </div>
+                        </div>
+
+                        <div class="slider-controls">
+                            <button class="slider-btn prev" onclick="shiftSlide('sliderRow1', -1)"
+                                aria-label="Previous Slide">‹</button>
+                            <div class="slider-indicators">
+                                <span class="slider-dot active" onclick="jumpSlide('sliderRow1', 0)"></span>
+                                <span class="slider-dot" onclick="jumpSlide('sliderRow1', 1)"></span>
+                            </div>
+                            <button class="slider-btn next" onclick="shiftSlide('sliderRow1', 1)"
+                                aria-label="Next Slide">›</button>
+                        </div>
+                    </div>
+                    <div class="proof-info-banner">
+                        <div class="info-icon">⚡</div>
+                        <p>Automated two-way Gmail notification pipeline delivering instant appointment confirmations to
+                            clients while immediately alerting the law firm with full intake case details.</p>
+                    </div>
+                </div>
+
+                <!-- 2nd ROW: CODE, VERIFICATION & DEPLOYMENT SLIDER -->
+                <div class="proof-unboxed-row">
+                    <div class="slider-viewport" id="sliderRow2">
+                        <div class="slider-track track-2 is-animating">
+                            <div class="slider-slide"
+                                onclick="viewImage('02. Images - Law firm/Back-End Code.png', 'Back-End Code')">
+                                <div class="slide-badge">Slide 1 / 2 • Visual Studio back-end code</div>
+                                <img src="02. Images - Law firm/Back-End Code.png" alt="Back-End Code" loading="lazy">
+                                <div class="slide-zoom-pill">🔍 Click to Zoom View</div>
+                            </div>
+                            <div class="slider-slide"
+                                onclick="viewImage('02. Images - Law firm/Google search console verified.png', 'Google search console verified')">
+                                <div class="slide-badge">Slide 2 / 2 • Search Console SEO</div>
+                                <img src="02. Images - Law firm/Google search console verified.png"
+                                    alt="Google search console verified" loading="lazy">
+                                <div class="slide-zoom-pill">🔍 Click to Zoom View</div>
+                            </div>
+                        </div>
+
+                        <div class="slider-controls">
+                            <button class="slider-btn prev" onclick="shiftSlide('sliderRow2', -1)"
+                                aria-label="Previous Slide">‹</button>
+                            <div class="slider-indicators">
+                                <span class="slider-dot active" onclick="jumpSlide('sliderRow2', 0)"></span>
+                                <span class="slider-dot" onclick="jumpSlide('sliderRow2', 1)"></span>
+                            </div>
+                            <button class="slider-btn next" onclick="shiftSlide('sliderRow2', 1)"
+                                aria-label="Next Slide">›</button>
+                        </div>
+                    </div>
+                    <div class="proof-info-banner">
+                        <div class="info-icon">🛠️</div>
+                        <p>Production engineering architecture featuring custom Visual Studio back-end code, and
+                            verified Google Search Console SEO indexing.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ── SECTION: PROJECT INFORMATION (DARK NEON GLOW PORTRAIT CARD) ── -->
+        <section class="section-block project-info-section">
+            <div class="project-info-card-portrait">
+                <div class="pinfo-header">
+                    <div class="pinfo-neon-pill">Project Information</div>
+                </div>
+
+                <!-- Client Name -->
+                <div class="pinfo-item-box">
+                    <span class="pinfo-box-label">Client Name:</span>
+                    <span class="pinfo-box-val">Atty. Glenn Aquino</span>
+                </div>
+
+                <!-- Business Name -->
+                <div class="pinfo-item-box">
+                    <span class="pinfo-box-label">Business Name:</span>
+                    <span class="pinfo-box-val">Aquino and Co. Law Firm</span>
+                </div>
+
+                <!-- Date Started -->
+                <div class="pinfo-item-box">
+                    <span class="pinfo-box-label">Date Started:</span>
+                    <span class="pinfo-box-val">December 2025</span>
+                </div>
+
+                <!-- Date Launch -->
+                <div class="pinfo-item-box">
+                    <span class="pinfo-box-label">Date Launch:</span>
+                    <span class="pinfo-box-val">January 2026 + Ongoing Support</span>
+                </div>
+
+                <!-- IMPACT -->
+                <div class="pinfo-impact-box">
+                    <div class="pinfo-impact-header">
+                        <span class="pinfo-impact-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                <polyline points="17 6 23 6 23 12"></polyline>
+                            </svg>
+                        </span>
+                        IMPACT
+                    </div>
+                    <p class="pinfo-impact-text">Modernized a walk-in dependent practice into an online automated,
+                        cutting off-hours inquiry loss by <span class="pinfo-impact-highlight">100%</span> and enabling
+                        round-the-clock client booking and capture leads.</p>
+                </div>
+
+                <!-- Developer -->
+                <div class="pinfo-item-box">
+                    <span class="pinfo-box-label">Developer:</span>
+                    <span class="pinfo-box-val">Joyce Ann G. Yap </span>
+                </div>
+
+                <!-- Collaboration -->
+                <div class="pinfo-item-box">
+                    <span class="pinfo-box-label">Collaboration:</span>
+                    <span class="pinfo-box-val">Team TPS - Mark Dalumpines, Kent Brian Jintapa, and Errol John
+                        Peusca</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 4th SECTION: BUILT BEHIND THE SCENES (FROM 01.LAWFIRMCASETUDIES.HTML) ── -->
+        <section class="vsc-section">
+            <div class="vsc-section-inner">
+                <div class="section-num">Built Behind the System</div>
+                <h2>Automation Workflow Framework</h2>
+                <div class="gold-rule"></div>
+
+                <section class="flow-section">
+
+                    <!-- ROW 1 — Phase 1: Booking Flow (card left, text right) -->
+                    <div class="flow-row">
+                        <div class="flow-card">
+                            <span class="flow-group-num">Phase 1</span>
+                            <div class="flow-label">Booking Flow</div>
+                            <div class="flow-scale" style="width:512px;height:295.4px">
+                                <div class="flow-canvas" data-base-w="520" data-base-h="300"
+                                    style="width:520px;height:300px;transform:scale(.9846);transform-origin:top left;">
+                                    <svg viewBox="0 0 520 300" preserveAspectRatio="xMidYMid meet">
+                                        <defs>
+                                            <path id="s1-a" d="M260,92 C260,150 160,150 160,198" />
+                                            <path id="s1-b" d="M260,92 C260,150 360,150 360,198" />
+                                        </defs>
+                                        <path class="flow-path" d="M260,92 C260,150 160,150 160,198" />
+                                        <path class="flow-path" d="M260,92 C260,150 360,150 360,198" />
+                                        <circle class="joint-dot" cx="260" cy="92" r="3.5" />
+                                        <circle class="travel-dot" r="4">
+                                            <animateMotion dur="2.8s" repeatCount="indefinite" begin="0s">
+                                                <mpath href="#s1-a" />
+                                            </animateMotion>
+                                        </circle>
+                                        <circle class="travel-dot" r="4">
+                                            <animateMotion dur="2.8s" repeatCount="indefinite" begin="-1.4s">
+                                                <mpath href="#s1-b" />
+                                            </animateMotion>
+                                        </circle>
+                                    </svg>
+
+                                    <div class="h-connector" style="left:100px;top:60px;width:130px;"><span
+                                            class="h-dot" style="animation-delay:0s"></span></div>
+
+                                    <div class="flow-node key" style="left:70px;top:60px;">
+                                        <div class="icon-box"><svg viewBox="0 0 24 24">
+                                                <path d="M3 11.5 12 4l9 7.5" />
+                                                <path d="M5.5 10v9a1 1 0 0 0 1 1H10v-6h4v6h3.5a1 1 0 0 0 1-1v-9" />
+                                            </svg></div>
+                                        <div class="n-label">index.html</div>
+                                        <div class="n-sub">Homepage — Full Law Firm Showcase</div>
+                                    </div>
+
+                                    <div class="flow-node key" style="left:260px;top:60px;">
+                                        <div class="icon-box"><svg viewBox="0 0 24 24">
+                                                <rect x="4" y="3" width="16" height="18" rx="2" />
+                                                <path d="M8 8h8M8 12h8M8 16h4" />
+                                            </svg></div>
+                                        <div class="n-label">form.html</div>
+                                        <div class="n-sub">Booking Form — Structured Client Intake</div>
+                                    </div>
+
+                                    <div class="flow-node" style="left:160px;top:230px;">
+                                        <div class="icon-box"><svg viewBox="0 0 24 24">
+                                                <rect x="3.5" y="4" width="17" height="16" rx="2" />
+                                                <path d="M3.5 9.5h17M9 9.5V20M14.5 9.5V20" />
+                                            </svg></div>
+                                        <div class="n-label">Google Sheets</div>
+                                        <div class="n-sub">Auto-saves to the Appointments tab</div>
+                                    </div>
+
+                                    <div class="flow-node" style="left:360px;top:230px;">
+                                        <div class="icon-box"><svg viewBox="0 0 24 24">
+                                                <rect x="3" y="5" width="18" height="14" rx="2" />
+                                                <path d="m3.5 6 8.5 7 8.5-7" />
+                                            </svg></div>
+                                        <div class="n-label">Google Mail</div>
+                                        <div class="n-sub">Instant alert to Client &amp; Law Firm</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flow-text">
+                            <h2>How the Booking Flow works</h2>
+                            <p>Every visitor who lands on the homepage is guided straight into the booking form. The
+                                moment a client
+                                submits their details, the appointment is logged automatically to Google Sheets, and an
+                                instant email
+                                confirmation goes out to both the client and the law firm — no manual follow-up, no
+                                missed inquiry. </p>
+                        </div>
+                    </div>
+
+                    <!-- ROW 2 — Phase 2: Lead Magnet Flow (card right, text left) -->
+                    <div class="flow-row reverse">
+                        <div class="flow-card">
+                            <span class="flow-group-num">Phase 2</span>
+                            <div class="flow-label">Lead Magnet Flow</div>
+                            <div class="flow-scale" style="width:512px;height:295.4px">
+                                <div class="flow-canvas" data-base-w="520" data-base-h="300"
+                                    style="width:520px;height:300px;transform:scale(.9846);transform-origin:top left;">
+                                    <svg viewBox="0 0 520 300" preserveAspectRatio="xMidYMid meet">
+                                        <defs>
+                                            <path id="s2-a" d="M140,92 C140,150 60,150 60,198" />
+                                            <path id="s2-b" d="M140,92 C140,150 230,150 230,198" />
+                                            <path id="s2-c" d="M140,92 C140,150 420,150 420,198" />
+                                        </defs>
+                                        <path class="flow-path" d="M140,92 C140,150 60,150 60,198" />
+                                        <path class="flow-path" d="M140,92 C140,150 230,150 230,198" />
+                                        <path class="flow-path" d="M140,92 C140,150 420,150 420,198" />
+                                        <circle class="joint-dot" cx="140" cy="92" r="3.5" />
+                                        <circle class="travel-dot" r="4">
+                                            <animateMotion dur="2.6s" repeatCount="indefinite" begin="0s">
+                                                <mpath href="#s2-a" />
+                                            </animateMotion>
+                                        </circle>
+                                        <circle class="travel-dot" r="4">
+                                            <animateMotion dur="2.6s" repeatCount="indefinite" begin="-0.9s">
+                                                <mpath href="#s2-b" />
+                                            </animateMotion>
+                                        </circle>
+                                        <circle class="travel-dot" r="4">
+                                            <animateMotion dur="2.6s" repeatCount="indefinite" begin="-1.7s">
+                                                <mpath href="#s2-c" />
+                                            </animateMotion>
+                                        </circle>
+                                    </svg>
+
+                                    <div class="flow-node key" style="left:140px;top:60px;">
+                                        <div class="icon-box"><svg viewBox="0 0 24 24">
+                                                <path
+                                                    d="M4 19V6a2 2 0 0 1 2-2h9l5 5v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z" />
+                                                <path d="M14 4v5h5" />
+                                            </svg></div>
+                                        <div class="n-label">index.html / Contact Form</div>
+                                        <div class="n-sub"> Get instant access to the Comprehensive Legal Guides </div>
+                                    </div>
+
+                                    <div class="flow-node" style="left:60px;top:230px;">
+                                        <div class="icon-box"><svg viewBox="0 0 24 24">
+                                                <rect x="3.5" y="4" width="17" height="16" rx="2" />
+                                                <path d="M3.5 9.5h17M9 9.5V20M14.5 9.5V20" />
+                                            </svg></div>
+                                        <div class="n-label">Google Sheets</div>
+                                        <div class="n-sub">Leads data auto-saves to Appointments tab</div>
+                                    </div>
+
+                                    <div class="flow-node" style="left:230px;top:230px;">
+                                        <div class="icon-box"><svg viewBox="0 0 24 24">
+                                                <rect x="3" y="5" width="18" height="14" rx="2" />
+                                                <path d="m3.5 6 8.5 7 8.5-7" />
+                                            </svg></div>
+                                        <div class="n-label">Google Mail</div>
+                                        <div class="n-sub">Instant alert to Prospect &amp; Law Firm</div>
+                                    </div>
+
+                                    <div class="flow-node" style="left:420px;top:230px;">
+                                        <div class="icon-box"><svg viewBox="0 0 24 24">
+                                                <path
+                                                    d="M4 19.5V5a2 2 0 0 1 2-2h13v15H6.5A2.5 2.5 0 0 0 4 20.5V19.5Z" />
+                                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H19" />
+                                            </svg></div>
+                                        <div class="n-label">legal-Information.html</div>
+                                        <div class="n-sub">Access Granted - Legal Information Guides</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flow-text">
+                            <h2>How the Lead Magnet Flow works</h2>
+                            <p>Visitors who aren't ready to book yet are offered free access to the firm's Legal Guides
+                                through the
+                                homepage contact form. Every request is captured in Google Sheets and triggers an email
+                                alert to the firm,
+                                while the prospect is instantly granted access to the Legal Information resource hub.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- ROW 3 — Phase 3: Payment Tracker Upload Receipt (card left, text right) -->
+                    <div class="flow-row">
+                        <div class="flow-card">
+                            <span class="flow-group-num">Phase 3</span>
+                            <div class="flow-label">Payment Tracker Upload Receipt</div>
+                            <div class="flow-scale" style="width:512px;height:256px">
+                                <div class="flow-canvas" data-base-w="600" data-base-h="300"
+                                    style="width:600px;height:300px;transform:scale(.8533);transform-origin:top left;">
+                                    <svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid meet">
+                                        <defs>
+                                            <path id="s3-a" d="M300,92 C300,150 140,150 140,198" />
+                                            <path id="s3-b" d="M300,92 C300,150 300,165 300,198" />
+                                            <path id="s3-c" d="M300,92 C300,150 460,150 460,198" />
+                                        </defs>
+                                        <path class="flow-path" d="M300,92 C300,150 140,150 140,198" />
+                                        <path class="flow-path" d="M300,92 C300,150 300,165 300,198" />
+                                        <path class="flow-path" d="M300,92 C300,150 460,150 460,198" />
+                                        <circle class="joint-dot" cx="300" cy="92" r="3.5" />
+                                        <circle class="travel-dot" r="4">
+                                            <animateMotion dur="2.6s" repeatCount="indefinite" begin="0s">
+                                                <mpath href="#s3-a" />
+                                            </animateMotion>
+                                        </circle>
+                                        <circle class="travel-dot" r="4">
+                                            <animateMotion dur="2.6s" repeatCount="indefinite" begin="-0.9s">
+                                                <mpath href="#s3-b" />
+                                            </animateMotion>
+                                        </circle>
+                                        <circle class="travel-dot" r="4">
+                                            <animateMotion dur="2.6s" repeatCount="indefinite" begin="-1.7s">
+                                                <mpath href="#s3-c" />
+                                            </animateMotion>
+                                        </circle>
+                                    </svg>
+
+                                    <div class="flow-node key" style="left:300px;top:60px;">
+                                        <div class="icon-box"><svg viewBox="0 0 24 24">
+                                                <path
+                                                    d="M6 3h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" />
+                                                <path d="M9 8h6M9 12h6M9 16h3" />
+                                            </svg></div>
+                                        <div class="n-label">Legal-fees.html</div>
+                                        <div class="n-sub">Legal Fees — GCash Receipt Upload</div>
+                                    </div>
+
+                                    <div class="flow-node" style="left:140px;top:230px;">
+                                        <div class="icon-box"><svg viewBox="0 0 24 24">
+                                                <path d="m8 3 4 7H4Z" />
+                                                <path d="m13.5 3 4 7h-8Z" opacity=".55" />
+                                                <path d="m6 14 4 7-8 0Z" opacity=".8" />
+                                            </svg></div>
+                                        <div class="n-label">Google Drive</div>
+                                        <div class="n-sub">Receipt storage folder</div>
+                                    </div>
+
+                                    <div class="flow-node" style="left:300px;top:230px;">
+                                        <div class="icon-box"><svg viewBox="0 0 24 24">
+                                                <rect x="3.5" y="4" width="17" height="16" rx="2" />
+                                                <path d="M3.5 9.5h17M9 9.5V20M14.5 9.5V20" />
+                                            </svg></div>
+                                        <div class="n-label">Google Sheets</div>
+                                        <div class="n-sub">Payment log</div>
+                                    </div>
+
+                                    <div class="flow-node" style="left:460px;top:230px;">
+                                        <div class="icon-box"><svg viewBox="0 0 24 24">
+                                                <rect x="3" y="5" width="18" height="14" rx="2" />
+                                                <path d="m3.5 6 8.5 7 8.5-7" />
+                                            </svg></div>
+                                        <div class="n-label">Email</div>
+                                        <div class="n-sub">Alert to Law Firm only</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flow-text">
+                            <h2>How the Payment Tracker Upload Receipt works</h2>
+                            <p>Once a client is ready to pay, they upload their GCash receipt directly on the Legal Fees
+                                page. The file
+                                is stored in Google Drive, the payment is logged in Google Sheets, and the law firm
+                                receives an immediate
+                                email notification, while the secretary will verify the payment details and references
+                                no. - closing the
+                                loop from lead to paid client. </p>
+                        </div>
+                    </div>
+
+                </section>
+
+            </div>
+        </section>
+
+        <!-- ── FOOTER ── -->
+        <footer class="page-footer">
+            <div class="footer-logos">
+                <img class="footer-avatar" src="LOGO TEAM COLLAB/02. Joyce Yap.png" alt="Joyce Ann Yap">
+            </div>
+
+            <div class="footer-text-group">
+                <div class="footer-heading">Aquino &amp; Co. Law Firm — 24/7 Digital Legal Intake Engine</div>
+                <div class="footer-subheading">Web Design & Automation built by Joyce Ann Yap .</div>
+                <div class="footer-collab">In Collaboration with <span class="collab-name">Mark dalumpines, Kent Brian
+                        Jintapa</span> &amp; <span class="collab-name">Errol John Peusca</span></div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- ── LIGHTBOX MODAL ── -->
+    <div class="lightbox" id="lightbox" onclick="closeImage(event)">
+        <div class="lightbox-box" onclick="event.stopPropagation()">
+            <button class="lightbox-close-btn" onclick="closeImage(event)" aria-label="Close Preview">&times;</button>
+            <img id="lightboxImg" src="" alt="Enlarged Preview">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <script>
+        function viewImage(src, caption) {
+            const modal = document.getElementById('lightbox');
+            const img = document.getElementById('lightboxImg');
+            const cap = document.getElementById('lightboxCaption');
+            img.src = src;
+            cap.textContent = caption;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImage(e) {
+            const modal = document.getElementById('lightbox');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeImage();
+            }
+        });
+
+        /* ── INTERACTIVE CONTROLS FOR PROOF AUTO-SLIDERS ── */
+        const sliderStates = {
+            sliderRow1: { current: 0, total: 2 },
+            sliderRow2: { current: 0, total: 2 }
+        };
+
+        function updateSliderUI(id) {
+            const viewport = document.getElementById(id);
+            if (!viewport) return;
+            const track = viewport.querySelector('.slider-track');
+            const state = sliderStates[id];
+            if (!track || !state) return;
+
+            // Remove CSS animation class upon manual interaction so it snaps cleanly
+            track.classList.remove('is-animating');
+            track.style.transform = `translateX(-${state.current * 100}%)`;
+
+            const dots = viewport.querySelectorAll('.slider-dot');
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === state.current);
+            });
+        }
+
+        function shiftSlide(id, dir) {
+            const state = sliderStates[id];
+            if (!state) return;
+            state.current = (state.current + dir + state.total) % state.total;
+            updateSliderUI(id);
+        }
+
+        function jumpSlide(id, idx) {
+            const state = sliderStates[id];
+            if (!state) return;
+            state.current = idx;
+            updateSliderUI(id);
+        }
+
+        // Synchronize dots with CSS auto-sliding animation
+        document.addEventListener('DOMContentLoaded', function () {
+            ['sliderRow1', 'sliderRow2'].forEach(id => {
+                const viewport = document.getElementById(id);
+                if (!viewport) return;
+                const track = viewport.querySelector('.slider-track');
+                const dots = viewport.querySelectorAll('.slider-dot');
+                if (!track) return;
+
+                setInterval(() => {
+                    if (track.classList.contains('is-animating')) {
+                        const style = window.getComputedStyle(track);
+                        const matrix = new WebKitCSSMatrix(style.transform);
+                        const width = track.clientWidth || 1;
+                        const offsetRatio = Math.abs(matrix.m41) / width;
+                        const activeIdx = Math.round(offsetRatio) % sliderStates[id].total;
+                        dots.forEach((d, i) => d.classList.toggle('active', i === activeIdx));
+                    }
+                }, 400);
+            });
+        });
+
+        /* ── DYNAMIC RESIZE FOR FLOW CARDS (MOBILE & DESKTOP SCALE) ── */
+        function resizeFlowCards() {
+            document.querySelectorAll('.flow-card').forEach(function (card) {
+                var scaleWrap = card.querySelector('.flow-scale');
+                var canvas = card.querySelector('.flow-canvas');
+                if (!scaleWrap || !canvas) return;
+
+                var baseW = parseFloat(canvas.getAttribute('data-base-w')) || 520;
+                var baseH = parseFloat(canvas.getAttribute('data-base-h')) || 300;
+
+                var cs = window.getComputedStyle(card);
+                var padL = parseFloat(cs.paddingLeft) || 0;
+                var padR = parseFloat(cs.paddingRight) || 0;
+                var availW = Math.floor(card.clientWidth - padL - padR);
+
+                if (availW <= 0) return;
+
+                var targetW = Math.min(availW, 512);
+                var scale = targetW / baseW;
+                var targetH = Math.round(baseH * scale * 10) / 10;
+
+                scaleWrap.style.width = targetW + 'px';
+                scaleWrap.style.height = targetH + 'px';
+                canvas.style.transform = 'scale(' + scale + ')';
+                canvas.style.transformOrigin = 'top left';
+            });
+        }
+
+        window.addEventListener('resize', resizeFlowCards);
+        window.addEventListener('orientationchange', function () { setTimeout(resizeFlowCards, 120); });
+        document.addEventListener('DOMContentLoaded', resizeFlowCards);
+        window.addEventListener('load', resizeFlowCards);
+
+        if (window.ResizeObserver) {
+            var ro = new ResizeObserver(function () {
+                resizeFlowCards();
+            });
+            document.querySelectorAll('.flow-card').forEach(function (card) {
+                ro.observe(card);
+            });
+        }
+    </script>
+
+</body>
+
+</html>

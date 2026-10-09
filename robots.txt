@@ -1,0 +1,8 @@
+# https://www.robotstxt.org/robotstxt.html
+# Robots configuration for Tech Partners System (https://techpartnerssystems.com)
+
+User-agent: *
+Allow: /
+
+# Sitemap indexing
+Sitemap: https://techpartnerssystems.com/sitemap.xml

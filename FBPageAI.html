@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"Facebook Page AI Agent" — Autonomous Customer Assistant & Booking Engine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-white: #ffffff;
+            --bg-canvas: #f8fafc;
+            --bg-blue-soft: #f0f5ff;
+            --bg-navy-soft: #f4f6fa;
+
+            --color-navy: #181d28;
+            --color-navy-dark: #0f121a;
+            --color-navy-light: #252d3d;
+            --color-text-main: #181d28;
+            --color-text-muted: #3d4659;
+            --color-text-subtle: #5f6b82;
+
+            --color-tg-blue: #2b66d9;
+            --color-tg-blue-light: #4880ed;
+            --color-tg-blue-dark: #1b4fb5;
+
+            --border-blue: #2b66d9;
+            --border-blue-dark: #1b4fb5;
+            --border-blue-subtle: rgba(43, 102, 217, 0.32);
+            --border-navy: #181d28;
+            --border-light: #e2e8f0;
+
+            --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            --font-heading: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+            --font-display: 'Outfit', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-white);
+            color: var(--color-text-main);
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* ── CONTAINER ── */
+        .container {
+            width: 96%;
+            max-width: 1560px;
+            margin: 0 auto;
+            padding: 24px 8px 60px;
+        }
+
+        /* ── TOP ACCENT BAR ── */
+        .accent-top-bar {
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #181d28 0%, #2b66d9 50%, #181d28 100%);
+            border-radius: 999px;
+            margin-bottom: 24px;
+        }
+
+        /* ── FLOWING GRADIENT ANIMATION (#181d28 & #2b66d9) ── */
+        @keyframes flowingBrandBlue {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* ── TOP HEADLINE TITLE & SUB-HEAD ── */
+        .top-headline-header {
+            background-color: var(--bg-white);
+            border: 2px solid var(--border-blue);
+            border-left: 8px solid var(--color-navy);
+            border-radius: 14px;
+            padding: 36px 40px;
+            margin-bottom: 36px;
+            box-shadow: 0 4px 20px rgba(43, 102, 217, 0.08);
+        }
+
+        .top-headline-tagline {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--color-tg-blue);
+            margin-bottom: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .top-headline-tagline::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--color-tg-blue);
+            box-shadow: 0 0 8px rgba(43, 102, 217, 0.6);
+            display: inline-block;
+        }
+
+        .top-headline-title {
+            font-family: var(--font-display);
+            background: linear-gradient(110deg, #181d28 0%, #2b66d9 42%, #4880ed 68%, #181d28 100%);
+            background-size: 260% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowingBrandBlue 6s ease-in-out infinite;
+            font-size: clamp(2rem, 3.6vw, 3rem);
+            font-weight: 800;
+            line-height: 1.22;
+            letter-spacing: -0.025em;
+            margin-bottom: 14px;
+        }
+
+        .top-headline-subhead {
+            font-family: var(--font-body);
+            color: var(--color-text-main);
+            opacity: 0.88;
+            font-size: clamp(1.02rem, 1.6vw, 1.18rem);
+            font-weight: 500;
+            line-height: 1.7;
+            max-width: 1250px;
+        }
+
+        /* ── SECTION BLOCKS ── */
+        .section-block {
+            margin-bottom: 48px;
+        }
+
+        .section-divider-line {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--border-blue);
+        }
+
+        .section-divider-line h2 {
+            font-family: var(--font-heading);
+            background: linear-gradient(110deg, #181d28 0%, #2b66d9 45%, #4880ed 72%, #181d28 100%);
+            background-size: 260% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowingBrandBlue 6s ease-in-out infinite;
+            font-size: clamp(1.4rem, 2.4vw, 1.95rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* ── 1ST SECTION: IMAGE ROWS ── */
+        .image-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .image-row {
+            background-color: var(--bg-white);
+            border: 2px solid var(--border-blue);
+            border-top: 6px solid var(--color-navy);
+            border-radius: 12px;
+            box-shadow: 0 4px 18px rgba(43, 102, 217, 0.08);
+            overflow: hidden;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .image-row:hover {
+            border-color: var(--color-tg-blue-light);
+            box-shadow: 0 8px 28px rgba(43, 102, 217, 0.16);
+        }
+
+        .image-title-bar {
+            padding: 16px 24px;
+            background: var(--bg-blue-soft);
+            border-bottom: 2px solid var(--border-blue-subtle);
+        }
+
+        .image-title-bar h3 {
+            font-family: var(--font-heading);
+            background: linear-gradient(110deg, #181d28 0%, #2b66d9 45%, #181d28 100%);
+            background-size: 260% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowingBrandBlue 6s ease-in-out infinite;
+            font-size: clamp(1.15rem, 2vw, 1.45rem);
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .image-title-bar h3::before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: var(--color-tg-blue);
+            border-radius: 3px;
+            box-shadow: 0 0 6px rgba(43, 102, 217, 0.5);
+        }
+
+        .image-container {
+            padding: 20px;
+            background-color: var(--bg-white);
+            text-align: center;
+        }
+
+        .image-frame {
+            display: inline-block;
+            width: 100%;
+            border: 1.5px solid var(--border-blue-subtle);
+            border-radius: 8px;
+            overflow: hidden;
+            background: #ffffff;
+            cursor: zoom-in;
+            position: relative;
+        }
+
+        .image-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 850px;
+            object-fit: contain;
+            margin: 0 auto;
+            transition: transform 0.25s ease;
+        }
+
+        .image-frame:hover img {
+            transform: scale(1.012);
+        }
+
+        .zoom-badge {
+            position: absolute;
+            bottom: 12px;
+            right: 14px;
+            background: var(--color-navy);
+            color: #ffffff;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border-blue);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .image-brief-info {
+            padding: 14px 24px 18px;
+            font-size: 0.96rem;
+            color: var(--color-text-main);
+            opacity: 0.88;
+            line-height: 1.7;
+            background: #ffffff;
+            border-top: 1px solid var(--border-light);
+        }
+
+        /* ── 2ND SECTION: EXACT DETAILS ROWS (1ST TO 4TH ROW) ── */
+        .details-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .details-row {
+            background-color: var(--bg-white);
+            border: 2px solid var(--border-navy);
+            border-left: 8px solid var(--color-tg-blue);
+            border-radius: 12px;
+            padding: 32px 36px;
+            box-shadow: 0 4px 18px rgba(24, 29, 40, 0.05);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .details-row:nth-child(even) {
+            border-color: var(--border-blue);
+            border-left: 8px solid var(--color-navy);
+        }
+
+        .details-row:hover {
+            box-shadow: 0 8px 24px rgba(43, 102, 217, 0.12);
+        }
+
+        .details-heading {
+            font-family: var(--font-heading);
+            background: linear-gradient(110deg, #181d28 0%, #2b66d9 45%, #4880ed 72%, #181d28 100%);
+            background-size: 260% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowingBrandBlue 6s ease-in-out infinite;
+            font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .details-subheading {
+            font-family: var(--font-heading);
+            background: linear-gradient(110deg, #2b66d9 0%, #4880ed 50%, #181d28 100%);
+            background-size: 260% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowingBrandBlue 6s ease-in-out infinite;
+            font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+            font-weight: 700;
+            margin-bottom: 14px;
+            letter-spacing: -0.01em;
+        }
+
+        .details-text {
+            color: var(--color-text-main);
+            font-size: clamp(1rem, 1.5vw, 1.12rem);
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .details-text:last-child {
+            margin-bottom: 0;
+        }
+
+        .details-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .details-list li {
+            position: relative;
+            padding-left: 28px;
+            color: var(--color-text-main);
+            font-size: clamp(0.98rem, 1.5vw, 1.1rem);
+            line-height: 1.8;
+        }
+
+        .details-list li::before {
+            content: '■';
+            position: absolute;
+            left: 6px;
+            top: 0px;
+            color: var(--color-tg-blue);
+            font-size: 0.85rem;
+        }
+
+        .details-list li strong {
+            color: var(--color-navy);
+            font-weight: 700;
+        }
+
+        /* ── SECTION 3: PROJECT INFORMATION (DARK NEON GLOW PORTRAIT CARD) ── */
+        .project-info-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 24px 0 32px;
+        }
+
+        .project-info-card-portrait {
+            width: 100%;
+            max-width: 440px;
+            background: radial-gradient(circle at 50% 10%, #252d3d 0%, #181d28 100%);
+            border: 1px solid rgba(43, 102, 217, 0.45);
+            border-radius: 28px;
+            padding: 24px 20px 28px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 35px rgba(43, 102, 217, 0.25);
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .pinfo-header {
+            width: 100%;
+            margin-bottom: 2px;
+        }
+
+        .pinfo-neon-pill {
+            display: block;
+            width: 100%;
+            background: var(--color-tg-blue);
+            color: #ffffff;
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: 999px;
+            box-shadow: 0 0 22px rgba(43, 102, 217, 0.55);
+            border: none;
+            user-select: none;
+        }
+
+        .pinfo-item-box {
+            background: #10141d;
+            border: 1px solid rgba(43, 102, 217, 0.32);
+            border-radius: 16px;
+            padding: 14px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            transition: border-color 0.2s ease, transform 0.15s ease;
+        }
+
+        .pinfo-item-box:hover {
+            border-color: rgba(43, 102, 217, 0.65);
+        }
+
+        .pinfo-box-label {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+
+        .pinfo-box-val {
+            font-family: 'JetBrains Mono', var(--font-mono), monospace;
+            font-size: 0.94rem;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: 0.01em;
+            line-height: 1.45;
+        }
+
+        .pinfo-impact-box {
+            background: #10141d;
+            border: 1px solid rgba(43, 102, 217, 0.32);
+            border-radius: 16px;
+            padding: 16px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: border-color 0.2s ease;
+        }
+
+        .pinfo-impact-box:hover {
+            border-color: rgba(69, 130, 244, 0.5);
+        }
+
+        .pinfo-impact-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-tg-blue-light);
+            font-family: 'JetBrains Mono', var(--font-mono), monospace;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .pinfo-impact-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-tg-blue-light);
+        }
+
+        .pinfo-impact-text {
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            line-height: 1.55;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .pinfo-impact-highlight {
+            color: var(--color-tg-blue-light);
+            font-weight: 800;
+        }
+
+        /* ── FOOTER ── */
+        footer.page-footer {
+            margin-top: 64px;
+            padding: 24px 16px 44px;
+            border: none;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 24px;
+            border-top: none;
+        }
+
+        .footer-logos {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .footer-avatar {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 3px solid var(--border-blue);
+            box-shadow: 0 4px 16px rgba(43, 102, 217, 0.25);
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .footer-avatar:hover {
+            transform: scale(1.08);
+            border-color: var(--color-navy);
+            box-shadow: 0 6px 20px rgba(24, 29, 40, 0.28);
+        }
+
+        .footer-text-group {
+            width: 100%;
+            max-width: 960px;
+            padding-top: 4px;
+        }
+
+        .footer-heading {
+            font-family: var(--font-heading);
+            background: linear-gradient(110deg, #181d28 0%, #2b66d9 45%, #4880ed 72%, #181d28 100%);
+            background-size: 260% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowingBrandBlue 6s ease-in-out infinite;
+            font-size: clamp(1.15rem, 2vw, 1.45rem);
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            margin-bottom: 8px;
+        }
+
+        .footer-subheading {
+            font-family: var(--font-body);
+            color: var(--color-tg-blue);
+            font-size: clamp(0.96rem, 1.5vw, 1.1rem);
+            font-weight: 700;
+        }
+
+        /* ── LIGHTBOX MODAL ── */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(24, 29, 40, 0.94);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+            backdrop-filter: blur(8px);
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-box {
+            position: relative;
+            max-width: 95vw;
+            max-height: 92vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #ffffff;
+            padding: 12px;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--border-blue);
+        }
+
+        .lightbox-box img {
+            max-width: 90vw;
+            max-height: 82vh;
+            object-fit: contain;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .lightbox-caption {
+            margin-top: 12px;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            text-align: center;
+        }
+
+        .lightbox-close-btn {
+            position: absolute;
+            top: -16px;
+            right: -16px;
+            width: 36px;
+            height: 36px;
+            background: var(--color-navy);
+            color: #ffffff;
+            border: 2px solid var(--border-blue);
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .lightbox-close-btn:hover {
+            transform: scale(1.1);
+            background: var(--color-tg-blue);
+            color: #ffffff;
+        }
+
+        /* ── RESPONSIVE MEDIA QUERIES ── */
+        @media (max-width: 960px) {
+            .top-headline-header {
+                padding: 26px 24px;
+            }
+
+            .details-row {
+                padding: 24px 22px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 98%;
+                padding: 16px 6px 44px;
+            }
+
+            .top-headline-header {
+                padding: 20px 16px;
+                margin-bottom: 24px;
+                border-left-width: 6px;
+            }
+
+            .top-headline-tagline {
+                font-size: 0.72rem;
+                letter-spacing: 0.14em;
+                margin-bottom: 8px;
+            }
+
+            .top-headline-title {
+                font-size: clamp(1.48rem, 6.2vw, 1.95rem);
+                margin-bottom: 10px;
+            }
+
+            .top-headline-subhead {
+                font-size: 0.92rem;
+                line-height: 1.65;
+            }
+
+            .image-title-bar {
+                padding: 12px 16px;
+            }
+
+            .image-title-bar h3 {
+                font-size: 0.95rem;
+            }
+
+            .image-container {
+                padding: 12px;
+            }
+
+            .image-brief-info {
+                padding: 12px 16px 14px;
+                font-size: 0.88rem;
+                line-height: 1.6;
+            }
+
+            .details-row {
+                padding: 20px 16px;
+            }
+
+            .details-heading {
+                font-size: 1.18rem;
+            }
+
+            .details-subheading {
+                font-size: 0.96rem;
+            }
+
+            .details-text,
+            .details-list li {
+                font-size: 0.9rem;
+                line-height: 1.7;
+            }
+
+            .project-info-card-portrait {
+                max-width: 100%;
+                padding: 18px 14px 22px;
+                border-radius: 20px;
+            }
+
+            .pinfo-neon-pill {
+                font-size: 0.78rem;
+                padding: 7px 18px;
+            }
+
+            .pinfo-box-label {
+                font-size: 0.72rem;
+            }
+
+            .pinfo-box-val {
+                font-size: 0.88rem;
+            }
+
+            .pinfo-impact-header {
+                font-size: 0.74rem;
+            }
+
+            .pinfo-impact-text {
+                font-size: 0.84rem;
+                line-height: 1.5;
+            }
+
+            /* ── DECREASED FOOTER FONT SIZE ON MOBILE ── */
+            footer.page-footer {
+                gap: 14px;
+                margin-top: 28px;
+                padding: 20px 8px 36px;
+            }
+
+            .footer-logos {
+                gap: 14px;
+            }
+
+            .footer-avatar {
+                width: 64px;
+                height: 64px;
+            }
+
+            .footer-heading {
+                font-size: 0.92rem;
+                line-height: 1.45;
+            }
+
+            .footer-subheading {
+                font-size: 0.8rem;
+                line-height: 1.5;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .top-headline-title {
+                font-size: 1.35rem;
+            }
+
+            .footer-heading {
+                font-size: 0.84rem;
+            }
+
+            .footer-subheading {
+                font-size: 0.74rem;
+            }
+
+            .footer-avatar {
+                width: 52px;
+                height: 52px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ── TOP ACCENT LINE ── -->
+        <div class="accent-top-bar"></div>
+
+        <!-- ── TOP HEADLINE TITLE & SUB-HEAD ── -->
+        <header class="top-headline-header">
+            <div class="top-headline-tagline">Meta Messenger &amp; Google Calendar AI Agent</div>
+            <h1 class="top-headline-title">"Facebook Page AI Agent"</h1>
+            <p class="top-headline-subhead">An autonomous 24/7 customer support and appointment booking engine connecting Facebook Messenger directly to Google Calendar via n8n.</p>
+        </header>
+
+        <!-- ── 1ST SECTION: IMAGE ROW ── -->
+        <section class="section-block">
+            <div class="section-divider-line">
+                <h2>System Architecture &amp; Workflow Canvases</h2>
+            </div>
+
+            <div class="image-flow">
+
+                <!-- Row 1 -->
+                <div class="image-row">
+                    <div class="image-title-bar">
+                        <h3>Facebook Page AI Agent v2 — n8n Workflow</h3>
+                    </div>
+                    <div class="image-container">
+                        <div class="image-frame"
+                            onclick="viewImage('04. Images - Facebook Page Customer Assistant/Facebook Page AI Agent.PNG', 'Facebook Page AI Agent v2 — n8n Production Architecture Canvas')">
+                            <img src="04. Images - Facebook Page Customer Assistant/Facebook Page AI Agent.PNG"
+                                alt="Facebook Page AI Agent Workflow" loading="lazy">
+                            <div class="zoom-badge">🔍 Zoom View</div>
+                        </div>
+                    </div>
+                    <p class="image-brief-info">Production n8n architecture integrating Facebook Messenger webhooks, dual-path verification, Google Gemini reasoning, Knowledge Base document retrieval, and live Google Calendar scheduling.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ── 2ND SECTION: EXACT DETAILS (ROWS 1 TO 4) ── -->
+        <section class="section-block">
+            <div class="section-divider-line">
+                <h2>Case Study Breakdown</h2>
+            </div>
+
+            <div class="details-flow">
+
+                <!-- 1st row: Introduction -->
+                <div class="details-row">
+                    <h3 class="details-heading">Introduction</h3>
+                    <h4 class="details-subheading">Facebook Page AI Agent — Autonomous Messenger &amp; Google Calendar Booking Engine</h4>
+                    <p class="details-text">Staycation properties and local service businesses receive continuous customer inquiries on Facebook Messenger late into the night regarding amenities, rules, and reservation dates, leading to delayed responses, high drop-off rates, and lost revenue during peak after-hours traffic.</p>
+                </div>
+
+                <!-- 2nd row: The Challenges -->
+                <div class="details-row">
+                    <h3 class="details-heading">The Challenges</h3>
+                    <ul class="details-list">
+                        <li><strong>Late-Night Lead Abandonment (10 PM – 2 AM):</strong> Over 40% of booking inquiries occur after business hours when hosts are asleep, causing prospective guests to drop off or reserve with faster-responding competitors.</li>
+                        <li><strong>Repetitive FAQ Answering Fatigue:</strong> Support teams spent excessive hours manually typing repetitive answers about amenities, operating rules, security deposits, and check-in schedules.</li>
+                        <li><strong>Double-Booking &amp; Scheduling Inefficiencies:</strong> Traditional keyword chatbots could not check real-time calendar availability, forcing manual back-and-forth date verification and causing accidental scheduling collisions.</li>
+                    </ul>
+                </div>
+
+                <!-- 3rd row: The Solution -->
+                <div class="details-row">
+                    <h3 class="details-heading">The Solution</h3>
+                    <p class="details-text">Engineered an intelligent, tool-augmented automation pipeline in n8n combining the Meta Graph API, Google Gemini 1.5, and Google Calendar APIs:</p>
+                    <ul class="details-list">
+                        <li><strong>Dual-Path Webhook Verification:</strong> Listens live via Facebook Webhooks, handling both Meta GET challenge handshakes and real-time POST message events with instant zero-drop responsiveness.</li>
+                        <li><strong>Knowledge Base Document Retrieval:</strong> Equips the Google Gemini AI Agent with structured knowledge base tools to instantly provide accurate answers on pricing, policies, and property guidelines.</li>
+                        <li><strong>Real-Time Calendar Availability &amp; Direct Booking:</strong> Empowers the AI agent with read/write Google Calendar API tools to inspect live availability slots and automatically create confirmed booking events in seconds.</li>
+                    </ul>
+                </div>
+
+                <!-- 4th row: The Results -->
+                <div class="details-row">
+                    <h3 class="details-heading">The Results</h3>
+                    <ul class="details-list">
+                        <li><strong>Sub-15s Response Turnaround:</strong> Replaced hours of manual delay with instant conversational answers and reservations delivered within 15 seconds 24/7.</li>
+                        <li><strong>100% After-Hours Inquiry Capture:</strong> Eliminated lost midnight opportunities by autonomously engaging, qualifying, and booking guests while hosts sleep.</li>
+                        <li><strong>Zero Double Bookings:</strong> Live API checks across master Google Calendars ensured seamless date locking and complete scheduling accuracy without human overhead.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ── 3RD SECTION: PROJECT INFORMATION (DARK NEON GLOW PORTRAIT CARD) ── -->
+        <section class="section-block project-info-section">
+            <div class="project-info-card-portrait">
+                <div class="pinfo-header">
+                    <div class="pinfo-neon-pill">Project Information</div>
+                </div>
+
+                <!-- Title workflow -->
+                <div class="pinfo-item-box">
+                    <span class="pinfo-box-label">Title Workflow:</span>
+                    <span class="pinfo-box-val">Facebook Page AI Agent</span>
+                </div>
+
+                <!-- Executed -->
+                <div class="pinfo-item-box">
+                    <span class="pinfo-box-label">Executed:</span>
+                    <span class="pinfo-box-val">June 2026</span>
+                </div>
+
+                <!-- IMPACT -->
+                <div class="pinfo-impact-box">
+                    <div class="pinfo-impact-header">
+                        <span class="pinfo-impact-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                <polyline points="17 6 23 6 23 12"></polyline>
+                            </svg>
+                        </span>
+                        IMPACT
+                    </div>
+                    <p class="pinfo-impact-text">Connected an AI chatbot to Facebook Messenger to automatically answer customer inquiries, capture lead details, and book appointments <span class="pinfo-impact-highlight">24/7</span> with sub-<span class="pinfo-impact-highlight">15s</span> response speed and zero scheduling collisions.</p>
+                </div>
+
+                <!-- Automation Specialist -->
+                <div class="pinfo-item-box">
+                    <span class="pinfo-box-label">Automation Specialist:</span>
+                    <span class="pinfo-box-val">Kent Brian Jintapa</span>
+                </div>
+
+                <!-- In Collaboration -->
+                <div class="pinfo-item-box">
+                    <span class="pinfo-box-label">In Collaboration:</span>
+                    <span class="pinfo-box-val">Errol John Peusca, Mark Dalumpines, and Joyce Ann Yap</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── FOOTER ── -->
+        <footer class="page-footer">
+            <div class="footer-logos">
+                <img class="footer-avatar" src="LOGO TEAM COLLAB/03. Kent Brian Jintapa.png" alt="Kent Brian Jintapa">
+            </div>
+
+            <div class="footer-text-group">
+                <div class="footer-heading">"Facebook Page AI Agent" — Customer Assistant Case Study</div>
+                <div class="footer-subheading">Automate and built by Kent Brian Jintapa.</div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- ── LIGHTBOX MODAL ── -->
+    <div class="lightbox" id="lightbox" onclick="closeImage(event)">
+        <div class="lightbox-box" onclick="event.stopPropagation()">
+            <button class="lightbox-close-btn" onclick="closeImage(event)" aria-label="Close Preview">&times;</button>
+            <img id="lightboxImg" src="" alt="Enlarged Preview">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <script>
+        function viewImage(src, caption) {
+            const modal = document.getElementById('lightbox');
+            const img = document.getElementById('lightboxImg');
+            const cap = document.getElementById('lightboxCaption');
+            img.src = src;
+            cap.textContent = caption;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImage(e) {
+            const modal = document.getElementById('lightbox');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeImage();
+            }
+        });
+    </script>
+
+</body>
+
+</html>
