@@ -1527,18 +1527,25 @@
                 <!-- 2nd ROW: CODE, VERIFICATION & DEPLOYMENT SLIDER -->
                 <div class="proof-unboxed-row">
                     <div class="slider-viewport" id="sliderRow2">
-                        <div class="slider-track track-2 is-animating">
+                        <div class="slider-track track-3 is-animating">
                             <div class="slider-slide"
                                 onclick="viewImage('02. Images - Law firm/Back-End Code.png', 'Back-End Code')">
-                                <div class="slide-badge">Slide 1 / 2 • Visual Studio back-end code</div>
+                                <div class="slide-badge">Slide 1 / 3 • Visual Studio back-end code</div>
                                 <img src="02. Images - Law firm/Back-End Code.png" alt="Back-End Code" loading="lazy">
                                 <div class="slide-zoom-pill">🔍 Click to Zoom View</div>
                             </div>
                             <div class="slider-slide"
                                 onclick="viewImage('02. Images - Law firm/Google search console verified.png', 'Google search console verified')">
-                                <div class="slide-badge">Slide 2 / 2 • Search Console SEO</div>
+                                <div class="slide-badge">Slide 2 / 3 • Search Console SEO</div>
                                 <img src="02. Images - Law firm/Google search console verified.png"
                                     alt="Google search console verified" loading="lazy">
+                                <div class="slide-zoom-pill">🔍 Click to Zoom View</div>
+                            </div>
+                            <div class="slider-slide"
+                                onclick="viewImage('02. Images - Law firm/Basic Google Search optimization.png', 'Basic Google Search Optimization')">
+                                <div class="slide-badge">Slide 3 / 3 • Basic SEO (Google Search Optimization)</div>
+                                <img src="02. Images - Law firm/Basic Google Search optimization.png"
+                                    alt="Basic Google Search Optimization" loading="lazy">
                                 <div class="slide-zoom-pill">🔍 Click to Zoom View</div>
                             </div>
                         </div>
@@ -1549,6 +1556,7 @@
                             <div class="slider-indicators">
                                 <span class="slider-dot active" onclick="jumpSlide('sliderRow2', 0)"></span>
                                 <span class="slider-dot" onclick="jumpSlide('sliderRow2', 1)"></span>
+                                <span class="slider-dot" onclick="jumpSlide('sliderRow2', 2)"></span>
                             </div>
                             <button class="slider-btn next" onclick="shiftSlide('sliderRow2', 1)"
                                 aria-label="Next Slide">›</button>
@@ -1556,8 +1564,7 @@
                     </div>
                     <div class="proof-info-banner">
                         <div class="info-icon">🛠️</div>
-                        <p>Production engineering architecture featuring custom Visual Studio back-end code, and
-                            verified Google Search Console SEO indexing.</p>
+                        <p>Production engineering architecture featuring custom Visual Studio back-end code, verified Google Search Console SEO indexing, and Basic SEO (Google Search Optimization).</p>
                     </div>
                 </div>
 
@@ -1957,7 +1964,7 @@
         /* ── INTERACTIVE CONTROLS FOR PROOF AUTO-SLIDERS ── */
         const sliderStates = {
             sliderRow1: { current: 0, total: 2 },
-            sliderRow2: { current: 0, total: 2 }
+            sliderRow2: { current: 0, total: 3 }
         };
 
         function updateSliderUI(id) {

@@ -1,0 +1,2814 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Upper Room at Azure North Staycation — Case Study </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,700;9..144,800&family=JetBrains+Mono:wght@500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --espresso: #241810;
+      --espresso-deep: #160e09;
+      --navy: #241810;
+      --gold: #C9A027;
+      --gold-warm: #D4AF37;
+      --gold-deep: #9E7B1B;
+      --border: #E8DFC8;
+      --border-dark: rgba(201, 160, 39, 0.28);
+      --cream: #FAF7F0;
+      --cream-card: #FFFFFF;
+      --muted: #66564B;
+      --gold-lt: #F4D97B;
+      --white: #FFFFFF;
+      --steel: #8C7B70;
+      --terracotta: #A4522A;
+      --sage: #4E6B47;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--espresso);
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ── */
+    header {
+      padding: 56px 24px 18px;
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .eyebrow {
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin: 0 auto 12px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: fit-content;
+      text-align: center;
+    }
+
+    .eyebrow::before,
+    .eyebrow::after {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.75;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.85rem, 3.8vw, 2.75rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin: 0 auto 14px auto;
+      text-align: center;
+      display: block;
+      width: 100%;
+      max-width: 960px;
+      background: linear-gradient(90deg, #241810 0%, #7A421D 25%, #C9A027 50%, #7A421D 75%, #241810 100%);
+      background-size: 250% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: stayHeadingGlow 4s linear infinite, stayHeadingPulse 2.6s ease-in-out infinite;
+    }
+
+    @keyframes stayHeadingGlow {
+      0% {
+        background-position: 0% center;
+      }
+
+      100% {
+        background-position: 250% center;
+      }
+    }
+
+    @keyframes stayHeadingPulse {
+
+      0%,
+      100% {
+        filter: drop-shadow(0 0 6px rgba(201, 160, 39, 0.25));
+      }
+
+      50% {
+        filter: drop-shadow(0 0 16px rgba(201, 160, 39, 0.55));
+      }
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 0.96rem;
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    /* ── SCROLL-TRIGGERED SMOOTH FADE-IN ANIMATION ── */
+    .scroll-fade {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .scroll-fade.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-fade {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* ── UNBOXED IMAGE FLOW & SHOWCASE ── */
+    .section-block {
+      margin-bottom: 64px;
+      width: 100%;
+    }
+
+    .section-block h2 {
+      font-size: clamp(24px, 3.4vw, 36px);
+      font-weight: 700;
+      color: var(--espresso);
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .picture-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      width: 100%;
+    }
+
+    .unboxed-image-item {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      background: transparent;
+    }
+
+    .unboxed-image-title {
+      font-family: var(--serif);
+      color: var(--espresso);
+      font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 4px 0;
+    }
+
+    .unboxed-image-title::before {
+      content: '';
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: var(--gold);
+      border-radius: 2px;
+      box-shadow: 0 0 6px rgba(201, 160, 39, 0.6);
+    }
+
+    .unboxed-frame {
+      position: relative;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #ffffff;
+      cursor: zoom-in;
+      border: 1.5px solid rgba(201, 160, 39, 0.45);
+      box-shadow: 0 6px 20px rgba(36, 24, 16, 0.08);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .unboxed-frame:hover {
+      border-color: var(--gold-deep);
+      box-shadow: 0 10px 30px rgba(36, 24, 16, 0.16);
+      transform: translateY(-2px);
+    }
+
+    .unboxed-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 850px;
+      object-fit: contain;
+      margin: 0 auto;
+      transition: transform 0.3s ease;
+    }
+
+    .unboxed-frame:hover img {
+      transform: scale(1.015);
+    }
+
+    .zoom-badge {
+      position: absolute;
+      bottom: 12px;
+      right: 14px;
+      background: var(--espresso);
+      color: #ffffff;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--gold);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+      z-index: 2;
+    }
+
+    .grid-2-col {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      width: 100%;
+    }
+
+    .grid-3-col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      width: 100%;
+    }
+
+    .grid-4-col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      width: 100%;
+    }
+
+    @media (max-width: 900px) {
+
+      .grid-2-col,
+      .grid-3-col,
+      .grid-4-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ── AUTO-SLIDER (DESKTOP VIEW WITH SLIDE & CLICK) ── */
+    .slider-viewport {
+      position: relative;
+      width: 100%;
+      height: 560px;
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1.5px solid rgba(201, 160, 39, 0.45);
+      box-shadow: 0 6px 20px rgba(36, 24, 16, 0.08);
+      overflow: hidden;
+      user-select: none;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .slider-viewport:hover {
+      border-color: var(--gold-deep);
+      box-shadow: 0 10px 30px rgba(36, 24, 16, 0.16);
+    }
+
+    .slider-track {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .track-2.is-animating {
+      animation: autoSlide2 8s ease-in-out infinite;
+    }
+
+    @keyframes autoSlide2 {
+
+      0%,
+      44% {
+        transform: translateX(0%);
+      }
+
+      50%,
+      94% {
+        transform: translateX(-100%);
+      }
+
+      100% {
+        transform: translateX(0%);
+      }
+    }
+
+    .slider-viewport:hover .slider-track {
+      animation-play-state: paused;
+    }
+
+    .slider-slide {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      cursor: zoom-in;
+      padding: 16px;
+      background: #ffffff;
+      box-sizing: border-box;
+    }
+
+    .slider-slide img {
+      max-width: 98%;
+      max-height: 94%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(36, 24, 16, 0.08);
+      border: 1px solid var(--border);
+      transition: transform 0.25s ease;
+    }
+
+    .slider-slide:hover img {
+      transform: scale(1.015);
+    }
+
+    .slide-badge {
+      position: absolute;
+      top: 16px;
+      left: 20px;
+      background: var(--espresso);
+      color: var(--gold-warm);
+      border: 1px solid var(--gold);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(36, 24, 16, 0.2);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .slide-zoom-pill {
+      position: absolute;
+      bottom: 16px;
+      right: 20px;
+      background: rgba(36, 24, 16, 0.88);
+      color: #ffffff;
+      border: 1px solid var(--gold);
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 6px;
+      pointer-events: none;
+      z-index: 2;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    }
+
+    .slider-controls {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .slider-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(36, 24, 16, 0.85);
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      font-size: 1.6rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      pointer-events: auto;
+      transition: background 0.2s ease, transform 0.15s ease, color 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .slider-btn:hover {
+      background: var(--gold);
+      color: var(--espresso);
+      transform: scale(1.08);
+    }
+
+    .slider-indicators {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      pointer-events: auto;
+      z-index: 4;
+    }
+
+    .slider-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(36, 24, 16, 0.35);
+      border: 1.5px solid var(--gold);
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease, width 0.2s ease;
+    }
+
+    .slider-dot.active {
+      background: var(--gold);
+      width: 24px;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .slider-viewport {
+        height: clamp(260px, 60vw, 400px);
+      }
+
+      .slider-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 1.3rem;
+      }
+
+      .slide-badge {
+        top: 10px;
+        left: 10px;
+        font-size: 0.65rem;
+        padding: 3px 8px;
+      }
+
+      .slide-zoom-pill {
+        bottom: 10px;
+        right: 10px;
+        font-size: 0.68rem;
+        padding: 4px 10px;
+      }
+    }
+
+    /* ── SECTION: PROJECT INFORMATION (DARK NEON GLOW PORTRAIT CARD) ── */
+    .project-info-section {
+      width: 100%;
+      padding: 24px 0 36px;
+    }
+
+    .project-info-grid {
+      display: grid;
+      grid-template-columns: minmax(340px, 440px) 1fr;
+      gap: 36px;
+      align-items: center;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .project-info-col {
+      width: 100%;
+    }
+
+    .project-info-media-col {
+      width: 100%;
+    }
+
+    @media (max-width: 960px) {
+      .project-info-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .project-info-card-portrait {
+        margin: 0 auto;
+      }
+    }
+
+    .project-info-card-portrait {
+      width: 100%;
+      max-width: 440px;
+      background: radial-gradient(circle at 50% 10%, #1c1510 0%, #100b07 100%);
+      border: 1px solid rgba(201, 160, 39, 0.4);
+      border-radius: 24px;
+      padding: 22px 20px 26px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), 0 0 35px rgba(201, 160, 39, 0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .pinfo-header {
+      width: 100%;
+      margin-bottom: 2px;
+    }
+
+    .pinfo-neon-pill {
+      display: block;
+      width: 100%;
+      background: #c6ff00;
+      color: #0c1a24;
+      font-family: var(--sans);
+      font-size: 0.98rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 10px 18px;
+      border-radius: 999px;
+      box-shadow: 0 0 20px rgba(198, 255, 0, 0.4);
+      border: none;
+      user-select: none;
+      box-sizing: border-box;
+    }
+
+    .pinfo-item-box {
+      background: #17120e;
+      border: 1px solid rgba(201, 160, 39, 0.25);
+      border-radius: 14px;
+      padding: 11px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      transition: border-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .pinfo-item-box:hover {
+      border-color: rgba(198, 255, 0, 0.5);
+    }
+
+    .pinfo-box-label {
+      font-family: var(--sans);
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--gold-warm);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .pinfo-box-val {
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #f1ede8;
+      line-height: 1.45;
+    }
+
+    .pinfo-link {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: #c6ff00;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+      word-break: break-all;
+      line-height: 1.4;
+      transition: color 0.2s ease, text-shadow 0.2s ease;
+    }
+
+    .pinfo-link:hover {
+      color: #e2ff66;
+      text-decoration: underline;
+      text-shadow: 0 0 12px rgba(198, 255, 0, 0.6);
+    }
+
+    .pinfo-impact-box {
+      background: #17120e;
+      border: 1px solid rgba(201, 160, 39, 0.35);
+      border-radius: 14px;
+      padding: 13px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: border-color 0.2s ease;
+    }
+
+    .pinfo-impact-box:hover {
+      border-color: rgba(250, 204, 21, 0.55);
+    }
+
+    .pinfo-impact-header {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: #facc15;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .pinfo-impact-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #facc15;
+    }
+
+    .pinfo-impact-text {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      line-height: 1.55;
+      color: #dfd7ce;
+      margin: 0;
+    }
+
+    @media (max-width: 600px) {
+      .project-info-section {
+        padding: 16px 4px 28px;
+      }
+
+      .project-info-card-portrait {
+        max-width: 100%;
+        border-radius: 20px;
+        padding: 18px 14px 22px;
+        gap: 10px;
+      }
+
+      .pinfo-neon-pill {
+        font-size: 0.90rem;
+        padding: 9px 14px;
+        letter-spacing: 0.03em;
+      }
+
+      .pinfo-item-box {
+        padding: 9px 12px;
+        border-radius: 12px;
+        gap: 2px;
+      }
+
+      .pinfo-box-label {
+        font-size: 0.70rem;
+        letter-spacing: 0.05em;
+      }
+
+      .pinfo-box-val {
+        font-size: 0.82rem;
+        line-height: 1.4;
+      }
+
+      .pinfo-link {
+        font-size: 0.76rem;
+      }
+
+      .pinfo-impact-box {
+        padding: 11px 12px;
+        border-radius: 12px;
+        gap: 5px;
+      }
+
+      .pinfo-impact-header {
+        font-size: 0.74rem;
+      }
+
+      .pinfo-impact-text {
+        font-size: 0.78rem;
+        line-height: 1.5;
+      }
+    }
+
+    /* ── CASE STUDY BODY CONTAINER ── */
+    .cs-body {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 24px 24px 40px;
+      box-sizing: border-box;
+    }
+
+    .section-num {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .section-num::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .cs-section {
+      display: block;
+      margin-bottom: 72px;
+      scroll-margin-top: 90px;
+    }
+
+    .cs-section h2 {
+      font-family: var(--serif);
+      font-size: clamp(25px, 3.6vw, 38px);
+      font-weight: 700;
+      color: var(--espresso);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .cs-section h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .gold-rule {
+      width: 44px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 26px;
+    }
+
+    .cs-p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 14px;
+    }
+
+    .cs-p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── SECTION I: INTRO GRID ── */
+    .intro-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 48px;
+      align-items: center;
+      box-sizing: border-box;
+      margin-bottom: 36px;
+    }
+
+    .intro-media {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .intro-img-frame {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 16px 40px rgba(36, 24, 16, 0.12);
+      background: #ffffff;
+      cursor: zoom-in;
+    }
+
+    .intro-grid img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .intro-grid img:hover {
+      transform: scale(1.04);
+    }
+
+    .intro-site-link {
+      align-self: center;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gold-deep);
+      border: 1px solid rgba(201, 160, 39, 0.35);
+      background: rgba(201, 160, 39, 0.08);
+      padding: 9px 22px;
+      border-radius: 24px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+    }
+
+    .intro-site-link:hover {
+      background: var(--gold);
+      color: #ffffff;
+      border-color: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(201, 160, 39, 0.35);
+    }
+
+    .intro-grid .intro-text .cs-p {
+      font-size: 15.5px;
+      text-align: justify;
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+
+    .intro-grid .intro-text .hl {
+      color: var(--gold-deep);
+      font-weight: 700;
+    }
+
+    .intro-meta-capsules {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .meta-cap {
+      font-size: 0.74rem;
+      font-family: var(--mono);
+      padding: 5px 12px;
+      border-radius: 8px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .meta-cap strong {
+      color: var(--espresso);
+    }
+
+    @media (max-width: 960px) {
+      .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .intro-grid img {
+        aspect-ratio: 16/9;
+      }
+    }
+
+    /* ── SECTION II: CHALLENGES GRID ── */
+    .challenges-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 28px;
+      box-sizing: border-box;
+      margin-top: 16px;
+    }
+
+    .challenge-col {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .challenge-item {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      background: var(--cream-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 26px;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 16px rgba(36, 24, 16, 0.04);
+    }
+
+    .challenge-item:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold);
+      box-shadow: 0px 10px 26px rgba(36, 24, 16, 0.12);
+    }
+
+    .ch-num {
+      font-family: var(--serif);
+      font-size: 30px;
+      font-weight: 700;
+      color: rgba(201, 160, 39, 0.35);
+      flex-shrink: 0;
+      line-height: 1;
+      margin-top: 2px;
+      min-width: 40px;
+    }
+
+    .ch-body h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--espresso);
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+
+    .ch-body p {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 900px) {
+      .challenges-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ── SECTION III: SOLUTION IMPLEMENTATION TOOL FLOW MARQUEE ── */
+    .cs-flow-strip {
+      width: 100%;
+      overflow: hidden;
+      background: #18100a;
+      border: 1px solid rgba(201, 160, 39, 0.35);
+      border-radius: 16px;
+      padding: 14px 0;
+      margin: 20px 0 34px;
+      box-sizing: border-box;
+      box-shadow: 0 10px 26px rgba(36, 24, 16, 0.3);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
+    }
+
+    .cs-flow-track {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      width: max-content;
+      animation: csFlowScroll 22s linear infinite;
+    }
+
+    .cs-flow-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes csFlowScroll {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-33.333%);
+      }
+    }
+
+    .cs-flow-logo {
+      height: 48px;
+      width: auto;
+      max-width: 82px;
+      object-fit: contain;
+      border-radius: 8px;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+      transition: transform .25s ease, filter .25s ease;
+      flex-shrink: 0;
+      display: block;
+      cursor: pointer;
+    }
+
+    .cs-flow-logo:hover {
+      transform: scale(1.18);
+      filter: drop-shadow(0 4px 14px rgba(201, 160, 39, 0.55));
+    }
+
+    .cs-flow-sep {
+      color: var(--gold);
+      font-size: 1.15rem;
+      opacity: 0.75;
+      flex-shrink: 0;
+    }
+
+    /* ── OUTCOMES GRID (CENTERED & SIZED CLEANLY) ── */
+    .outcomes-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 28px;
+      align-items: stretch;
+      box-sizing: border-box;
+      margin: 24px 0 32px;
+    }
+
+    .outcomes-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+    }
+
+    .outcome-item {
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.8;
+      background: var(--cream-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 24px;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 14px rgba(36, 24, 16, 0.03);
+    }
+
+    .outcome-item:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold);
+      box-shadow: 0px 8px 22px rgba(36, 24, 16, 0.1);
+    }
+
+    .outcome-item strong {
+      color: var(--espresso);
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+
+    .outcome-tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold-deep);
+      background: rgba(201, 160, 39, 0.12);
+      border: 1px solid rgba(201, 160, 39, 0.3);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 900px) {
+      .outcomes-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ── SECTION IV: RESULTS GRID ── */
+    .results-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+      box-sizing: border-box;
+      margin-bottom: 30px;
+    }
+
+    .result-card {
+      background: var(--cream-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 16px;
+      text-align: center;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 14px rgba(36, 24, 16, 0.04);
+    }
+
+    .result-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold);
+      box-shadow: 0px 8px 22px rgba(36, 24, 16, 0.12);
+    }
+
+    .result-num {
+      font-family: var(--serif);
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--gold-deep);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .result-label {
+      font-size: 12.5px;
+      color: var(--espresso);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .result-sub {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 1040px) {
+      .results-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .results-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* ── BEHIND THE SCENES: AUTOMATION WORKFLOW FRAMEWORK ── */
+    .vsc-section {
+      padding: 40px 0 16px;
+    }
+
+    .vsc-section-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .vsc-section-inner h2 {
+      font-family: var(--serif);
+      font-weight: 800;
+      font-size: clamp(28px, 4.2vw, 44px);
+      line-height: 1.18;
+      margin-bottom: 8px;
+      background: linear-gradient(90deg, #241810 0%, #7A421D 30%, #C9A027 50%, #7A421D 70%, #241810 100%);
+      background-size: 250% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: stayHeadingGlow 3.5s linear infinite;
+    }
+
+    .flow-section {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 24px 0;
+    }
+
+    .flow-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 70px;
+      margin-bottom: 72px;
+    }
+
+    .flow-row.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .flow-card {
+      position: relative;
+      z-index: 2;
+      isolation: isolate;
+      flex: 0 0 560px;
+      width: 560px;
+      max-width: 100%;
+      box-sizing: border-box;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px 24px 30px;
+      box-shadow: 0 12px 34px rgba(36, 24, 16, 0.08);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .flow-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 44px rgba(36, 24, 16, 0.12);
+      }
+    }
+
+    .flow-group-num {
+      font-family: var(--sans);
+      font-size: 0.64rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      background: rgba(201, 160, 39, 0.12);
+      border: 1px solid rgba(201, 160, 39, 0.35);
+      border-radius: 20px;
+      padding: 4px 12px;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    .flow-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--serif);
+      font-size: 1.12rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--espresso);
+    }
+
+    .flow-label::before {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .flow-scale {
+      overflow: hidden;
+      border-radius: 12px;
+      background: #faf7f2;
+      border: 1px solid rgba(232, 223, 200, 0.7);
+    }
+
+    .flow-canvas {
+      position: relative;
+    }
+
+    .flow-canvas>svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .flow-canvas .flow-path {
+      fill: none;
+      stroke: var(--gold);
+      stroke-width: 1.6;
+      stroke-dasharray: 5 6;
+      opacity: 0.65;
+    }
+
+    .flow-canvas .joint-dot {
+      fill: var(--gold);
+    }
+
+    .flow-canvas .travel-dot {
+      fill: var(--gold);
+      filter: drop-shadow(0 0 4px rgba(201, 160, 39, 0.9));
+    }
+
+    .flow-node {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 155px;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .flow-node .icon-box {
+      position: relative;
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      background: #ffffff;
+      border: 1.5px solid var(--border);
+      box-shadow: 0 6px 16px rgba(36, 24, 16, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-deep);
+    }
+
+    .flow-node.key .icon-box {
+      border-color: var(--gold);
+      box-shadow: 0 6px 20px rgba(201, 160, 39, 0.28);
+    }
+
+    .flow-node .icon-box::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid var(--border);
+      z-index: 2;
+    }
+
+    .flow-node.key .icon-box::before {
+      border-color: var(--gold);
+    }
+
+    .flow-node .icon-box svg {
+      position: relative;
+      z-index: 1;
+      width: 26px;
+      height: 26px;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      fill: none;
+      display: block;
+      margin: auto;
+    }
+
+    .flow-node .n-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-top: 8px;
+      color: var(--espresso);
+      font-family: var(--sans);
+    }
+
+    .flow-node .n-sub {
+      font-size: 0.66rem;
+      color: var(--muted);
+      margin-top: 2px;
+      line-height: 1.35;
+    }
+
+    .h-connector {
+      position: absolute;
+      height: 2px;
+      background-image: linear-gradient(90deg, var(--gold) 0 6px, transparent 6px 13px);
+      background-size: 13px 2px;
+      z-index: 0;
+    }
+
+    .h-connector .h-dot {
+      position: absolute;
+      top: 50%;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 6px rgba(201, 160, 39, 0.8);
+      animation: hMove 2.6s linear infinite;
+    }
+
+    @keyframes hMove {
+      from {
+        left: 0%;
+      }
+
+      to {
+        left: 100%;
+      }
+    }
+
+    .flow-text {
+      flex: 1;
+      padding-top: 6px;
+    }
+
+    .flow-text h2 {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--espresso);
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .flow-text p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .flow-text strong {
+      color: var(--espresso);
+    }
+
+    @media (max-width: 1020px) {
+      .flow-section {
+        padding: 20px 12px;
+      }
+
+      .flow-row,
+      .flow-row.reverse {
+        flex-direction: column;
+        gap: 24px;
+        margin-bottom: 48px;
+        align-items: stretch;
+      }
+
+      .flow-card {
+        width: 100% !important;
+        max-width: 560px;
+        flex: 0 0 auto;
+        margin: 0 auto;
+        box-sizing: border-box;
+      }
+
+      .flow-card:hover {
+        transform: none !important;
+      }
+
+      .flow-scale {
+        width: 100% !important;
+        max-width: 100%;
+        overflow: hidden;
+        position: relative;
+        margin: 0 auto;
+      }
+
+      .flow-canvas {
+        transform-origin: top left;
+      }
+
+      .flow-text {
+        border-left: 3px solid var(--gold) !important;
+        padding-left: 18px !important;
+        padding-right: 0 !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .flow-card {
+        padding: 16px 12px 18px !important;
+        border-radius: 16px;
+      }
+
+      .flow-label {
+        font-size: 0.98rem;
+        margin-bottom: 12px;
+      }
+
+      .flow-text h2 {
+        font-size: 1.25rem;
+        margin-bottom: 10px;
+      }
+
+      .flow-text p {
+        font-size: 13.5px;
+        line-height: 1.7;
+      }
+
+      .results-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px;
+      }
+
+      .result-card {
+        padding: 14px 8px;
+      }
+
+      .result-num {
+        font-size: 24px;
+      }
+
+      .result-label {
+        font-size: 11.5px;
+      }
+
+      .result-sub {
+        font-size: 10px;
+      }
+
+      .challenge-item {
+        padding: 18px 14px;
+        gap: 12px;
+      }
+
+      .ch-num {
+        font-size: 24px;
+        min-width: 32px;
+      }
+
+      .ch-body h4 {
+        font-size: 15px;
+      }
+
+      .ch-body p {
+        font-size: 13px;
+      }
+
+      .outcome-item {
+        padding: 16px 14px;
+        font-size: 13.5px;
+      }
+
+      .vsc-section-inner h2 {
+        font-size: clamp(22px, 6vw, 32px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 36px 14px 14px;
+      }
+
+      h1 {
+        font-size: clamp(1.45rem, 6.5vw, 2.1rem);
+      }
+
+      .cs-body {
+        padding: 16px 10px 32px;
+      }
+
+      .cs-nav-bar {
+        gap: 6px;
+        padding: 0 8px;
+        margin: 20px auto 8px;
+      }
+
+      .cs-nav-btn {
+        padding: 7px 12px;
+        font-size: 0.65rem;
+      }
+
+      .intro-grid,
+      .challenges-grid,
+      .outcomes-grid,
+      .results-grid {
+        padding: 0 4px !important;
+      }
+
+      .flow-card {
+        padding: 14px 10px 16px !important;
+      }
+
+      .flow-section {
+        padding: 16px 6px;
+      }
+    }
+
+    /* ── FOOTER ── */
+    footer.page-footer {
+      margin-top: 64px;
+      padding: 36px 16px 54px;
+      border-top: 1px solid var(--border);
+      background: #faf7f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 24px;
+    }
+
+    .footer-logos {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: nowrap;
+    }
+
+    .footer-avatar {
+      width: 2in;
+      height: 2in;
+      min-width: 2in;
+      min-height: 2in;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 3px solid var(--gold);
+      box-shadow: 0 4px 16px rgba(201, 160, 39, 0.22);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .footer-avatar:hover {
+      transform: scale(1.05);
+      border-color: var(--espresso);
+      box-shadow: 0 6px 20px rgba(36, 24, 16, 0.25);
+    }
+
+    .footer-text-group {
+      width: 100%;
+      max-width: 960px;
+      border: none;
+      padding-top: 8px;
+    }
+
+    .footer-heading {
+      font-family: var(--serif);
+      background: linear-gradient(90deg, #241810 0%, #7A421D 25%, #C9A027 50%, #7A421D 75%, #241810 100%);
+      background-size: 250% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: stayHeadingGlow 4s linear infinite;
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 10px;
+    }
+
+    .footer-subheading {
+      font-family: var(--sans);
+      color: var(--gold-deep);
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      font-weight: 600;
+    }
+
+    .footer-collab {
+      font-family: var(--sans);
+      color: var(--espresso);
+      font-size: clamp(0.92rem, 1.4vw, 1.05rem);
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+    .footer-collab .collab-name {
+      color: var(--gold-deep);
+      font-weight: 700;
+    }
+
+    @media (max-width: 600px) {
+      footer.page-footer {
+        padding: 24px 12px 36px;
+        gap: 16px;
+      }
+
+      .footer-avatar {
+        width: clamp(72px, 22vw, 92px);
+        height: clamp(72px, 22vw, 92px);
+        min-width: unset;
+        min-height: unset;
+        border-width: 2.5px;
+      }
+
+      .footer-heading {
+        font-size: clamp(0.92rem, 4vw, 1.1rem);
+      }
+
+      .footer-subheading {
+        font-size: 0.92rem;
+      }
+
+      .footer-collab {
+        font-size: 0.86rem;
+      }
+    }
+
+    /* ── LIGHTBOX MODAL ── */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(14, 9, 6, 0.92);
+      backdrop-filter: blur(10px);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      box-sizing: border-box;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox-img {
+      max-width: 92vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lightbox-close:hover {
+      background: var(--gold);
+      color: var(--espresso);
+      transform: scale(1.1);
+    }
+
+    .lightbox-caption {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #ffffff;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      background: rgba(0, 0, 0, 0.65);
+      padding: 6px 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      white-space: nowrap;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= TOP HEADER ================= -->
+  <header>
+    <div class="eyebrow">Case Study</div>
+    <h1>Staycation - 24/7 Automated Booking Funnel</h1>
+    <p>The Upper Room at Azure North Staycation - Lead Generation, Booking Calendar with Payment receipt verification,
+      and Automated Gmail Notification..</p>
+  </header>
+
+  <!-- ================= MAIN CASE STUDY BODY ================= -->
+  <div class="cs-body" id="csBody">
+
+    <!-- ── 1ST SECTION: SYSTEM INTERFACES & LIVE PAGES ── -->
+    <section class="section-block scroll-fade">
+      <div class="picture-flow">
+
+        <!-- Row 1: Desktop View with Auto Slide -->
+        <div class="unboxed-image-item">
+          <div class="unboxed-image-title">Desktop View — Lead Magnet Voucher &amp; Booking Page</div>
+          <div class="slider-viewport" id="sliderRow1">
+            <div class="slider-track track-2 is-animating">
+              <div class="slider-slide"
+                onclick="openLightbox('07. ImagesUpperroomstaycation/Project - Condounit Staycation Voucher Lead Magnet.png', 'Project - Condounit Staycation Voucher Lead Magnet')">
+                <div class="slide-badge">Slide 1 / 2 • Voucher Lead Magnet</div>
+                <img src="07. ImagesUpperroomstaycation/Project - Condounit Staycation Voucher Lead Magnet.png"
+                  alt="Project - Condounit Staycation Voucher Lead Magnet" loading="lazy">
+                <div class="slide-zoom-pill">🔍 Click to Zoom View</div>
+              </div>
+              <div class="slider-slide"
+                onclick="openLightbox('07. ImagesUpperroomstaycation/Project - Condounit Staycation Booking Page.png', 'Project - Condounit Staycation Booking Page')">
+                <div class="slide-badge">Slide 2 / 2 • Booking Page</div>
+                <img src="07. ImagesUpperroomstaycation/Project - Condounit Staycation Booking Page.png"
+                  alt="Project - Condounit Staycation Booking Page" loading="lazy">
+                <div class="slide-zoom-pill">🔍 Click to Zoom View</div>
+              </div>
+            </div>
+
+            <div class="slider-controls">
+              <button class="slider-btn prev" onclick="shiftSlide('sliderRow1', -1)"
+                aria-label="Previous Slide">‹</button>
+              <div class="slider-indicators">
+                <span class="slider-dot active" onclick="jumpSlide('sliderRow1', 0)"></span>
+                <span class="slider-dot" onclick="jumpSlide('sliderRow1', 1)"></span>
+              </div>
+              <button class="slider-btn next" onclick="shiftSlide('sliderRow1', 1)" aria-label="Next Slide">›</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2 with 4 columns -->
+        <div class="grid-4-col">
+
+          <!-- 1st Column: Lead Magnet - Voucher -->
+          <div class="unboxed-image-item">
+            <div class="unboxed-image-title">Lead Magnet - Voucher</div>
+            <div class="unboxed-frame"
+              onclick="openLightbox('07. ImagesUpperroomstaycation/Lead Magnet - Voucher.png', 'Lead Magnet - Voucher')">
+              <img src="07. ImagesUpperroomstaycation/Lead Magnet - Voucher.png" alt="Lead Magnet - Voucher"
+                loading="lazy">
+              <div class="zoom-badge">🔍 Zoom View</div>
+            </div>
+          </div>
+
+          <!-- 2nd Column: Booking Page -->
+          <div class="unboxed-image-item">
+            <div class="unboxed-image-title">Booking Page</div>
+            <div class="unboxed-frame"
+              onclick="openLightbox('07. ImagesUpperroomstaycation/Booking Page.jpg', 'Booking Page')">
+              <img src="07. ImagesUpperroomstaycation/Booking Page.png" alt="Booking Page" loading="lazy">
+              <div class="zoom-badge">🔍 Zoom View</div>
+            </div>
+          </div>
+
+          <!-- 3rd Column: Feedback-Reviews Page -->
+          <div class="unboxed-image-item">
+            <div class="unboxed-image-title">Feedback-Reviews Page</div>
+            <div class="unboxed-frame"
+              onclick="openLightbox('07. ImagesUpperroomstaycation/Feedback-Reviews Page.png', 'Feedback-Reviews Page')">
+              <img src="07. ImagesUpperroomstaycation/Feedback-Reviews Page.png" alt="Feedback-Reviews Page"
+                loading="lazy">
+              <div class="zoom-badge">🔍 Zoom View</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 2ND SECTION: CASE STUDY (EXACT DETAILS BY ROW) ── -->
+
+    <!-- I. INTRODUCTION -->
+    <div class="cs-section scroll-fade" id="intro">
+      <div class="section-num">I</div>
+      <h2>Introduction</h2>
+      <div class="gold-rule"></div>
+
+      <div class="intro-grid">
+        <div class="intro-media">
+          <div class="intro-img-frame"
+            onclick="openLightbox('07. ImagesUpperroomstaycation/site.png', 'The Upper Room at Azure North — Official Staycation Showcase')">
+            <img src="07. ImagesUpperroomstaycation/site.png" alt="The Upper Room at Azure North Staycation Showcase"
+              loading="eager">
+          </div>
+          <a class="intro-site-link" href="https://demobookingstaycation.joyceyap.com/" target="_blank" rel="noopener">
+            Visit the Live Staycation Site — demobooking for Automation ↗
+          </a>
+        </div>
+
+        <div class="intro-text">
+          <p class="cs-p">
+            <span class="hl">The Upper Room at Azure North</span> is a premier Christian-themed sanctuary staycation
+            suite located in <strong>Barbados Tower 2610, Azure North, San Fernando, Pampanga, Philippines</strong>.
+            Created by hosts <em>Crisselle Joy &amp; Francisnasser</em>, the property is designed to provide families,
+            couples, and traveling groups a peaceful sanctuary where faith meets genuine Filipino hospitality.
+          </p>
+          <p class="cs-p">
+            Like many boutique short-term rental operators, the property originally relied heavily on third-party Online
+            Travel Agencies (OTAs) such as Airbnb and Agoda. While these platforms provided initial discoverability,
+            they extracted between <span class="hl">15% to 20% in platform commissions</span> on every stay, strictly
+            shielded guest contact information, and offered zero mechanisms to convert casual social media visitors into
+            loyal direct clients.
+          </p>
+          <p class="cs-p">
+            This project was engineered to establish a complete <span class="hl">direct-to-guest booking engine</span>
+            and digital acquisition ecosystem. From a 10% welcome voucher funnel (<code
+              style="font-family:var(--mono); font-size:0.85em; color:var(--terracotta);">index.html</code>) to an
+            interactive 3-step booking calendar (<code
+              style="font-family:var(--mono); font-size:0.85em; color:var(--terracotta);">Booking.html</code>),
+            automated GCash downpayment proofs, and a serverless Google Workspace backend (<code
+              style="font-family:var(--mono); font-size:0.85em; color:var(--terracotta);">Codepromo.gs</code>)—the
+            entire system operates with <span class="hl">zero ongoing monthly software overhead</span>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- II. CHALLENGES -->
+    <div class="cs-section scroll-fade" id="challenges">
+      <div class="section-num">II</div>
+      <h2>Operational <em>Challenges</em></h2>
+      <div class="gold-rule"></div>
+      <p class="cs-p" style="margin-bottom:20px;">
+        Prior to engineering this bespoke system, the unit owners encountered several operational bottlenecks, revenue
+        leaks, and administrative hurdles that constrained property scalability.
+      </p>
+
+      <div class="challenges-grid">
+        <div class="challenge-col">
+
+          <div class="challenge-item">
+            <div class="ch-num">01</div>
+            <div class="ch-body">
+              <h4>Severe OTA Commission Drag (15%–20% Revenue Loss)</h4>
+              <p>Relying exclusively on commercial OTA platforms cut heavily into operational profit margins while
+                preventing the hosts from establishing direct relationships with their returning clientele.</p>
+            </div>
+          </div>
+
+          <div class="challenge-item">
+            <div class="ch-num">02</div>
+            <div class="ch-body">
+              <h4>Scattered Inquiries &amp; Response Lag</h4>
+              <p>Inquiries arrived across Facebook Messenger, Instagram DMs, and personal phone calls. Late responses
+                during busy hours led prospective guests to book competing units at Azure North.</p>
+            </div>
+          </div>
+
+          <div class="challenge-item">
+            <div class="ch-num">03</div>
+            <div class="ch-body">
+              <h4>Calendar Double-Booking Anxiety</h4>
+              <p>Without an automated, centralized calendar synchronization engine, checking dates required manually
+                cross-referencing paper notes and chats, risking overlapping reservation promises.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="challenge-col">
+
+          <div class="challenge-item">
+            <div class="ch-num">04</div>
+            <div class="ch-body">
+              <h4>Zero Fence-Sitter Lead Capture</h4>
+              <p>Social media ad visitors who were interested but not ready to book immediately bounced without leaving
+                contact information, causing marketing expenditures to leak away untracked.</p>
+            </div>
+          </div>
+
+          <div class="challenge-item">
+            <div class="ch-num">05</div>
+            <div class="ch-body">
+              <h4>Clunky Manual GCash Payment Verification</h4>
+              <p>Guests sent unstandardized payment screenshots through personal chat threads. Staff had to manually
+                verify reference numbers and match bank transactions with no centralized audit trail.</p>
+            </div>
+          </div>
+
+          <div class="challenge-item">
+            <div class="ch-num">06</div>
+            <div class="ch-body">
+              <h4>Unstructured Government ID Handling</h4>
+              <p>Collecting guest IDs via informal social messages raised serious compliance concerns under the
+                <strong>Philippines Data Privacy Act of 2012 (RA 10173)</strong> with zero secure document storage.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- III. SOLUTION IMPLEMENTATION -->
+    <div class="cs-section scroll-fade" id="solution">
+      <div class="section-num">III</div>
+      <h2>Solution <em>Implementation</em></h2>
+      <div class="gold-rule"></div>
+
+      <p class="cs-p" style="margin-bottom:20px;">
+        To eliminate manual overhead and third-party fees, a unified direct-booking web application was engineered,
+        pairing high-converting static frontends with an asynchronous, serverless Google Cloud &amp; Google Workspace
+        backend.
+      </p>
+
+      <!-- Solution Outcomes -->
+      <div class="outcomes-grid">
+        <div class="outcomes-col">
+
+          <div class="outcome-item">
+            <span class="outcome-tag">Lead Magnet</span><br>
+            <strong>10% Welcome Voucher Generator (index.html):</strong>
+            Engineered a high-converting lead capture gateway that mints single-use cryptographic voucher tokens (e.g.
+            <code style="font-family:var(--mono);">UPR-XXXXXX</code>). Captures guest name, mobile, and email while
+            immediately pre-populating discounts in the booking wizard.
+          </div>
+
+          <div class="outcome-item">
+            <span class="outcome-tag">Showroom Experience</span><br>
+            <strong>Warm Luxury Showcase &amp; Amenity Tour (home.html):</strong>
+            Crafted a responsive brand narrative showcasing Azure North's world-class wave pool, unit amenities,
+            verified testimonials marquee, and an interactive floating FAQ widget (<code
+              style="font-family:var(--mono);">FAQwidget.html</code>) answering common questions 24/7.
+          </div>
+
+          <div class="outcome-item">
+            <span class="outcome-tag">Booking Engine</span><br>
+            <strong>3-Step Dynamic Reservation Wizard (Booking.html):</strong>
+            Developed an interactive date picker featuring automated pricing logic (📅 Weekdays Rate (Mon–Thu)
+            ₱2,800 / night Includes 2 pax • ➕ ₱250 per extra pax, and 📅 Weekend Rate (Fri–Sun)
+            ₱3,000 / night Includes 2 pax • ➕ ₱300 per extra pax). Includes flexible downpayment options (₱500
+            reservation hold, 50% deposit, or full payment).
+          </div>
+
+        </div>
+
+        <div class="outcomes-col">
+
+          <div class="outcome-item">
+            <span class="outcome-tag">Media Storage</span><br>
+            <strong>Google Drive Cloud Storage:</strong>
+            Built a zero-CORS client-side compression pipeline. Guest government IDs and GCash payment screenshots are
+            safely converted to Base64, transmitted via Apps Script, and stored as public viewable blobs in dedicated
+            Google Drive folders.
+          </div>
+
+          <div class="outcome-item">
+            <span class="outcome-tag">Serverless Database</span><br>
+            <strong>Structured 6-Tab Google Sheets CRM:</strong>
+            Normalized operational database tabs—<code style="font-family:var(--mono);">Leads</code>, <code
+              style="font-family:var(--mono);">Bookings</code>, <code style="font-family:var(--mono);">Checkouts</code>,
+            <code style="font-family:var(--mono);">BlockedDates</code>, <code
+              style="font-family:var(--mono);">Holidays</code>, and <code
+              style="font-family:var(--mono);">Settings</code>—enabling real-time pipeline management without recurring
+            database subscription fees.
+          </div>
+
+          <div class="outcome-item">
+            <span class="outcome-tag">Automated Dispatch</span><br>
+            <strong>6-Stream Automated HTML Email Notifications:</strong>
+            Integrated transactional email dispatching via the Gmail API. Delivers instant booking confirmations to
+            guests with check-in instructions while dispatching detailed booking alerts with 1-click verification links
+            directly to host inboxes.
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- IV. RESULTS -->
+    <div class="cs-section scroll-fade" id="results">
+      <div class="section-num">IV</div>
+      <h2>Measurable <em>Results</em></h2>
+      <div class="gold-rule"></div>
+
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="result-num">₱0</div>
+          <div class="result-label">Monthly SaaS Fees</div>
+          <div class="result-sub">Zero recurring overhead on Google Workspace &amp; Netlify</div>
+        </div>
+        <div class="result-card">
+          <div class="result-num">20%</div>
+          <div class="result-label">Commission Saved</div>
+          <div class="result-sub">Eliminated intermediary cuts on direct-to-host bookings</div>
+        </div>
+        <div class="result-card">
+          <div class="result-num">100%</div>
+          <div class="result-label">Double-Booking Guard</div>
+          <div class="result-sub">Real-time calendar lockouts prevent date overlaps</div>
+        </div>
+        <div class="result-card">
+          <div class="result-num">&lt; 3m</div>
+          <div class="result-label">Turnaround Time</div>
+          <div class="result-sub">Instant automated email confirmation &amp; host alert</div>
+        </div>
+        <div class="result-card">
+          <div class="result-num">6</div>
+          <div class="result-label">Database Streams</div>
+          <div class="result-sub">Structured sheets tracking leads, bookings &amp; reviews</div>
+        </div>
+        <div class="result-card">
+          <div class="result-num">24/7</div>
+          <div class="result-label">Self-Service Intake</div>
+          <div class="result-sub">Autonomous guest capture running around the clock</div>
+        </div>
+      </div>
+
+      <div class="outcomes-grid">
+        <div class="outcomes-col">
+          <div class="outcome-item">
+            <strong>01. Direct Revenue Expansion:</strong>
+            By directing social media traffic to the proprietary web funnel rather than third-party portals, the hosts
+            keep 100% of guest payments, increasing per-booking profitability by 15%–20%.
+          </div>
+          <div class="outcome-item">
+            <strong>02. Zero Administrative Friction:</strong>
+            Dynamic calendar pricing automatically computes weekend surges, extra adult charges, and kids passes,
+            eliminating tedious manual quotes and negotiation back-and-forth.
+          </div>
+        </div>
+        <div class="outcomes-col">
+          <div class="outcome-item">
+            <strong>03. Growing Direct Marketing Asset:</strong>
+            The 10% welcome voucher magnet captures hundreds of qualified traveler contacts, creating a high-converting
+            audience for holiday retargeting and off-peak promotions.
+          </div>
+          <div class="outcome-item">
+            <strong>04. Elevated Guest Trust &amp; Hospitality:</strong>
+            From transparent breakdown calculators to automated HTML check-in vouchers and a smooth review portal (<code
+              style="font-family:var(--mono);">Thankyou.html</code>), the guest experience matches five-star hotel
+            standards.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 3RD SECTION: AUTOMATED GMAIL DISPATCH & NOTIFICATION ── -->
+    <section class="section-block scroll-fade">
+      <div class="section-num">System Ecosystem</div>
+      <h2>Automated Gmail Dispatch &amp; Notification</h2>
+      <div class="gold-rule"></div>
+
+      <div class="picture-flow">
+
+        <!-- 1st Row with Two Columns -->
+        <div class="grid-2-col">
+
+          <!-- Col 1: Prospect Guest Capture - Host Owner Gmail -->
+          <div class="unboxed-image-item">
+            <div class="unboxed-image-title">Prospect Guest Capture - Host Owner Gmail</div>
+            <div class="unboxed-frame"
+              onclick="openLightbox('07. ImagesUpperroomstaycation/Prospect Guest Capture - Host Owner Gmail.png', 'Prospect Guest Capture - Host Owner Gmail')">
+              <img src="07. ImagesUpperroomstaycation/Prospect Guest Capture - Host Owner Gmail.png"
+                alt="Prospect Guest Capture - Host Owner Gmail" loading="lazy">
+              <div class="zoom-badge">🔍 Zoom View</div>
+            </div>
+          </div>
+
+          <!-- Col 2: 10% Off Voucher - Guest Gmail -->
+          <div class="unboxed-image-item">
+            <div class="unboxed-image-title">10% Off Voucher - Guest Gmail</div>
+            <div class="unboxed-frame"
+              onclick="openLightbox('07. ImagesUpperroomstaycation/10% Off Voucher - Guest Gmail.png', '10% Off Voucher - Guest Gmail')">
+              <img src="07. ImagesUpperroomstaycation/10% Off Voucher - Guest Gmail.png"
+                alt="10% Off Voucher - Guest Gmail" loading="lazy">
+              <div class="zoom-badge">🔍 Zoom View</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 2nd Row with Two Columns -->
+        <div class="grid-2-col">
+
+          <!-- Col 1: Reservation Booked - Guest Gmail -->
+          <div class="unboxed-image-item">
+            <div class="unboxed-image-title">Reservation Booked - Guest Gmail</div>
+            <div class="unboxed-frame"
+              onclick="openLightbox('07. ImagesUpperroomstaycation/Reservation Booked - Guest Gmail.png', 'Reservation Booked - Guest Gmail')">
+              <img src="07. ImagesUpperroomstaycation/Reservation Booked - Guest Gmail.png"
+                alt="Reservation Booked - Guest Gmail" loading="lazy">
+              <div class="zoom-badge">🔍 Zoom View</div>
+            </div>
+          </div>
+
+          <!-- Col 2: Guest Booking Notification - Host Owner Gmail -->
+          <div class="unboxed-image-item">
+            <div class="unboxed-image-title">Guest Booking Notification - Host Owner Gmail</div>
+            <div class="unboxed-frame"
+              onclick="openLightbox('07. ImagesUpperroomstaycation/Guest Booking Notification - Host Owner Gmail.png', 'Guest Booking Notification - Host Owner Gmail')">
+              <img src="07. ImagesUpperroomstaycation/Guest Booking Notification - Host Owner Gmail.png"
+                alt="Guest Booking Notification - Host Owner Gmail" loading="lazy">
+              <div class="zoom-badge">🔍 Zoom View</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 4TH SECTION: OTHER FEATURES AND PAGES ── -->
+    <section class="section-block scroll-fade">
+      <div class="section-num">System Ecosystem</div>
+      <h2>Other Features and Pages</h2>
+      <div class="gold-rule"></div>
+
+      <div class="picture-flow">
+
+        <!-- 1 Row with Three Columns -->
+        <div class="grid-3-col">
+
+          <!-- Col 1: Home Page -->
+          <div class="unboxed-image-item">
+            <div class="unboxed-image-title">Home Page</div>
+            <div class="unboxed-frame"
+              onclick="openLightbox('07. ImagesUpperroomstaycation/Home Page.png', 'Home Page')">
+              <img src="07. ImagesUpperroomstaycation/Home Page.png" alt="Home Page" loading="lazy">
+              <div class="zoom-badge">🔍 Zoom View</div>
+            </div>
+          </div>
+
+          <!-- Col 2: FAQ Widget -->
+          <div class="unboxed-image-item">
+            <div class="unboxed-image-title">FAQ Widget</div>
+            <div class="unboxed-frame"
+              onclick="openLightbox('07. ImagesUpperroomstaycation/FAQ Widget.png', 'FAQ Widget')">
+              <img src="07. ImagesUpperroomstaycation/FAQ Widget.png" alt="FAQ Widget" loading="lazy">
+              <div class="zoom-badge">🔍 Zoom View</div>
+            </div>
+          </div>
+
+          <!-- Col 3: Privacy & Terms Page -->
+          <div class="unboxed-image-item">
+            <div class="unboxed-image-title">Privacy &amp; Terms Page</div>
+            <div class="unboxed-frame"
+              onclick="openLightbox('07. ImagesUpperroomstaycation/Privacy & terms Page.png', 'Privacy & terms Page')">
+              <img src="07. ImagesUpperroomstaycation/Privacy & terms Page.png" alt="Privacy & terms Page"
+                loading="lazy">
+              <div class="zoom-badge">🔍 Zoom View</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── SECTION: PROJECT INFORMATION & GOOGLE SEARCH OPTIMIZATION ── -->
+    <section class="section-block project-info-section scroll-fade">
+      <div class="project-info-grid">
+
+        <!-- Left: Project Information Card -->
+        <div class="project-info-col">
+          <div class="project-info-card-portrait">
+            <div class="pinfo-header">
+              <div class="pinfo-neon-pill">Project Information</div>
+            </div>
+
+            <!-- Client Name -->
+            <div class="pinfo-item-box">
+              <span class="pinfo-box-label">Client Name:</span>
+              <span class="pinfo-box-val">Crisselle Joy &amp; Francisnasser</span>
+            </div>
+
+            <!-- Business Name -->
+            <div class="pinfo-item-box">
+              <span class="pinfo-box-label">Business Name:</span>
+              <span class="pinfo-box-val">The Upper Room at Azure North Staycation</span>
+            </div>
+
+            <!-- Date Started -->
+            <div class="pinfo-item-box">
+              <span class="pinfo-box-label">Date Started:</span>
+              <span class="pinfo-box-val">July 2026</span>
+            </div>
+
+            <!-- Date Launch -->
+            <div class="pinfo-item-box">
+              <span class="pinfo-box-label">Date Launch:</span>
+              <span class="pinfo-box-val">August 17, 2026</span>
+            </div>
+
+            <!-- IMPACT -->
+            <div class="pinfo-impact-box">
+              <div class="pinfo-impact-header">
+                <span class="pinfo-impact-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                    <polyline points="17 6 23 6 23 12"></polyline>
+                  </svg>
+                </span>
+                IMPACT
+              </div>
+              <p class="pinfo-impact-text">The new direct-booking website established a credible, independent staycation
+                brand that operates 24/7 with zero double-bookings—completely freeing the business from heavy third-party
+                platform fees.</p>
+            </div>
+
+            <!-- Developer -->
+            <div class="pinfo-item-box">
+              <span class="pinfo-box-label">Developer:</span>
+              <span class="pinfo-box-val">Joyce Ann G. Yap</span>
+            </div>
+
+            <!-- Collaboration -->
+            <div class="pinfo-item-box">
+              <span class="pinfo-box-label">Collaboration:</span>
+              <span class="pinfo-box-val">Team - Mark Dalumpines, Kent Brian Jintapa, and Errol John Peusca</span>
+            </div>
+
+            <!-- Live Website -->
+            <div class="pinfo-item-box">
+              <span class="pinfo-box-label">Live Website:</span>
+              <a href="https://upperroomstaycation.netlify.app/" target="_blank" rel="noopener noreferrer"
+                class="pinfo-box-val pinfo-link">
+                https://upperroomstaycation.netlify.app/ <span>↗</span>
+              </a>
+            </div>
+
+            <!-- Demo Site for Automation Test -->
+            <div class="pinfo-item-box">
+              <span class="pinfo-box-label">Demo Site for Automation Test:</span>
+              <a href="https://demobookingstaycation.joyceyap.com/" target="_blank" rel="noopener noreferrer"
+                class="pinfo-box-val pinfo-link">
+                https://demobookingstaycation.joyceyap.com/ <span>↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Basic Google Search Optimization -->
+        <div class="project-info-media-col">
+          <div class="unboxed-image-item">
+            <div class="unboxed-image-title">Basic Google Search Optimization</div>
+            <div class="unboxed-frame"
+              onclick="openLightbox('07. ImagesUpperroomstaycation/Basic Google Search Optimization.png', 'Basic Google Search Optimization')">
+              <img src="07. ImagesUpperroomstaycation/Basic Google Search Optimization.png"
+                alt="Basic Google Search Optimization" loading="lazy">
+              <div class="zoom-badge">🔍 Zoom View</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ================= BEHIND THE SCENES: AUTOMATION WORKFLOW FRAMEWORK ================= -->
+  <section class="vsc-section">
+    <div class="vsc-section-inner">
+      <div class="section-num">Built Behind the Scenes</div>
+      <h2>Automation Workflow Framework</h2>
+      <div class="gold-rule"></div>
+
+      <section class="flow-section">
+
+        <!-- ROW 1 — Phase 1: Lead Voucher Magnet Flow (Card Left, Text Right) -->
+        <div class="flow-row scroll-fade">
+          <div class="flow-card">
+            <span class="flow-group-num">Phase 1</span>
+            <div class="flow-label">Lead Voucher Magnet Flow</div>
+            <div class="flow-scale" style="width:512px;height:295.4px">
+              <div class="flow-canvas" data-base-w="520" data-base-h="300"
+                style="width:520px;height:300px;transform:scale(.9846);transform-origin:top left;">
+                <svg viewBox="0 0 520 300" preserveAspectRatio="xMidYMid meet">
+                  <defs>
+                    <path id="stay-s1-a" d="M380,92 C380,150 140,150 140,198" />
+                    <path id="stay-s1-b" d="M380,92 C380,150 380,165 380,198" />
+                  </defs>
+                  <path class="flow-path" d="M380,92 C380,150 140,150 140,198" />
+                  <path class="flow-path" d="M380,92 C380,150 380,165 380,198" />
+                  <circle class="joint-dot" cx="380" cy="92" r="3.5" />
+                  <circle class="travel-dot" r="4">
+                    <animateMotion dur="2.8s" repeatCount="indefinite" begin="0s">
+                      <mpath href="#stay-s1-a" />
+                    </animateMotion>
+                  </circle>
+                  <circle class="travel-dot" r="4">
+                    <animateMotion dur="2.8s" repeatCount="indefinite" begin="-1.4s">
+                      <mpath href="#stay-s1-b" />
+                    </animateMotion>
+                  </circle>
+                </svg>
+
+                <div class="h-connector" style="left:169px;top:60px;width:182px;">
+                  <span class="h-dot" style="animation-delay:0s"></span>
+                </div>
+
+                <div class="flow-node key" style="left:140px;top:60px;">
+                  <div class="icon-box">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                    </svg>
+                  </div>
+                  <div class="n-label">index.html</div>
+                  <div class="n-sub">10% Welcome Voucher Form</div>
+                </div>
+
+                <div class="flow-node key" style="left:380px;top:60px;">
+                  <div class="icon-box">
+                    <svg viewBox="0 0 24 24">
+                      <rect x="3" y="4" width="18" height="16" rx="2" />
+                      <path d="m3 8 9 6 9-6" />
+                    </svg>
+                  </div>
+                  <div class="n-label">Codepromo.gs</div>
+                  <div class="n-sub">Webhook Promo Generator</div>
+                </div>
+
+                <div class="flow-node" style="left:140px;top:230px;">
+                  <div class="icon-box">
+                    <svg viewBox="0 0 24 24">
+                      <rect x="3.5" y="4" width="17" height="16" rx="2" />
+                      <path d="M3.5 9.5h17M9 9.5V20M14.5 9.5V20" />
+                    </svg>
+                  </div>
+                  <div class="n-label">Google Sheets</div>
+                  <div class="n-sub">Logs into Leads Tab</div>
+                </div>
+
+                <div class="flow-node" style="left:380px;top:230px;">
+                  <div class="icon-box">
+                    <svg viewBox="0 0 24 24">
+                      <rect x="3" y="5" width="18" height="14" rx="2" />
+                      <path d="m3.5 6 8.5 7 8.5-7" />
+                    </svg>
+                  </div>
+                  <div class="n-label">Gmail API</div>
+                  <div class="n-sub">Voucher to Guest + Host Alert</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flow-text">
+            <h2>How the Lead Voucher Magnet Works</h2>
+            <p>
+              Visitors landing from targeted social campaigns are presented with an instant incentive: a <strong>10% Off
+                Welcome Voucher</strong>. Rather than bouncing as anonymous traffic, prospects enter their name, phone,
+              and email.
+            </p>
+            <p>
+              The Google Apps Script backend executes <code style="font-family:var(--mono);">submitLead()</code>, mints
+              a verified single-use promo code (e.g. <code style="font-family:var(--mono);">UPR-XXXXXX</code>), logs the
+              lead into the Google Sheets CRM, and immediately dispatches an automated HTML voucher email to the guest
+              while sending a new lead alert to the hosts.
+            </p>
+          </div>
+        </div>
+
+        <!-- ROW 2 — Phase 2: Live Booking & Payment Verification Flow (Card Right, Text Left) -->
+        <div class="flow-row reverse scroll-fade">
+          <div class="flow-card">
+            <span class="flow-group-num">Phase 2</span>
+            <div class="flow-label">Live Booking &amp; Payment Flow</div>
+            <div class="flow-scale" style="width:512px;height:295.4px">
+              <div class="flow-canvas" data-base-w="520" data-base-h="300"
+                style="width:520px;height:300px;transform:scale(.9846);transform-origin:top left;">
+                <svg viewBox="0 0 520 300" preserveAspectRatio="xMidYMid meet">
+                  <defs>
+                    <path id="stay-s2-a" d="M260,92 C260,150 90,150 90,198" />
+                    <path id="stay-s2-b" d="M260,92 L260,198" />
+                    <path id="stay-s2-c" d="M260,92 C260,150 430,150 430,198" />
+                  </defs>
+                  <path class="flow-path" d="M260,92 C260,150 90,150 90,198" />
+                  <path class="flow-path" d="M260,92 L260,198" />
+                  <path class="flow-path" d="M260,92 C260,150 430,150 430,198" />
+                  <circle class="joint-dot" cx="260" cy="92" r="3.5" />
+                  <circle class="travel-dot" r="4">
+                    <animateMotion dur="2.6s" repeatCount="indefinite" begin="0s">
+                      <mpath href="#stay-s2-a" />
+                    </animateMotion>
+                  </circle>
+                  <circle class="travel-dot" r="4">
+                    <animateMotion dur="2.6s" repeatCount="indefinite" begin="-0.85s">
+                      <mpath href="#stay-s2-b" />
+                    </animateMotion>
+                  </circle>
+                  <circle class="travel-dot" r="4">
+                    <animateMotion dur="2.6s" repeatCount="indefinite" begin="-1.7s">
+                      <mpath href="#stay-s2-c" />
+                    </animateMotion>
+                  </circle>
+                </svg>
+
+                <div class="flow-node key" style="left:260px;top:60px;">
+                  <div class="icon-box">
+                    <svg viewBox="0 0 24 24">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                      <line x1="16" y1="2" x2="16" y2="6" />
+                      <line x1="8" y1="2" x2="8" y2="6" />
+                      <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                  </div>
+                  <div class="n-label">Booking.html</div>
+                  <div class="n-sub">3-Step Calendar &amp; Pay Engine</div>
+                </div>
+
+                <div class="flow-node" style="left:90px;top:230px;">
+                  <div class="icon-box">
+                    <svg viewBox="0 0 24 24">
+                      <path d="m8 3 4 7H4Z" />
+                      <path d="m13.5 3 4 7h-8Z" opacity=".55" />
+                      <path d="m6 14 4 7-8 0Z" opacity=".8" />
+                    </svg>
+                  </div>
+                  <div class="n-label">Google Drive</div>
+                  <div class="n-sub">Base64 Guest IDs &amp; Receipts</div>
+                </div>
+
+                <div class="flow-node" style="left:260px;top:230px;">
+                  <div class="icon-box">
+                    <svg viewBox="0 0 24 24">
+                      <rect x="3.5" y="4" width="17" height="16" rx="2" />
+                      <path d="M3.5 9.5h17M9 9.5V20M14.5 9.5V20" />
+                    </svg>
+                  </div>
+                  <div class="n-label">Google Sheets</div>
+                  <div class="n-sub">Bookings Tab + Promo Burn</div>
+                </div>
+
+                <div class="flow-node" style="left:430px;top:230px;">
+                  <div class="icon-box">
+                    <svg viewBox="0 0 24 24">
+                      <rect x="3" y="5" width="18" height="14" rx="2" />
+                      <path d="m3.5 6 8.5 7 8.5-7" />
+                    </svg>
+                  </div>
+                  <div class="n-label">Gmail Engine</div>
+                  <div class="n-sub">Guest Receipt + Host Dispatch</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flow-text">
+            <h2>How the Booking &amp; Payment Flow Works</h2>
+            <p>
+              Guests choose open dates on the live interactive calendar. Pricing dynamically computes based on day tier
+              (📅 Weekdays Rate Mon–Thu ₱2,800 / night for 2 pax • ➕ ₱250/extra pax, and 📅 Weekend Rate Fri–Sun ₱3,000
+              / night for 2 pax • ➕ ₱300/extra pax), extra adult headcount, and kids policies.
+            </p>
+            <p>
+              Before booking confirmation, guests upload their government-issued ID and scan the host's GCash QR code to
+              submit proof of downpayment. The files are converted to Base64 in real-time, uploaded directly into
+              private Google Drive folders, and recorded into Google Sheets—burn-locking any claimed promo voucher code
+              so it cannot be reused.
+            </p>
+          </div>
+        </div>
+
+        <!-- ROW 3 — Phase 3: Post-Stay Review & Feedback Loop (Card Left, Text Right) -->
+        <div class="flow-row scroll-fade">
+          <div class="flow-card">
+            <span class="flow-group-num">Phase 3</span>
+            <div class="flow-label">Checkout &amp; Review Loop</div>
+            <div class="flow-scale" style="width:512px;height:256px">
+              <div class="flow-canvas" data-base-w="600" data-base-h="300"
+                style="width:600px;height:300px;transform:scale(.8533);transform-origin:top left;">
+                <svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid meet">
+                  <defs>
+                    <path id="stay-s3-a" d="M300,92 C300,150 140,150 140,198" />
+                    <path id="stay-s3-b" d="M300,92 L300,198" />
+                    <path id="stay-s3-c" d="M300,92 C300,150 460,150 460,198" />
+                  </defs>
+                  <path class="flow-path" d="M300,92 C300,150 140,150 140,198" />
+                  <path class="flow-path" d="M300,92 L300,198" />
+                  <path class="flow-path" d="M300,92 C300,150 460,150 460,198" />
+                  <circle class="joint-dot" cx="300" cy="92" r="3.5" />
+                  <circle class="travel-dot" r="4">
+                    <animateMotion dur="2.6s" repeatCount="indefinite" begin="0s">
+                      <mpath href="#stay-s3-a" />
+                    </animateMotion>
+                  </circle>
+                  <circle class="travel-dot" r="4">
+                    <animateMotion dur="2.6s" repeatCount="indefinite" begin="-0.85s">
+                      <mpath href="#stay-s3-b" />
+                    </animateMotion>
+                  </circle>
+                  <circle class="travel-dot" r="4">
+                    <animateMotion dur="2.6s" repeatCount="indefinite" begin="-1.7s">
+                      <mpath href="#stay-s3-c" />
+                    </animateMotion>
+                  </circle>
+                </svg>
+
+                <div class="flow-node key" style="left:300px;top:60px;">
+                  <div class="icon-box">
+                    <svg viewBox="0 0 24 24">
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                  </div>
+                  <div class="n-label">Thankyou.html</div>
+                  <div class="n-sub">Checkout Survey &amp; Photo Review</div>
+                </div>
+
+                <div class="flow-node" style="left:140px;top:230px;">
+                  <div class="icon-box">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                      <circle cx="12" cy="13" r="4" />
+                    </svg>
+                  </div>
+                  <div class="n-label">Google Drive</div>
+                  <div class="n-sub">Guest Stay Memories Storage</div>
+                </div>
+
+                <div class="flow-node" style="left:300px;top:230px;">
+                  <div class="icon-box">
+                    <svg viewBox="0 0 24 24">
+                      <rect x="3.5" y="4" width="17" height="16" rx="2" />
+                      <path d="M3.5 9.5h17M9 9.5V20M14.5 9.5V20" />
+                    </svg>
+                  </div>
+                  <div class="n-label">Google Sheets</div>
+                  <div class="n-sub">Checkouts Tab Rating Log</div>
+                </div>
+
+                <div class="flow-node" style="left:460px;top:230px;">
+                  <div class="icon-box">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                  </div>
+                  <div class="n-label">FB Page Review</div>
+                  <div class="n-sub">1-Click Viral Testimonial CTA</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flow-text">
+            <h2>How the Checkout &amp; Review Loop Works</h2>
+            <p>
+              Following checkout, guests are prompted via email and QR card to complete a frictionless satisfaction
+              survey on <code style="font-family:var(--mono);">Thankyou.html</code>. Guests rate room cleanliness,
+              ambiance, and host communication, with an option to upload favorite staycation photos.
+            </p>
+            <p>
+              The submission triggers <code style="font-family:var(--mono);">submitCheckout()</code>, logs the feedback
+              into the <code style="font-family:var(--mono);">Checkouts</code> database tab, notifies the hosts of guest
+              sentiment, and gently routes delighted guests to leave a verified 5-star review on the official Facebook
+              Page.
+            </p>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="page-footer scroll-fade">
+    <div class="footer-logos">
+      <img class="footer-avatar" src="LOGO TEAM COLLAB/02. Joyce Yap.png" alt="Joyce Ann Yap">
+    </div>
+
+    <div class="footer-text-group">
+      <div class="footer-heading">The Upper Room at Azure North Staycation — 24/7 Automated Booking Funnel
+        Calendar</div>
+      <div class="footer-subheading">Web Builder &amp; Automation Specialist built by Joyce Ann Yap .</div>
+      <div class="footer-collab">In Collaboration with <span class="collab-name">Mark dalumpines, Kent Brian
+          Jintapa</span> &amp; <span class="collab-name">Errol John Peusca</span></div>
+    </div>
+  </footer>
+
+  <!-- ================= LIGHTBOX MODAL ================= -->
+  <div class="lightbox-modal" id="csLightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+    <img class="lightbox-img" id="csLightboxImg" src="" alt="Enlarged Proof Preview">
+    <div class="lightbox-caption" id="csLightboxCaption"></div>
+  </div>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script>
+    function csShow(id, btn) {
+      document.querySelectorAll('.cs-nav-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.cs-section').forEach(sec => {
+        sec.classList.toggle('cs-section-active', sec.id === id);
+      });
+      document.getElementById('csBody').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(resizeFlowCards, 50);
+    }
+
+    function resizeFlowCards() {
+      document.querySelectorAll('.flow-card').forEach(function (card) {
+        var scaleWrap = card.querySelector('.flow-scale');
+        var canvas = card.querySelector('.flow-canvas');
+        if (!scaleWrap || !canvas) return;
+
+        var baseW = parseFloat(canvas.getAttribute('data-base-w')) || 520;
+        var baseH = parseFloat(canvas.getAttribute('data-base-h')) || 300;
+
+        var cs = window.getComputedStyle(card);
+        var padL = parseFloat(cs.paddingLeft) || 0;
+        var padR = parseFloat(cs.paddingRight) || 0;
+        var availW = Math.floor(card.clientWidth - padL - padR);
+
+        if (availW <= 0) return;
+
+        var targetW = Math.min(availW, 512);
+        var scale = targetW / baseW;
+        var targetH = Math.round(baseH * scale * 10) / 10;
+
+        scaleWrap.style.width = targetW + 'px';
+        scaleWrap.style.height = targetH + 'px';
+        canvas.style.transform = 'scale(' + scale + ')';
+        canvas.style.transformOrigin = 'top left';
+      });
+    }
+
+    window.addEventListener('resize', resizeFlowCards);
+    window.addEventListener('orientationchange', function () { setTimeout(resizeFlowCards, 120); });
+    document.addEventListener('DOMContentLoaded', resizeFlowCards);
+    window.addEventListener('load', resizeFlowCards);
+
+    if (window.ResizeObserver) {
+      var ro = new ResizeObserver(function () {
+        resizeFlowCards();
+      });
+      document.querySelectorAll('.flow-card').forEach(function (card) {
+        ro.observe(card);
+      });
+    }
+
+    function openLightbox(src, caption) {
+      const modal = document.getElementById('csLightbox');
+      const img = document.getElementById('csLightboxImg');
+      const cap = document.getElementById('csLightboxCaption');
+      img.src = src;
+      cap.textContent = caption || '';
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(e) {
+      if (e && e.target && e.target.tagName === 'IMG') return;
+      const modal = document.getElementById('csLightbox');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('csLightbox');
+        if (modal && modal.classList.contains('active')) {
+          closeLightbox();
+        }
+      }
+    });
+
+    /* ── INTERACTIVE CONTROLS FOR PROOF AUTO-SLIDER ── */
+    const sliderStates = {
+      sliderRow1: { current: 0, total: 2 }
+    };
+
+    function updateSliderUI(id) {
+      const viewport = document.getElementById(id);
+      if (!viewport) return;
+      const track = viewport.querySelector('.slider-track');
+      const state = sliderStates[id];
+      if (!track || !state) return;
+
+      // Remove CSS animation class upon manual interaction so it snaps cleanly
+      track.classList.remove('is-animating');
+      track.style.transform = 'translateX(-' + (state.current * 100) + '%)';
+
+      const dots = viewport.querySelectorAll('.slider-dot');
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === state.current);
+      });
+    }
+
+    function shiftSlide(id, dir) {
+      const state = sliderStates[id];
+      if (!state) return;
+      state.current = (state.current + dir + state.total) % state.total;
+      updateSliderUI(id);
+    }
+
+    function jumpSlide(id, idx) {
+      const state = sliderStates[id];
+      if (!state) return;
+      state.current = idx;
+      updateSliderUI(id);
+    }
+
+    // Synchronize dots with CSS auto-sliding animation
+    document.addEventListener('DOMContentLoaded', function () {
+      ['sliderRow1'].forEach(id => {
+        const viewport = document.getElementById(id);
+        if (!viewport) return;
+        const track = viewport.querySelector('.slider-track');
+        const dots = viewport.querySelectorAll('.slider-dot');
+        if (!track) return;
+
+        setInterval(() => {
+          if (track.classList.contains('is-animating')) {
+            const style = window.getComputedStyle(track);
+            const matrix = new WebKitCSSMatrix(style.transform);
+            const width = track.clientWidth || 1;
+            const offsetRatio = Math.abs(matrix.m41) / width;
+            const activeIdx = Math.round(offsetRatio) % sliderStates[id].total;
+            dots.forEach((d, i) => d.classList.toggle('active', i === activeIdx));
+          }
+        }, 400);
+      });
+    });
+
+    /* ── SCROLL-TRIGGERED SMOOTH FADE-IN OBSERVER ── */
+    document.addEventListener('DOMContentLoaded', function () {
+      const scrollTargets = document.querySelectorAll('.scroll-fade');
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -40px 0px',
+        threshold: 0.08
+      };
+
+      const scrollObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(entry => {
+          const rect = entry.boundingClientRect;
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          } else if (rect.top > 0) {
+            entry.target.classList.remove('in-view');
+          } else {
+            entry.target.classList.add('in-view');
+          }
+        });
+      }, observerOptions);
+
+      scrollTargets.forEach(target => {
+        scrollObserver.observe(target);
+      });
+    });
+  </script>
+
+</body>
+
+</html>
