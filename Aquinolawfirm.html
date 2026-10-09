@@ -603,6 +603,23 @@
             border-left: 2px solid rgba(198, 255, 0, 0.35);
         }
 
+        .pinfo-link {
+            color: #c6ff00;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 700;
+            word-break: break-all;
+            transition: color 0.2s ease, text-shadow 0.2s ease;
+        }
+
+        .pinfo-link:hover {
+            color: #e2ff66;
+            text-decoration: underline;
+            text-shadow: 0 0 12px rgba(198, 255, 0, 0.6);
+        }
+
         .pinfo-impact-box {
             background: #172632;
             border: 1px solid rgba(52, 82, 100, 0.65);
@@ -1606,6 +1623,15 @@
                     <span class="pinfo-box-label">Collaboration:</span>
                     <span class="pinfo-box-val">Team TPS - Mark Dalumpines, Kent Brian Jintapa, and Errol John
                         Peusca</span>
+                </div>
+
+                <!-- Live Website -->
+                <div class="pinfo-item-box">
+                    <span class="pinfo-box-label">Live Website:</span>
+                    <a href="https://aquinoandcolawfirm.netlify.app/" target="_blank" rel="noopener noreferrer"
+                        class="pinfo-box-val pinfo-link">
+                        https://aquinoandcolawfirm.netlify.app/ <span>↗</span>
+                    </a>
                 </div>
             </div>
         </section>
