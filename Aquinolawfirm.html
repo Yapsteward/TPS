@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aquino & Co. Law Firm — 24/7 Digital Legal Intake Engine</title>
+    <title>Aquino & Co. Law Firm — 24/7 Digital Legal Intake System</title>
 
     <!-- ── WEB URL ICON / FAVICONS ── -->
     <link rel="icon" type="image/png" sizes="32x32" href="LOGO%20TEAM%20COLLAB/TEAM%20Collab%20TechPartners.png">
@@ -1058,16 +1058,16 @@
 
         /* ── FOOTER ── */
         footer.page-footer {
-            margin-top: 64px;
-            padding: 24px 16px 44px;
+            margin-top: 60px;
+            padding: 40px 16px 54px;
             border: none;
             background: transparent;
+            text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            gap: 28px;
+            gap: 20px;
         }
 
         .footer-logos {
@@ -1075,67 +1075,70 @@
             flex-direction: row;
             align-items: center;
             justify-content: center;
-            gap: 28px;
+            gap: 24px;
             flex-wrap: nowrap;
+            width: 100%;
         }
 
+        /* 1x1 size logos in horizontal row */
         .footer-avatar {
-            width: 2in;
-            height: 2in;
-            min-width: 2in;
-            min-height: 2in;
-            border-radius: 50%;
-            object-fit: cover;
+            width: 1in;
+            height: 1in;
+            min-width: 1in;
+            min-height: 1in;
+            aspect-ratio: 1 / 1;
+            object-fit: contain;
             display: block;
-            border: 3px solid var(--gold);
-            box-shadow: 0 4px 16px rgba(201, 160, 39, 0.22);
-            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+            border: none;
+            background: transparent;
+            filter: drop-shadow(0 6px 14px rgba(13, 34, 56, 0.12));
+            transition: transform 0.3s ease, filter 0.3s ease;
         }
 
         .footer-avatar:hover {
-            transform: scale(1.05);
-            border-color: var(--navy);
-            box-shadow: 0 6px 20px rgba(13, 27, 62, 0.25);
+            transform: scale(1.08);
+            filter: drop-shadow(0 6px 20px rgba(5, 150, 105, 0.28));
         }
 
-        .footer-text-group {
-            width: 100%;
-            max-width: 960px;
-            border: none;
-            padding-top: 8px;
+        .footer-logo-center:hover {
+            transform: rotate(6deg) scale(1.08);
         }
 
         .footer-heading {
             font-family: var(--font-heading);
-            background: linear-gradient(110deg, var(--navy) 0%, #1e3a8a 30%, var(--gold) 60%, var(--gold-light) 78%, var(--navy) 100%);
-            background-size: 260% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: flowingGoldNavy 6s ease-in-out infinite;
-            font-size: clamp(1.15rem, 2vw, 1.45rem);
+            font-size: 1.25rem;
             font-weight: 800;
+            color: var(--color-navy, var(--navy, #0A192F));
             letter-spacing: -0.01em;
-            margin-bottom: 10px;
         }
 
         .footer-subheading {
-            font-family: var(--font-body);
-            color: var(--gold-dark);
-            font-size: clamp(1rem, 1.6vw, 1.15rem);
-            font-weight: 600;
+            font-size: 0.94rem;
+            color: #475569;
+            max-width: 600px;
+            line-height: 1.6;
         }
 
-        .footer-collab {
-            font-family: var(--font-body);
-            color: var(--navy);
-            font-size: clamp(0.92rem, 1.4vw, 1.05rem);
-            font-weight: 600;
-            margin-top: 8px;
-        }
-
-        .footer-collab .collab-name {
-            color: var(--gold-dark);
+        .footer-team-names {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px 18px;
+            font-size: 0.88rem;
             font-weight: 700;
+            color: #1b8d9f;
+            margin-top: 4px;
+        }
+
+        .footer-team-names span {
+            color: var(--color-navy, var(--navy, #0A192F));
+        }
+
+        .footer-copyright {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: #64748b;
+            margin-top: 8px;
         }
 
         /* ── LIGHTBOX MODAL ── */
@@ -1309,8 +1312,9 @@
             }
 
             footer.page-footer {
-                padding: 24px 12px 18px;
-                gap: 16px;
+                margin-top: 36px;
+                padding: 28px 8px 36px;
+                gap: 14px;
             }
 
             .footer-logos {
@@ -1319,36 +1323,34 @@
                 flex-wrap: nowrap !important;
                 justify-content: center;
                 align-items: center;
-                gap: 16px;
+                gap: 10px;
+                width: 100%;
             }
 
             .footer-avatar {
-                width: clamp(72px, 22vw, 92px);
-                height: clamp(72px, 22vw, 92px);
+                width: min(1in, calc((100vw - 64px) / 5));
+                height: min(1in, calc((100vw - 64px) / 5));
                 min-width: unset;
                 min-height: unset;
-                border-width: 2.5px;
-            }
-
-            .footer-text-group {
-                padding-top: 14px;
-                max-width: 100%;
+                aspect-ratio: 1 / 1;
             }
 
             .footer-heading {
-                font-size: clamp(0.82rem, 3.6vw, 0.98rem);
-                line-height: 1.35;
-                margin-bottom: 5px;
+                font-size: 1.15rem;
             }
 
             .footer-subheading {
-                font-size: clamp(0.72rem, 2.9vw, 0.84rem);
-                line-height: 1.45;
+                font-size: 0.88rem;
+                line-height: 1.55;
             }
 
-            .footer-collab {
-                font-size: clamp(0.70rem, 2.7vw, 0.80rem);
-                margin-top: 5px;
+            .footer-team-names {
+                gap: 6px 12px;
+                font-size: 0.82rem;
+            }
+
+            .footer-copyright {
+                font-size: 0.74rem;
             }
         }
     </style>
@@ -1361,7 +1363,7 @@
 
         <!-- ── TOP HEADLINE TITLE & SUB-HEAD ── -->
         <header class="top-headline-header">
-            <h1 class="top-headline-title">24/7 Digital Legal Intake Engine</h1>
+            <h1 class="top-headline-title">24/7 Digital Legal Intake System</h1>
             <p class="top-headline-subhead">A modern digital legal intake and client acquisition system designed to
                 establish a commanding online presence, streamline consultations, and capture qualified leads 24/7.</p>
         </header>
@@ -1426,7 +1428,7 @@
                 <!-- 1st row -->
                 <div class="details-row">
                     <h3 class="details-heading">Introduction</h3>
-                    <h4 class="details-subheading">Aquino &amp; Co. Law Firm — 24/7 Digital Legal Intake Engine</h4>
+                    <h4 class="details-subheading">Aquino &amp; Co. Law Firm — 24/7 Digital Legal Intake System</h4>
                     <p class="details-text">Aquino &amp; Co. Law Firm, a general practice firm based in Santiago City,
                         Isabela, Philippines, needed a modern digital acquisition system to establish an online presence
                         and capture prospective client leads around the clock.</p>
@@ -1436,15 +1438,18 @@
                 <div class="details-row">
                     <h3 class="details-heading">The Challenges</h3>
                     <ul class="details-list">
-                        <li><strong>Dependence on Offline Channels:</strong> The firm relied entirely on physical
-                            walk-ins and word-of-mouth referrals, limiting growth strictly to traditional foot traffic.
+                        <li><strong>Dependence on Offline Channels:</strong> he firm relied heavily on walk-in clients
+                            and word-of-mouth referrals, limiting its ability to reach potential clients beyond
+                            traditional channels and office hours.
                         </li>
-                        <li><strong>Lost After-Hours Inquiries:</strong> Without an online platform, prospective clients
-                            seeking legal help outside of business hours had no way to reach out, verify firm
-                            credibility, or submit inquiries.</li>
-                        <li><strong>Lack of Lead Tracking:</strong> Inbound client leads were not systematically
-                            recorded or centralized, leading to potential follow-up delays and missed consultation
-                            opportunities.</li>
+                        <li><strong>Manual Client Data Management: </strong> Client inquiries and information were
+                            recorded on paper notes, resulting in a mix of walk-in inquiries, prospective clients, and
+                            confirmed client records. The lack of an organized system made recordkeeping time-consuming,
+                            increased the risk of data-entry errors, and created a fragmented administrative workflow.
+                        </li>
+                        <li><strong>Delayed Client Communication:</strong> Client Appointment schedule required manual
+                            email handling, making it difficult to respond promptly thru online, keep track of incoming
+                            messages, and ensure the legal team stayed informed.</li>
                     </ul>
                 </div>
 
@@ -1454,14 +1459,21 @@
                     <p class="details-text">Engineered a custom, 24/7 digital intake platform paired with an automated
                         pipeline process to educate prospects and capture leads effortlessly:</p>
                     <ul class="details-list">
-                        <li><strong>24/7 Intake Website:</strong> Built a professional, responsive site that captures
-                            client inquiries around the clock and offers downloadable legal guides to educate visitors
-                            upfront.</li>
-                        <li><strong>Automated Data Pipeline:</strong> Connected custom web forms directly to a real-time
-                            Google Sheets database, logging incoming inquiries and client details instantly without
-                            manual data entry.</li>
-                        <li><strong>Streamlined Workflow:</strong> Created an initial response system to acknowledge
-                            lead submissions immediately and neatly organize incoming cases for the legal team.</li>
+                        <li><strong>24/7 Intake Website:</strong> Developed a Professional website, optimized for both
+                            desktop and mobile view that allows potential clients to learn about the firm’s services,
+                            access legal guides providing prospective clients with a credible platform to learn about
+                            its legal services before making contact, and book a legal appointment form online at any
+                            time.</li>
+                        <li><strong>Digital Data Pipeline:</strong>Integrated custom website forms with Google Sheets
+                            using Google Apps Script to automatically capture, organize, and store legal appointment
+                            bookings and client details in real time. This eliminated repetitive manual data entry and
+                            improved data accuracy and consistency</li>
+                        <li><strong>Automated Two-Way Gmail Notifications: </strong> Set up an automated email
+                            notification system using Gmail and Google Apps Script to manage incoming client legal
+                            appointment booking and prospect data notified. The system sends instant email notifications
+                            to the appropriate recipients, keeping both clients and the team informed without relying on
+                            manual email handling.
+                            The Results</li>
                     </ul>
                 </div>
 
@@ -1469,14 +1481,18 @@
                 <div class="details-row">
                     <h3 class="details-heading">The Results</h3>
                     <ul class="details-list">
-                        <li><strong>Continuous Client Acquisition:</strong> Transformed the firm from a physical-only
-                            practice into an online engine capable of capturing leads 24 hours a day, 7 days a week.
+                        <li><strong>Improved Online Accessibility:</strong> Established an online presence and improve
+                            search visibility with google search engine optimization, where potential clients can search
+                            and access legal information and book a legal appointment 24/7, helping the firm reach a
+                            wider audience, capture clients online, and reduce its dependence on walk-in inquiries.
                         </li>
-                        <li><strong>Full Pipeline Visibility:</strong> Provided the legal team with an organized,
-                            real-time dashboard to track intake statuses, follow-ups, and prospective client details
-                            effortlessly.</li>
-                        <li><strong>Cost-Efficient Delivery:</strong> Built the entire infrastructure using lightweight,
-                            cost-effective tools that eliminated recurring software overhead for the firm.</li>
+                        <li><strong>Automated Client Data Management: </strong>Established a centralized client database
+                            with automated data tracking, making it easier for the firm to access, organize, and manage
+                            prospective clients, appointment schedules, and client information while reducing
+                            administrative workload and minimizing manual errors.</li>
+                        <li><strong>Faster Response Times:</strong> Reduced response times to under 5 minutes, improved
+                            communication between clients and the internal team, and minimized the need for manually
+                            checking and forwarding emails.</li>
                     </ul>
                 </div>
 
@@ -1900,15 +1916,9 @@
 
                 <!-- Developer -->
                 <div class="pinfo-item-box">
-                    <span class="pinfo-box-label">Developer:</span>
-                    <span class="pinfo-box-val">Joyce Ann G. Yap </span>
-                </div>
-
-                <!-- Collaboration -->
-                <div class="pinfo-item-box">
-                    <span class="pinfo-box-label">Collaboration:</span>
-                    <span class="pinfo-box-val">Team TPS - Mark Dalumpines, Kent Brian Jintapa, and Errol John
-                        Peusca</span>
+                    <span class="pinfo-box-label"> Legal Tech Web Developer & Automation Specialist: </span>
+                    <span class="pinfo-box-val">Joyce Ann G. Yap, Mark Dalumpines, Kent Brian Jintapa, and Errol
+                        John</span>
                 </div>
 
                 <!-- Live Website -->
@@ -1925,12 +1935,26 @@
         <!-- ── FOOTER ── -->
         <footer class="page-footer">
             <div class="footer-logos">
-                <img class="footer-avatar" src="LOGO TEAM COLLAB/02. Joyce Yap.png" alt="Joyce Ann Yap">
+                <img class="footer-avatar" src="LOGO TEAM COLLAB/01. Mark Dalumpines.png" alt="Mark Dalumpines Logo">
+                <img class="footer-avatar" src="LOGO TEAM COLLAB/02. Joyce Yap.png" alt="Joyce Ann Yap Logo">
+                <img class="footer-avatar footer-logo-center" src="LOGO TEAM COLLAB/TEAM Collab TechPartners.png"
+                    alt="Tech Partners System Logo">
+                <img class="footer-avatar" src="LOGO TEAM COLLAB/03. Kent Brian Jintapa.png"
+                    alt="Kent Brian Jintapa Logo">
+                <img class="footer-avatar" src="LOGO TEAM COLLAB/04. Errol John.png" alt="Errol John Peusca Logo">
             </div>
 
-            <div class="footer-text-group">
-                <div class="footer-heading">Aquino &amp; Co. Law Firm — 24/7 Digital Legal Intake Engine</div>
-                <div class="footer-subheading">Web Design & Automation built by Joyce Ann Yap .</div>
+            <div class="footer-heading">Tech Partners Systems</div>
+
+            <div class="footer-team-names">
+                <span>Mark Dalumpines</span> •
+                <span>Joyce Ann Yap</span> •
+                <span>Kent Brian Jintapa</span> •
+                <span>Errol John Peusca</span>
+            </div>
+
+            <div class="footer-copyright">
+                &copy; 2026 Tech Partners Systems • All Rights Reserve
             </div>
         </footer>
 

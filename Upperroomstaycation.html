@@ -1566,16 +1566,16 @@
 
     /* ── FOOTER ── */
     footer.page-footer {
-      margin-top: 64px;
-      padding: 36px 16px 54px;
-      border-top: 1px solid var(--border);
-      background: #faf7f0;
+      margin-top: 60px;
+      padding: 40px 16px 54px;
+      border: none;
+      background: transparent;
+      text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      gap: 24px;
+      gap: 20px;
     }
 
     .footer-logos {
@@ -1583,94 +1583,113 @@
       flex-direction: row;
       align-items: center;
       justify-content: center;
-      gap: 28px;
+      gap: 24px;
       flex-wrap: nowrap;
+      width: 100%;
     }
 
+    /* 1x1 size logos in horizontal row */
     .footer-avatar {
-      width: 2in;
-      height: 2in;
-      min-width: 2in;
-      min-height: 2in;
-      border-radius: 50%;
-      object-fit: cover;
+      width: 1in;
+      height: 1in;
+      min-width: 1in;
+      min-height: 1in;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
       display: block;
-      border: 3px solid var(--gold);
-      box-shadow: 0 4px 16px rgba(201, 160, 39, 0.22);
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      border: none;
+      background: transparent;
+      filter: drop-shadow(0 6px 14px rgba(13, 34, 56, 0.12));
+      transition: transform 0.3s ease, filter 0.3s ease;
     }
 
     .footer-avatar:hover {
-      transform: scale(1.05);
-      border-color: var(--espresso);
-      box-shadow: 0 6px 20px rgba(36, 24, 16, 0.25);
+      transform: scale(1.08);
+      filter: drop-shadow(0 6px 20px rgba(5, 150, 105, 0.28));
     }
 
-    .footer-text-group {
-      width: 100%;
-      max-width: 960px;
-      border: none;
-      padding-top: 8px;
+    .footer-logo-center:hover {
+      transform: rotate(6deg) scale(1.08);
     }
 
     .footer-heading {
-      font-family: var(--serif);
-      background: linear-gradient(90deg, #241810 0%, #7A421D 25%, #C9A027 50%, #7A421D 75%, #241810 100%);
-      background-size: 250% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: stayHeadingGlow 4s linear infinite;
-      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      font-family: var(--font-heading, var(--sans, sans-serif));
+      font-size: 1.25rem;
       font-weight: 800;
+      color: var(--color-navy, #0A192F);
       letter-spacing: -0.01em;
-      margin-bottom: 10px;
     }
 
     .footer-subheading {
-      font-family: var(--sans);
-      color: var(--gold-deep);
-      font-size: clamp(1rem, 1.6vw, 1.15rem);
-      font-weight: 600;
+      font-size: 0.94rem;
+      color: #475569;
+      max-width: 600px;
+      line-height: 1.6;
     }
 
-    .footer-collab {
-      font-family: var(--sans);
-      color: var(--espresso);
-      font-size: clamp(0.92rem, 1.4vw, 1.05rem);
-      font-weight: 600;
+    .footer-team-names {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #1b8d9f;
+      margin-top: 4px;
+    }
+
+    .footer-team-names span {
+      color: var(--color-navy, #0A192F);
+    }
+
+    .footer-copyright {
+      font-family: var(--font-mono, var(--mono, monospace));
+      font-size: 0.78rem;
+      color: #64748b;
       margin-top: 8px;
     }
 
-    .footer-collab .collab-name {
-      color: var(--gold-deep);
-      font-weight: 700;
-    }
-
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       footer.page-footer {
-        padding: 24px 12px 36px;
-        gap: 16px;
+        margin-top: 36px;
+        padding: 28px 8px 36px;
+        gap: 14px;
+      }
+
+      .footer-logos {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
       }
 
       .footer-avatar {
-        width: clamp(72px, 22vw, 92px);
-        height: clamp(72px, 22vw, 92px);
+        width: min(1in, calc((100vw - 64px) / 5));
+        height: min(1in, calc((100vw - 64px) / 5));
         min-width: unset;
         min-height: unset;
-        border-width: 2.5px;
+        aspect-ratio: 1 / 1;
       }
 
       .footer-heading {
-        font-size: clamp(0.92rem, 4vw, 1.1rem);
+        font-size: 1.15rem;
       }
 
       .footer-subheading {
-        font-size: 0.92rem;
+        font-size: 0.88rem;
+        line-height: 1.55;
       }
 
-      .footer-collab {
-        font-size: 0.86rem;
+      .footer-team-names {
+        gap: 6px 12px;
+        font-size: 0.82rem;
+      }
+
+      .footer-copyright {
+        font-size: 0.74rem;
       }
     }
 
@@ -2628,16 +2647,28 @@
     </div>
   </section>
 
-  <!-- ================= FOOTER ================= -->
-  <footer class="page-footer scroll-fade">
+  <!-- ── FOOTER ── -->
+  <footer class="page-footer">
     <div class="footer-logos">
-      <img class="footer-avatar" src="LOGO TEAM COLLAB/02. Joyce Yap.png" alt="Joyce Ann Yap">
+      <img class="footer-avatar" src="LOGO TEAM COLLAB/01. Mark Dalumpines.png" alt="Mark Dalumpines Logo">
+      <img class="footer-avatar" src="LOGO TEAM COLLAB/02. Joyce Yap.png" alt="Joyce Ann Yap Logo">
+      <img class="footer-avatar footer-logo-center" src="LOGO TEAM COLLAB/TEAM Collab TechPartners.png"
+        alt="Tech Partners System Logo">
+      <img class="footer-avatar" src="LOGO TEAM COLLAB/03. Kent Brian Jintapa.png" alt="Kent Brian Jintapa Logo">
+      <img class="footer-avatar" src="LOGO TEAM COLLAB/04. Errol John.png" alt="Errol John Peusca Logo">
     </div>
 
-    <div class="footer-text-group">
-      <div class="footer-heading">Staycation - 24/7 Automated Booking Funnel
-        Calendar</div>
-      <div class="footer-subheading">Web Builder &amp; Automation Specialist built by Joyce Ann Yap .</div>
+    <div class="footer-heading">Tech Partners Systems</div>
+
+    <div class="footer-team-names">
+      <span>Mark Dalumpines</span> •
+      <span>Joyce Ann Yap</span> •
+      <span>Kent Brian Jintapa</span> •
+      <span>Errol John Peusca</span>
+    </div>
+
+    <div class="footer-copyright">
+      &copy; 2026 Tech Partners System • All Rights Reserve
     </div>
   </footer>
 
