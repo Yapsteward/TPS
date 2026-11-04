@@ -512,17 +512,16 @@
 
         /* ── FOOTER ── */
         footer.page-footer {
-            margin-top: 64px;
-            padding: 24px 16px 44px;
+            margin-top: 60px;
+            padding: 40px 16px 54px;
             border: none;
             background: transparent;
+            text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            gap: 24px;
-            border-top: none;
+            gap: 20px;
         }
 
         .footer-logos {
@@ -531,49 +530,69 @@
             align-items: center;
             justify-content: center;
             gap: 24px;
+            flex-wrap: nowrap;
+            width: 100%;
         }
 
+        /* 1x1 size logos in horizontal row */
         .footer-avatar {
-            width: 88px;
-            height: 88px;
-            border-radius: 50%;
-            object-fit: cover;
+            width: 1in;
+            height: 1in;
+            min-width: 1in;
+            min-height: 1in;
+            aspect-ratio: 1 / 1;
+            object-fit: contain;
             display: block;
-            border: 3px solid var(--border-blue);
-            box-shadow: 0 4px 16px rgba(43, 102, 217, 0.25);
-            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+            border: none;
+            background: transparent;
+            filter: drop-shadow(0 6px 14px rgba(13, 34, 56, 0.12));
+            transition: transform 0.3s ease, filter 0.3s ease;
         }
 
         .footer-avatar:hover {
             transform: scale(1.08);
-            border-color: var(--color-navy);
-            box-shadow: 0 6px 20px rgba(24, 29, 40, 0.28);
+            filter: drop-shadow(0 6px 20px rgba(5, 150, 105, 0.28));
         }
 
-        .footer-text-group {
-            width: 100%;
-            max-width: 960px;
-            padding-top: 4px;
+        .footer-logo-center:hover {
+            transform: rotate(6deg) scale(1.08);
         }
 
         .footer-heading {
             font-family: var(--font-heading);
-            background: linear-gradient(110deg, #181d28 0%, #2b66d9 45%, #4880ed 72%, #181d28 100%);
-            background-size: 260% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: flowingBrandBlue 6s ease-in-out infinite;
-            font-size: clamp(1.15rem, 2vw, 1.45rem);
+            font-size: 1.25rem;
             font-weight: 800;
+            color: var(--color-navy, #0A192F);
             letter-spacing: -0.01em;
-            margin-bottom: 8px;
         }
 
         .footer-subheading {
-            font-family: var(--font-body);
-            color: var(--color-tg-blue);
-            font-size: clamp(0.96rem, 1.5vw, 1.1rem);
+            font-size: 0.94rem;
+            color: #475569;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .footer-team-names {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px 18px;
+            font-size: 0.88rem;
             font-weight: 700;
+            color: #1b8d9f;
+            margin-top: 4px;
+        }
+
+        .footer-team-names span {
+            color: var(--color-navy, #0A192F);
+        }
+
+        .footer-copyright {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: #64748b;
+            margin-top: 8px;
         }
 
         /* ── LIGHTBOX MODAL ── */
@@ -758,47 +777,51 @@
 
             /* ── DECREASED FOOTER FONT SIZE ON MOBILE ── */
             footer.page-footer {
+                margin-top: 36px;
+                padding: 28px 8px 36px;
                 gap: 14px;
-                margin-top: 28px;
-                padding: 20px 8px 36px;
             }
 
             .footer-logos {
-                gap: 14px;
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                width: 100%;
             }
 
             .footer-avatar {
-                width: 64px;
-                height: 64px;
+                width: min(1in, calc((100vw - 64px) / 5));
+                height: min(1in, calc((100vw - 64px) / 5));
+                min-width: unset;
+                min-height: unset;
+                aspect-ratio: 1 / 1;
             }
 
             .footer-heading {
-                font-size: 0.92rem;
-                line-height: 1.45;
+                font-size: 1.15rem;
             }
 
             .footer-subheading {
-                font-size: 0.8rem;
-                line-height: 1.5;
+                font-size: 0.88rem;
+                line-height: 1.55;
+            }
+
+            .footer-team-names {
+                gap: 6px 12px;
+                font-size: 0.82rem;
+            }
+
+            .footer-copyright {
+                font-size: 0.74rem;
             }
         }
 
         @media (max-width: 400px) {
             .top-headline-title {
                 font-size: 1.35rem;
-            }
-
-            .footer-heading {
-                font-size: 0.84rem;
-            }
-
-            .footer-subheading {
-                font-size: 0.74rem;
-            }
-
-            .footer-avatar {
-                width: 52px;
-                height: 52px;
             }
         }
     </style>
@@ -815,7 +838,8 @@
         <header class="top-headline-header">
             <div class="top-headline-tagline">Meta Messenger &amp; Google Calendar AI Agent</div>
             <h1 class="top-headline-title">"Facebook Page AI Agent"</h1>
-            <p class="top-headline-subhead">An autonomous 24/7 customer support and appointment booking engine connecting Facebook Messenger directly to Google Calendar via n8n.</p>
+            <p class="top-headline-subhead">An autonomous 24/7 customer support and appointment booking engine
+                connecting Facebook Messenger directly to Google Calendar via n8n.</p>
         </header>
 
         <!-- ── 1ST SECTION: IMAGE ROW ── -->
@@ -839,7 +863,9 @@
                             <div class="zoom-badge">🔍 Zoom View</div>
                         </div>
                     </div>
-                    <p class="image-brief-info">Production n8n architecture integrating Facebook Messenger webhooks, dual-path verification, Google Gemini reasoning, Knowledge Base document retrieval, and live Google Calendar scheduling.</p>
+                    <p class="image-brief-info">Production n8n architecture integrating Facebook Messenger webhooks,
+                        dual-path verification, Google Gemini reasoning, Knowledge Base document retrieval, and live
+                        Google Calendar scheduling.</p>
                 </div>
 
             </div>
@@ -856,28 +882,45 @@
                 <!-- 1st row: Introduction -->
                 <div class="details-row">
                     <h3 class="details-heading">Introduction</h3>
-                    <h4 class="details-subheading">Facebook Page AI Agent — Autonomous Messenger &amp; Google Calendar Booking Engine</h4>
-                    <p class="details-text">Staycation properties and local service businesses receive continuous customer inquiries on Facebook Messenger late into the night regarding amenities, rules, and reservation dates, leading to delayed responses, high drop-off rates, and lost revenue during peak after-hours traffic.</p>
+                    <h4 class="details-subheading">Facebook Page AI Agent — Autonomous Messenger &amp; Google Calendar
+                        Booking Engine</h4>
+                    <p class="details-text">Staycation properties and local service businesses receive continuous
+                        customer inquiries on Facebook Messenger late into the night regarding amenities, rules, and
+                        reservation dates, leading to delayed responses, high drop-off rates, and lost revenue during
+                        peak after-hours traffic.</p>
                 </div>
 
                 <!-- 2nd row: The Challenges -->
                 <div class="details-row">
                     <h3 class="details-heading">The Challenges</h3>
                     <ul class="details-list">
-                        <li><strong>Late-Night Lead Abandonment (10 PM – 2 AM):</strong> Over 40% of booking inquiries occur after business hours when hosts are asleep, causing prospective guests to drop off or reserve with faster-responding competitors.</li>
-                        <li><strong>Repetitive FAQ Answering Fatigue:</strong> Support teams spent excessive hours manually typing repetitive answers about amenities, operating rules, security deposits, and check-in schedules.</li>
-                        <li><strong>Double-Booking &amp; Scheduling Inefficiencies:</strong> Traditional keyword chatbots could not check real-time calendar availability, forcing manual back-and-forth date verification and causing accidental scheduling collisions.</li>
+                        <li><strong>Late-Night Lead Abandonment (10 PM – 2 AM):</strong> Over 40% of booking inquiries
+                            occur after business hours when hosts are asleep, causing prospective guests to drop off or
+                            reserve with faster-responding competitors.</li>
+                        <li><strong>Repetitive FAQ Answering Fatigue:</strong> Support teams spent excessive hours
+                            manually typing repetitive answers about amenities, operating rules, security deposits, and
+                            check-in schedules.</li>
+                        <li><strong>Double-Booking &amp; Scheduling Inefficiencies:</strong> Traditional keyword
+                            chatbots could not check real-time calendar availability, forcing manual back-and-forth date
+                            verification and causing accidental scheduling collisions.</li>
                     </ul>
                 </div>
 
                 <!-- 3rd row: The Solution -->
                 <div class="details-row">
                     <h3 class="details-heading">The Solution</h3>
-                    <p class="details-text">Engineered an intelligent, tool-augmented automation pipeline in n8n combining the Meta Graph API, Google Gemini 1.5, and Google Calendar APIs:</p>
+                    <p class="details-text">Engineered an intelligent, tool-augmented automation pipeline in n8n
+                        combining the Meta Graph API, Google Gemini 1.5, and Google Calendar APIs:</p>
                     <ul class="details-list">
-                        <li><strong>Dual-Path Webhook Verification:</strong> Listens live via Facebook Webhooks, handling both Meta GET challenge handshakes and real-time POST message events with instant zero-drop responsiveness.</li>
-                        <li><strong>Knowledge Base Document Retrieval:</strong> Equips the Google Gemini AI Agent with structured knowledge base tools to instantly provide accurate answers on pricing, policies, and property guidelines.</li>
-                        <li><strong>Real-Time Calendar Availability &amp; Direct Booking:</strong> Empowers the AI agent with read/write Google Calendar API tools to inspect live availability slots and automatically create confirmed booking events in seconds.</li>
+                        <li><strong>Dual-Path Webhook Verification:</strong> Listens live via Facebook Webhooks,
+                            handling both Meta GET challenge handshakes and real-time POST message events with instant
+                            zero-drop responsiveness.</li>
+                        <li><strong>Knowledge Base Document Retrieval:</strong> Equips the Google Gemini AI Agent with
+                            structured knowledge base tools to instantly provide accurate answers on pricing, policies,
+                            and property guidelines.</li>
+                        <li><strong>Real-Time Calendar Availability &amp; Direct Booking:</strong> Empowers the AI agent
+                            with read/write Google Calendar API tools to inspect live availability slots and
+                            automatically create confirmed booking events in seconds.</li>
                     </ul>
                 </div>
 
@@ -885,9 +928,12 @@
                 <div class="details-row">
                     <h3 class="details-heading">The Results</h3>
                     <ul class="details-list">
-                        <li><strong>Sub-15s Response Turnaround:</strong> Replaced hours of manual delay with instant conversational answers and reservations delivered within 15 seconds 24/7.</li>
-                        <li><strong>100% After-Hours Inquiry Capture:</strong> Eliminated lost midnight opportunities by autonomously engaging, qualifying, and booking guests while hosts sleep.</li>
-                        <li><strong>Zero Double Bookings:</strong> Live API checks across master Google Calendars ensured seamless date locking and complete scheduling accuracy without human overhead.</li>
+                        <li><strong>Sub-15s Response Turnaround:</strong> Replaced hours of manual delay with instant
+                            conversational answers and reservations delivered within 15 seconds 24/7.</li>
+                        <li><strong>100% After-Hours Inquiry Capture:</strong> Eliminated lost midnight opportunities by
+                            autonomously engaging, qualifying, and booking guests while hosts sleep.</li>
+                        <li><strong>Zero Double Bookings:</strong> Live API checks across master Google Calendars
+                            ensured seamless date locking and complete scheduling accuracy without human overhead.</li>
                     </ul>
                 </div>
 
@@ -925,19 +971,17 @@
                         </span>
                         IMPACT
                     </div>
-                    <p class="pinfo-impact-text">Connected an AI chatbot to Facebook Messenger to automatically answer customer inquiries, capture lead details, and book appointments <span class="pinfo-impact-highlight">24/7</span> with sub-<span class="pinfo-impact-highlight">15s</span> response speed and zero scheduling collisions.</p>
+                    <p class="pinfo-impact-text">Connected an AI chatbot to Facebook Messenger to automatically answer
+                        customer inquiries, capture lead details, and book appointments <span
+                            class="pinfo-impact-highlight">24/7</span> with sub-<span
+                            class="pinfo-impact-highlight">15s</span> response speed and zero scheduling collisions.</p>
                 </div>
 
                 <!-- Automation Specialist -->
                 <div class="pinfo-item-box">
-                    <span class="pinfo-box-label">Automation Specialist:</span>
-                    <span class="pinfo-box-val">Kent Brian Jintapa</span>
-                </div>
-
-                <!-- In Collaboration -->
-                <div class="pinfo-item-box">
-                    <span class="pinfo-box-label">In Collaboration:</span>
-                    <span class="pinfo-box-val">Errol John Peusca, Mark Dalumpines, and Joyce Ann Yap</span>
+                    <span class="pinfo-box-label">AI Automation Specialist and Collaborator:</span>
+                    <span class="pinfo-box-val"> Errol John Peusca, Kent Brian Jintapa, Mark Dalumpines, and Joyce Ann
+                        Yap </span>
                 </div>
             </div>
         </section>
@@ -945,12 +989,26 @@
         <!-- ── FOOTER ── -->
         <footer class="page-footer">
             <div class="footer-logos">
-                <img class="footer-avatar" src="LOGO TEAM COLLAB/03. Kent Brian Jintapa.png" alt="Kent Brian Jintapa">
+                <img class="footer-avatar" src="LOGO TEAM COLLAB/01. Mark Dalumpines.png" alt="Mark Dalumpines Logo">
+                <img class="footer-avatar" src="LOGO TEAM COLLAB/02. Joyce Yap.png" alt="Joyce Ann Yap Logo">
+                <img class="footer-avatar footer-logo-center" src="LOGO TEAM COLLAB/TEAM Collab TechPartners.png"
+                    alt="Tech Partners System Logo">
+                <img class="footer-avatar" src="LOGO TEAM COLLAB/03. Kent Brian Jintapa.png"
+                    alt="Kent Brian Jintapa Logo">
+                <img class="footer-avatar" src="LOGO TEAM COLLAB/04. Errol John.png" alt="Errol John Peusca Logo">
             </div>
 
-            <div class="footer-text-group">
-                <div class="footer-heading">"Facebook Page AI Agent" — Customer Assistant Case Study</div>
-                <div class="footer-subheading">Automate and built by Kent Brian Jintapa.</div>
+            <div class="footer-heading">Tech Partners Systems</div>
+
+            <div class="footer-team-names">
+                <span>Mark Dalumpines</span> •
+                <span>Joyce Ann Yap</span> •
+                <span>Kent Brian Jintapa</span> •
+                <span>Errol John Peusca</span>
+            </div>
+
+            <div class="footer-copyright">
+                &copy; 2026 Tech Partners System • All Rights Reserve
             </div>
         </footer>
 

@@ -512,17 +512,16 @@
 
         /* ── FOOTER ── */
         footer.page-footer {
-            margin-top: 64px;
-            padding: 24px 16px 44px;
+            margin-top: 60px;
+            padding: 40px 16px 54px;
             border: none;
             background: transparent;
+            text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            gap: 24px;
-            border-top: none;
+            gap: 20px;
         }
 
         .footer-logos {
@@ -531,63 +530,69 @@
             align-items: center;
             justify-content: center;
             gap: 24px;
+            flex-wrap: nowrap;
+            width: 100%;
         }
 
+        /* 1x1 size logos in horizontal row */
         .footer-avatar {
-            width: 88px;
-            height: 88px;
-            border-radius: 50%;
-            object-fit: cover;
+            width: 1in;
+            height: 1in;
+            min-width: 1in;
+            min-height: 1in;
+            aspect-ratio: 1 / 1;
+            object-fit: contain;
             display: block;
-            border: 3px solid var(--border-green);
-            box-shadow: 0 4px 16px rgba(76, 231, 106, 0.25);
-            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+            border: none;
+            background: transparent;
+            filter: drop-shadow(0 6px 14px rgba(13, 34, 56, 0.12));
+            transition: transform 0.3s ease, filter 0.3s ease;
         }
 
         .footer-avatar:hover {
             transform: scale(1.08);
-            border-color: var(--color-dark);
-            box-shadow: 0 6px 20px rgba(32, 35, 44, 0.3);
+            filter: drop-shadow(0 6px 20px rgba(5, 150, 105, 0.28));
         }
 
-        .footer-text-group {
-            width: 100%;
-            max-width: 960px;
-            padding-top: 4px;
+        .footer-logo-center:hover {
+            transform: rotate(6deg) scale(1.08);
         }
 
         .footer-heading {
             font-family: var(--font-heading);
-            background: linear-gradient(110deg, #20232c 0%, #2bc44a 45%, #4ce76a 75%, #20232c 100%);
-            background-size: 260% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: flowingErrolGreen 6s ease-in-out infinite;
-            font-size: clamp(1.15rem, 2vw, 1.45rem);
+            font-size: 1.25rem;
             font-weight: 800;
+            color: var(--color-navy, #0A192F);
             letter-spacing: -0.01em;
-            margin-bottom: 8px;
         }
 
         .footer-subheading {
-            font-family: var(--font-body);
-            color: var(--color-green-dark);
-            font-size: clamp(0.96rem, 1.5vw, 1.1rem);
-            font-weight: 700;
+            font-size: 0.94rem;
+            color: #475569;
+            max-width: 600px;
+            line-height: 1.6;
         }
 
-        .footer-collab {
-            font-family: var(--font-body);
-            color: var(--color-text-main);
-            opacity: 0.9;
-            font-size: clamp(0.9rem, 1.4vw, 1.02rem);
-            font-weight: 600;
-            margin-top: 6px;
+        .footer-team-names {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px 18px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #1b8d9f;
+            margin-top: 4px;
         }
 
-        .footer-collab .collab-name {
-            color: var(--color-green-dark);
-            font-weight: 700;
+        .footer-team-names span {
+            color: var(--color-navy, #0A192F);
+        }
+
+        .footer-copyright {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: #64748b;
+            margin-top: 8px;
         }
 
         /* ── LIGHTBOX MODAL ── */
@@ -772,56 +777,51 @@
 
             /* ── DECREASED FOOTER FONT SIZE ON MOBILE ── */
             footer.page-footer {
+                margin-top: 36px;
+                padding: 28px 8px 36px;
                 gap: 14px;
-                margin-top: 28px;
-                padding: 20px 8px 36px;
             }
 
             .footer-logos {
-                gap: 14px;
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                width: 100%;
             }
 
             .footer-avatar {
-                width: 64px;
-                height: 64px;
+                width: min(1in, calc((100vw - 64px) / 5));
+                height: min(1in, calc((100vw - 64px) / 5));
+                min-width: unset;
+                min-height: unset;
+                aspect-ratio: 1 / 1;
             }
 
             .footer-heading {
-                font-size: 0.92rem;
-                line-height: 1.45;
+                font-size: 1.15rem;
             }
 
             .footer-subheading {
-                font-size: 0.8rem;
-                line-height: 1.5;
+                font-size: 0.88rem;
+                line-height: 1.55;
             }
 
-            .footer-collab {
-                font-size: 0.76rem;
-                line-height: 1.5;
+            .footer-team-names {
+                gap: 6px 12px;
+                font-size: 0.82rem;
+            }
+
+            .footer-copyright {
+                font-size: 0.74rem;
             }
         }
 
         @media (max-width: 400px) {
             .top-headline-title {
                 font-size: 1.35rem;
-            }
-
-            .footer-heading {
-                font-size: 0.84rem;
-            }
-
-            .footer-subheading {
-                font-size: 0.74rem;
-            }
-
-            .footer-collab {
-                font-size: 0.7rem;
-            }
-
-            .footer-avatar {
-                width: 52px;
-                height: 52px;
             }
         }
     </style>
@@ -837,7 +837,7 @@
         <!-- ── TOP HEADLINE TITLE & SUB-HEAD ── -->
         <header class="top-headline-header">
             <div class="top-headline-tagline">AI Automation Workflow </div>
-            <h1 class="top-headline-title">Slack AI Assistant</h1>
+            <h1 class="top-headline-title">AI Slack Assistant Workflow - Deep Seek & Google Gemini </h1>
             <p class="top-headline-subhead">An enterprise-grade multimodal n8n automation engine integrating dual-model
                 intelligence, voice-to-text processing, and fail-safe error handling for real-time Slack operations.</p>
         </header>
@@ -985,7 +985,7 @@
                 <!-- Title workflow -->
                 <div class="pinfo-item-box">
                     <span class="pinfo-box-label">Title Workflow:</span>
-                    <span class="pinfo-box-val">Internal Slack AI Assistants</span>
+                    <span class="pinfo-box-val">AI Slack Assistant Workflow </span>
                 </div>
 
                 <!-- Started -->
@@ -1013,14 +1013,9 @@
 
                 <!-- Automation Specialist -->
                 <div class="pinfo-item-box">
-                    <span class="pinfo-box-label">Automation Specialist:</span>
-                    <span class="pinfo-box-val"> Errol John Peusca </span>
-                </div>
-
-                <!-- In Collaboration -->
-                <div class="pinfo-item-box">
-                    <span class="pinfo-box-label">In Collaboration:</span>
-                    <span class="pinfo-box-val"> Kent Brian Jintapa, Mark Dalumpines, and Joyce Ann Yap</span>
+                    <span class="pinfo-box-label">AI Automation Specialist and Collaborator:</span>
+                    <span class="pinfo-box-val"> Errol John Peusca, Kent Brian Jintapa, Mark Dalumpines, and Joyce Ann
+                        Yap </span>
                 </div>
             </div>
         </section>
@@ -1028,13 +1023,26 @@
         <!-- ── FOOTER ── -->
         <footer class="page-footer">
             <div class="footer-logos">
-                <img class="footer-avatar" src="LOGO TEAM COLLAB/04. Errol John Peusca.png" alt="Kent Brian Jintapa">
+                <img class="footer-avatar" src="LOGO TEAM COLLAB/01. Mark Dalumpines.png" alt="Mark Dalumpines Logo">
+                <img class="footer-avatar" src="LOGO TEAM COLLAB/02. Joyce Yap.png" alt="Joyce Ann Yap Logo">
+                <img class="footer-avatar footer-logo-center" src="LOGO TEAM COLLAB/TEAM Collab TechPartners.png"
+                    alt="Tech Partners System Logo">
+                <img class="footer-avatar" src="LOGO TEAM COLLAB/03. Kent Brian Jintapa.png"
+                    alt="Kent Brian Jintapa Logo">
+                <img class="footer-avatar" src="LOGO TEAM COLLAB/04. Errol John.png" alt="Errol John Peusca Logo">
             </div>
 
-            <div class="footer-text-group">
-                <div class="footer-heading">Slack AI Assistant — Multi-Modal Business Communication Engine Case Study
-                </div>
-                <div class="footer-subheading">Automate and built by Errol John Peusca. </div>
+            <div class="footer-heading">Tech Partners Systems</div>
+
+            <div class="footer-team-names">
+                <span>Mark Dalumpines</span> •
+                <span>Joyce Ann Yap</span> •
+                <span>Kent Brian Jintapa</span> •
+                <span>Errol John Peusca</span>
+            </div>
+
+            <div class="footer-copyright">
+                &copy; 2026 Tech Partners System • All Rights Reserve
             </div>
         </footer>
 
