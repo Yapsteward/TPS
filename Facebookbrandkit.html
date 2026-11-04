@@ -1170,38 +1170,19 @@
         }
 
         /* ==========================================================================
-       PAGE FOOTER (NO CONTAINER BOX, NO LINES/BORDERLINES, NO BACKGROUND BOX)
-       Clean canvas presentation: avatar and typography float directly on background
+       PAGE FOOTER
        ========================================================================== */
         footer.page-footer {
-            margin-top: 48px;
-            padding: 24px 16px 48px;
-            border: none !important;
-            border-top: none !important;
-            border-bottom: none !important;
-            border-left: none !important;
-            border-right: none !important;
-            background: transparent !important;
-            background-color: transparent !important;
-            box-shadow: none !important;
-            outline: none !important;
-            border-radius: 0 !important;
+            margin-top: 60px;
+            padding: 40px 16px 54px;
+            border: none;
+            background: transparent;
+            text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            gap: 16px;
-            position: relative;
-        }
-
-        footer.page-footer::before,
-        footer.page-footer::after,
-        .footer-text-group::before,
-        .footer-text-group::after {
-            display: none !important;
-            content: none !important;
-            border: none !important;
+            gap: 20px;
         }
 
         .footer-logos {
@@ -1209,57 +1190,70 @@
             flex-direction: row;
             align-items: center;
             justify-content: center;
-            gap: 16px;
+            gap: 24px;
             flex-wrap: nowrap;
-            background: transparent !important;
-            border: none !important;
+            width: 100%;
         }
 
+        /* 1x1 size logos in horizontal row */
         .footer-avatar {
-            width: 1.5in;
-            height: 1.5in;
-            min-width: 1.5in;
-            min-height: 1.5in;
-            border-radius: 50%;
-            object-fit: cover;
+            width: 1in;
+            height: 1in;
+            min-width: 1in;
+            min-height: 1in;
+            aspect-ratio: 1 / 1;
+            object-fit: contain;
             display: block;
-            border: 3px solid var(--brand-green);
-            box-shadow: 0 0 20px var(--brand-green-glow);
-            transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
-            background: transparent !important;
+            border: none;
+            background: transparent;
+            filter: drop-shadow(0 6px 14px rgba(13, 34, 56, 0.12));
+            transition: transform 0.3s ease, filter 0.3s ease;
         }
 
         .footer-avatar:hover {
-            transform: scale(1.06);
-            border-color: var(--brand-blue);
-            box-shadow: 0 0 26px var(--brand-blue-glow);
+            transform: scale(1.08);
+            filter: drop-shadow(0 6px 20px rgba(5, 150, 105, 0.28));
         }
 
-        .footer-text-group {
-            width: 100%;
-            max-width: 860px;
-            border: none !important;
-            background: transparent !important;
-            box-shadow: none !important;
-            padding: 0 !important;
-            margin: 0 !important;
+        .footer-logo-center:hover {
+            transform: rotate(6deg) scale(1.08);
         }
 
         .footer-heading {
             font-family: var(--font-heading);
-            color: #080e1a !important;
-            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            font-size: 1.25rem;
             font-weight: 800;
+            color: var(--color-navy, #0A192F);
             letter-spacing: -0.01em;
-            margin-bottom: 6px;
-            line-height: 1.35;
         }
 
         .footer-subheading {
-            font-family: var(--font-body);
-            color: #2e7d32 !important;
-            font-size: clamp(0.88rem, 1.4vw, 1.02rem);
-            font-weight: 600;
+            font-size: 0.94rem;
+            color: #475569;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .footer-team-names {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px 18px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #1b8d9f;
+            margin-top: 4px;
+        }
+
+        .footer-team-names span {
+            color: var(--color-navy, #0A192F);
+        }
+
+        .footer-copyright {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: #64748b;
+            margin-top: 8px;
         }
 
         /* ── FULLSCREEN LIGHTBOX MODAL ── */
@@ -1985,33 +1979,47 @@
                 box-sizing: border-box !important;
             }
 
-            /* ── FOOTER ON MOBILE (CLEAN, NO CONTAINER, NO LINES) ── */
+            /* ── FOOTER ON MOBILE ── */
             footer.page-footer {
-                margin-top: 36px !important;
-                padding: 18px 10px 36px !important;
-                gap: 12px !important;
-                background: transparent !important;
-                border: none !important;
-                box-shadow: none !important;
+                margin-top: 36px;
+                padding: 28px 8px 36px;
+                gap: 14px;
+            }
+
+            .footer-logos {
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                width: 100%;
             }
 
             .footer-avatar {
-                width: 76px !important;
-                height: 76px !important;
-                min-width: 76px !important;
-                min-height: 76px !important;
-                border-width: 2.5px !important;
+                width: min(1in, calc((100vw - 64px) / 5));
+                height: min(1in, calc((100vw - 64px) / 5));
+                min-width: unset;
+                min-height: unset;
+                aspect-ratio: 1 / 1;
             }
 
             .footer-heading {
-                color: #080e1a !important;
-                font-size: 0.94rem !important;
-                margin-bottom: 4px !important;
+                font-size: 1.15rem;
             }
 
             .footer-subheading {
-                color: #2e7d32 !important;
-                font-size: 0.74rem !important;
+                font-size: 0.88rem;
+                line-height: 1.55;
+            }
+
+            .footer-team-names {
+                gap: 6px 12px;
+                font-size: 0.82rem;
+            }
+
+            .footer-copyright {
+                font-size: 0.74rem;
             }
 
             /* ── LIGHTBOX MODAL ON MOBILE ── */
@@ -2079,23 +2087,6 @@
 
             .concept-hero-img-wrap img {
                 max-height: 240px !important;
-            }
-
-            .footer-avatar {
-                width: 66px !important;
-                height: 66px !important;
-                min-width: 66px !important;
-                min-height: 66px !important;
-            }
-
-            .footer-heading {
-                color: #080e1a !important;
-                font-size: 0.88rem !important;
-            }
-
-            .footer-subheading {
-                color: #2e7d32 !important;
-                font-size: 0.70rem !important;
             }
         }
     </style>
@@ -2589,22 +2580,32 @@
 
         </section>
 
-    </div>
-
-    <!-- ==========================================================================
-       PAGE FOOTER (COPIED FROM UPPERROOMSTAYCATION.HTML FOOTER, NO INCOLLABORATION)
-       ========================================================================== -->
-    <footer class="page-footer">
-        <div class="footer-logos">
-            <img class="footer-avatar" src="LOGO TEAM COLLAB/02. Joyce Yap.png" alt="Joyce Ann Yap">
-        </div>
-
-        <div class="footer-text-group">
-            <div class="footer-heading">Clear Sky Travel and Tours — Facebook Brand Launch Kit</div>
-            <div class="footer-subheading">Brand Design &amp; Automated Content Creation delivered by Joyce Ann Yap .
+        <!-- ── FOOTER ── -->
+        <footer class="page-footer">
+            <div class="footer-logos">
+                <img class="footer-avatar" src="LOGO TEAM COLLAB/01. Mark Dalumpines.png" alt="Mark Dalumpines Logo">
+                <img class="footer-avatar" src="LOGO TEAM COLLAB/02. Joyce Yap.png" alt="Joyce Ann Yap Logo">
+                <img class="footer-avatar footer-logo-center" src="LOGO TEAM COLLAB/TEAM Collab TechPartners.png"
+                    alt="Tech Partners System Logo">
+                <img class="footer-avatar" src="LOGO TEAM COLLAB/03. Kent Brian Jintapa.png" alt="Kent Brian Jintapa Logo">
+                <img class="footer-avatar" src="LOGO TEAM COLLAB/04. Errol John.png" alt="Errol John Peusca Logo">
             </div>
-        </div>
-    </footer>
+
+            <div class="footer-heading">Tech Partners Systems</div>
+
+            <div class="footer-team-names">
+                <span>Mark Dalumpines</span> •
+                <span>Joyce Ann Yap</span> •
+                <span>Kent Brian Jintapa</span> •
+                <span>Errol John Peusca</span>
+            </div>
+
+            <div class="footer-copyright">
+                &copy; 2026 Tech Partners Systems • All Rights Reserve
+            </div>
+        </footer>
+
+    </div>
 
     <!-- ==========================================================================
        FULLSCREEN LIGHTBOX MODAL
